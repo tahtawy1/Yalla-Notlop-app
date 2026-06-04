@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/constants/app_strings.dart';
-import 'package:yalla_notlop_app/features/splash/views/home.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -51,7 +51,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
       Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(builder: (context) => AddRestaurantView()),
       );
     });
     super.initState();
@@ -194,8 +194,8 @@ class _LoadingIndicator extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36.0),
       child: LinearProgressIndicator(
-        backgroundColor: AppColors.primaryColor.withAlpha(52),
-        color: AppColors.splashIndicator,
+        backgroundColor: AppColors.secondaryColor.withAlpha(52),
+        color: AppColors.primaryColor,
         minHeight: 8,
         borderRadius: BorderRadius.circular(12),
       ),

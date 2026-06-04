@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
+import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
+
+class CategoryCard extends StatelessWidget {
+  const CategoryCard({
+    super.key,
+    required this.category,
+    required this.isSelected,
+    required this.onTap,
+    required this.onDelete,
+  });
+  final CategoryModel category;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final VoidCallback onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.restaurantChipSelectedBg : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isSelected
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withAlpha(100),
+            width: 1.5,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              category.name,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w800,
+                color: isSelected
+                    ? AppColors.primaryColor
+                    : AppColors.primaryColor.withAlpha(200),
+              ),
+            ),
+            const SizedBox(width: 4),
+            InkWell(
+              onTap: onDelete,
+              child: Icon(Icons.close, color: AppColors.primaryColor, size: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
