@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'restaurant_model.dart';
+part of '../restaurant_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -21,13 +21,14 @@ class RestaurantModelAdapter extends TypeAdapter<RestaurantModel> {
       imagePath: fields[1] as String?,
       meals: (fields[2] as List?)?.cast<MealModel>(),
       category: fields[3] as CategoryModel?,
+      id: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, RestaurantModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class RestaurantModelAdapter extends TypeAdapter<RestaurantModel> {
       ..writeByte(2)
       ..write(obj.meals)
       ..writeByte(3)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(4)
+      ..write(obj.id);
   }
 
   @override

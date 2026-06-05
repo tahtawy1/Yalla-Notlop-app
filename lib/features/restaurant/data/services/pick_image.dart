@@ -1,11 +1,10 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 
 bool _isPicking = false;
 
-Future<File?> pickImage() async {
+Future<File?> pickkImage() async {
   try {
     if (_isPicking) return null;
 
@@ -21,8 +20,7 @@ Future<File?> pickImage() async {
       return null;
     }
   } catch (e) {
-    log('Error picking image: $e');
-    return null;
+    rethrow;
   } finally {
     _isPicking = false;
   }

@@ -25,4 +25,10 @@ class AppColors {
   static const Color restaurantChipSelectedBg = Color(0xffFFF0E8);
   static const Color restaurantBackground = Color(0xffFFF8F4);
   static const Color restaurantDashedBorder = Color(0x80FF7A2F);
+
+  // Restaurant Management Screen
+  static const Color successColor = Color(0xff1B7A2D);
+  static const Color dangerColor = Color(0xffB52B1D);
+  static const Color dangerBackground = Color(0xffFDECEB);
+  static const Color glassOverlay = Color(0xE6FFFFFF);
 }

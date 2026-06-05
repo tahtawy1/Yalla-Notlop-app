@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/restaurant_cubit.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/category_cubit/category_cubit.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/meal_cubit/meal_cubit.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/restaurant_cubit/restaurant_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/cancel_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/categories_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meals_section.dart';
@@ -24,99 +26,171 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
   final TextEditingController mealNameController = TextEditingController();
   final TextEditingController mealPriceController = TextEditingController();
 
-  late RestaurantCubit cubit;
+  late RestaurantCubit restaurantCubit;
+  late CategoryCubit categoryCubit;
+  late MealCubit mealCubit;
+
   bool showCategoryError = false;
 
   @override
   void initState() {
-    cubit = BlocProvider.of<RestaurantCubit>(context);
     super.initState();
+    restaurantCubit = BlocProvider.of<RestaurantCubit>(context);
+    categoryCubit = BlocProvider.of<CategoryCubit>(context);
+    mealCubit = BlocProvider.of<MealCubit>(context);
+    // Load categories from Hive on screen init
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      categoryCubit.getCategories();
+    });
   }
 
   @override
   void dispose() {
-    super.dispose();
     nameController.dispose();
+    categoryNameController.dispose();
+    mealNameController.dispose();
+    mealPriceController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          RestaurantNameFeild(
-            nameController: nameController,
-            autovalidateMode: autovalidateMode,
-          ),
-          SizedBox(height: 20),
-          ImageUploadSection(
-            onTap: () async {
-              await context.read<RestaurantCubit>().pickImage();
-            },
-          ),
-          SizedBox(height: 16),
-          BlocBuilder<RestaurantCubit, RestaurantState>(
-            builder: (context, state) {
-              return CategoriesSection(
-                categories: cubit.categories,
-                selectedCategory: cubit.selectedCategory,
-                showError: showCategoryError,
-                onSelect: (category) {
-                  setState(() {
-                    showCategoryError = false;
-                  });
-                  cubit.selectCategory(category);
-                },
-                onAdd: (category) => cubit.addCategory(category),
-                onDelete: (category) => cubit.removeCategory(category),
-                categoryNameController: categoryNameController,
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<RestaurantCubit, RestaurantState>(
+          listener: (context, state) {
+            if (state is AddRestaurantSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('تمت إضافة المطعم بنجاح ✓'),
+                  backgroundColor: Colors.green,
+                  duration: Duration(seconds: 2),
+                ),
               );
-            },
-          ),
-          SizedBox(height: 16),
-          MealsSection(
-            meals: cubit.meals,
-            mealNameController: mealNameController,
-            mealPriceController: mealPriceController,
-            onSaveMeal: (meal) {
-              cubit.addMeal(meal);
-              setState(() {});
-            },
-            onDelete: (meal) {
-              cubit.meals.remove(meal);
-              setState(() {});
-            },
-          ),
-          SizedBox(height: 32),
-          SizedBox(
-            width: double.infinity,
-            child: BlocBuilder<RestaurantCubit, RestaurantState>(
+              Navigator.maybePop(context);
+            } else if (state is AddRestaurantFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errMessage),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          },
+        ),
+        BlocListener<CategoryCubit, CategoryState>(
+          listener: (context, state) {
+            if (state is AddCategorySuccess || state is DeleteCategorySuccess) {
+              // Refresh category list in RestaurantCubit after any change
+              categoryCubit.getCategories();
+            }
+          },
+        ),
+        BlocListener<CategoryCubit, CategoryState>(
+          listenWhen: (_, state) => state is GetCategoriesSuccess,
+          listener: (context, state) {
+            if (state is GetCategoriesSuccess) {
+              restaurantCubit.categories = state.categories;
+            }
+          },
+        ),
+      ],
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            RestaurantNameFeild(
+              nameController: nameController,
+              autovalidateMode: autovalidateMode,
+            ),
+            SizedBox(height: 20),
+            BlocBuilder<RestaurantCubit, RestaurantState>(
+              buildWhen: (_, state) =>
+                  state is PickRestaurantImageSuccess ||
+                  state is PickRestaurantImageLoading ||
+                  state is PickRestaurantFailure,
               builder: (context, state) {
-                return PrimaryButton(
-                  title: AppStrings.saveRestaurant,
-                  icon: Icons.save_rounded,
-                  color: AppColors.secondaryColor,
-                  onTap: () {
-                    final bool isCategorySelected =
-                        cubit.selectedCategory != null;
-                    setState(() {
-                      showCategoryError = !isCategorySelected;
-                    });
-                    if (formKey.currentState!.validate() &&
-                        isCategorySelected) {
-                      BlocProvider.of<RestaurantCubit>(
-                        context,
-                      ).addRestaurant(name: nameController.text);
-                    }
-                  },
+                return ImageUploadSection(
+                  isLoading: state is PickRestaurantImageLoading,
+                  onTap: state is PickRestaurantImageLoading
+                      ? () {}
+                      : () async {
+                          await context.read<RestaurantCubit>().pickImage();
+                        },
                 );
               },
             ),
-          ),
-          SizedBox(height: 12),
-          CancelButton(),
-        ],
+            SizedBox(height: 16),
+            BlocBuilder<CategoryCubit, CategoryState>(
+              builder: (context, state) {
+                final cats = state is GetCategoriesSuccess
+                    ? state.categories
+                    : restaurantCubit.categories;
+                return CategoriesSection(
+                  categories: cats,
+                  selectedCategory: restaurantCubit.selectedCategory,
+                  showError: showCategoryError,
+                  onSelect: (category) {
+                    setState(() => showCategoryError = false);
+                    restaurantCubit.selectCategory(category);
+                  },
+                  onAdd: (name) => categoryCubit.addCategory(name: name),
+                  onDelete: (category) =>
+                      categoryCubit.deleteCategory(category: category),
+                  categoryNameController: categoryNameController,
+                );
+              },
+            ),
+            SizedBox(height: 16),
+            BlocBuilder<RestaurantCubit, RestaurantState>(
+              buildWhen: (_, state) => state is MealsUpdated,
+              builder: (context, state) {
+                return MealsSection(
+                  meals: restaurantCubit.meals,
+                  mealNameController: mealNameController,
+                  mealPriceController: mealPriceController,
+                  onSaveMeal: (meal) => restaurantCubit.addMeal(meal),
+                  onDelete: (meal) => restaurantCubit.removeMeal(meal),
+                );
+              },
+            ),
+            SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              child: BlocBuilder<RestaurantCubit, RestaurantState>(
+                buildWhen: (_, state) =>
+                    state is AddRestaurantLoading ||
+                    state is AddRestaurantSuccess ||
+                    state is AddRestaurantFailure ||
+                    state is RestaurantInitial,
+                builder: (context, state) {
+                  final isLoading = state is AddRestaurantLoading;
+                  return PrimaryButton(
+                    title: AppStrings.saveRestaurant,
+                    icon: Icons.save_rounded,
+                    color: AppColors.secondaryColor,
+                    isLoading: isLoading,
+                    onTap: () {
+                      final bool isCategorySelected =
+                          restaurantCubit.selectedCategory != null;
+                      setState(() {
+                        showCategoryError = !isCategorySelected;
+                      });
+                      if (formKey.currentState!.validate() &&
+                          isCategorySelected) {
+                        BlocProvider.of<RestaurantCubit>(
+                          context,
+                        ).addRestaurant(name: nameController.text);
+                      }
+                    },
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 12),
+            CancelButton(),
+          ],
+        ),
       ),
     );
   }

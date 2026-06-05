@@ -19,4 +19,13 @@ class AppStrings {
   static const String categoryFastFood = 'وجبات سريعة';
   static const String categoryPizza = 'بيتزا وباستا';
   static const String categoryBakery = 'بازار ومعجنات';
+
+  // Restaurant - Management Screen
+  static const String restaurantManagementAppBar = 'إدارة المطعم';
+  static const String saveChanges = 'حفظ التعديلات';
+  static const String mealsListTitle = 'قائمة الوجبات';
+  static const String addMealButton = 'إضافة وجبة';
+  static const String deleteRestaurantPermanently = 'حذف المطعم نهائياً';
+  static const String deleteRestaurantWarning =
+      'سيؤدي هذا الإجراء إلى حذف كافة البيانات المتعلقة بالمطعم.';
 }
