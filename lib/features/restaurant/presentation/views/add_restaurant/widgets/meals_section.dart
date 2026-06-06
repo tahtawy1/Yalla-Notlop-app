@@ -4,7 +4,7 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_rest
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_meals_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_card.dart';
 
-class MealsSection extends StatelessWidget {
+class MealsSection extends StatefulWidget {
   const MealsSection({
     super.key,
     required this.meals,
@@ -19,6 +19,12 @@ class MealsSection extends StatelessWidget {
   final TextEditingController mealPriceController;
   final Function(MealModel) onSaveMeal;
   final Function(MealModel) onDelete;
+
+  @override
+  State<MealsSection> createState() => _MealsSectionState();
+}
+
+class _MealsSectionState extends State<MealsSection> {
 
   @override
   Widget build(BuildContext context) {
@@ -46,23 +52,24 @@ class MealsSection extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => AddMealDialog(
-                      mealNameController: mealNameController,
-                      mealPriceController: mealPriceController,
+                      mealNameController: widget.mealNameController,
+                      mealPriceController: widget.mealPriceController,
                       onSaveMeal: () {
-                        onSaveMeal(
+                        widget.onSaveMeal(
                           MealModel(
-                            name: mealNameController.text,
-                            price: mealPriceController.text,
+                            name: widget.mealNameController.text,
+                            price: widget.mealPriceController.text,
                           ),
                         );
                       },
                     ),
                   );
                 },
-                isMealsEmpty: meals.isEmpty,
+                isMealsEmpty: widget.meals.isEmpty,
               ),
-              ...meals.map(
-                (meal) => MealCard(meal: meal, onDelete: () => onDelete(meal)),
+              ...widget.meals.map(
+                (meal) =>
+                    MealCard(meal: meal, onDelete: () => widget.onDelete(meal)),
               ),
             ],
           ),

@@ -1,0 +1,121 @@
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
+import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
+
+class RestaurantCard extends StatelessWidget {
+  const RestaurantCard({
+    super.key,
+    required this.restaurant,
+    required this.onTap,
+  });
+
+  final RestaurantModel restaurant;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(10), // ~4% opacity
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Image
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(24),
+              ),
+              child: SizedBox(
+                height: 140,
+                child: restaurant.imagePath != null
+                    ? Image.file(
+                        File(restaurant.imagePath!),
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            _buildFallbackImage(),
+                      )
+                    : _buildFallbackImage(),
+              ),
+            ),
+
+            // Content
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    restaurant.name,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                      color: AppColors.splashTitleColor,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    restaurant.category?.name ?? '',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.restaurantTextMuted,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Divider(
+                    color: AppColors.restaurantBackground,
+                    thickness: 1.5,
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        AppStrings.minOrderFallback,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.restaurantFieldHint,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // TODO: Navigate to group order flow when ready
+                        },
+                        child: const Text(
+                          AppStrings.startGroupOrder,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w900,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFallbackImage() {
+    return Image.asset(AppImageAssets.restaurantDefaultImg, fit: BoxFit.cover);
+  }
+}

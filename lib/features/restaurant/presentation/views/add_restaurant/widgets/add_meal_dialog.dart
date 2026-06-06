@@ -40,6 +40,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                     color: AppColors.splashTitleColor,
+                    fontFamily: 'Cairo',
                   ),
                   children: [
                     TextSpan(text: 'اسم الوجبة'),

@@ -4,20 +4,52 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
+import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo.dart';
 
-part 'restaurant_state.dart';
+part 'add_restaurant_state.dart';
 
-class RestaurantCubit extends Cubit<RestaurantState> {
-  RestaurantCubit(this.repo) : super(const RestaurantInitial());
+class AddRestaurantCubit extends Cubit<AddRestaurantState> {
+  AddRestaurantCubit(this.restaurantRepo, this.categoryRepo)
+    : super(const AddRestaurantInitial());
 
-  final RestaurantRepo repo;
+  final RestaurantRepo restaurantRepo;
+  final CategoryRepo categoryRepo;
 
   List<MealModel> meals = [];
   List<CategoryModel> categories = [];
 
   CategoryModel? selectedCategory;
   File? image;
+
+  Future<void> addCategory({required String name}) async {
+    final normalized = name.trim().toLowerCase();
+    final isDuplicate = categories.any(
+      (c) => c.name.trim().toLowerCase() == normalized,
+    );
+    if (isDuplicate) {
+      emit(AddCategoryFailure(errMessage: 'يوجد قسم بهذا الاسم بالفعل'));
+      return;
+    }
+    final res = await categoryRepo.addCategory(category: _buildCategory(name.trim()));
+    res.fold(
+      (failure) => emit(AddCategoryFailure(errMessage: failure.errMessage)),
+      (r) => emit(AddCategorySuccess()),
+    );
+  }
+
+  Future<void> getCategories() async {
+    emit(GetCategoriesLoading());
+    final result = await categoryRepo.getCategories();
+    result.fold(
+      (failure) => emit(GetCategoriesFailure(errMessage: failure.errMessage)),
+      (categories) => emit(GetCategoriesSuccess(categories: categories)),
+    );
+  }
+
+  CategoryModel _buildCategory(String name) {
+    return CategoryModel(name: name);
+  }
 
   //* ================== MEALS ==================
 
@@ -42,10 +74,11 @@ class RestaurantCubit extends Cubit<RestaurantState> {
 
   Future<void> pickImage() async {
     emit(PickRestaurantImageLoading());
-    final res = await repo.pickImage();
+    final res = await restaurantRepo.pickImage();
 
     res.fold(
-      (failure) => emit(PickRestaurantFailure(errMessage: failure.errMessage)),
+      (failure) =>
+          emit(PickRestaurantImageFailure(errMessage: failure.errMessage)),
       (file) {
         image = file;
         emit(PickRestaurantImageSuccess(image: file!));
@@ -58,7 +91,7 @@ class RestaurantCubit extends Cubit<RestaurantState> {
   Future<void> addRestaurant({required String name}) async {
     emit(AddRestaurantLoading());
 
-    final res = await repo.addRestaurant(
+    final res = await restaurantRepo.addRestaurant(
       restaurant: _buildRestaurant(name: name),
     );
 

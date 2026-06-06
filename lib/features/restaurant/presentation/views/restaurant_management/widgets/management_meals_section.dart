@@ -12,7 +12,6 @@ class ManagementMealsSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Title with indicator
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [

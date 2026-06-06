@@ -18,7 +18,7 @@ class RestaurantHeaderSection extends StatelessWidget {
           ),
           child: const Icon(
             Icons.storefront_rounded,
-            color: AppColors.secondaryColor,
+            color: AppColors.primaryColor,
             size: 38,
           ),
         ),

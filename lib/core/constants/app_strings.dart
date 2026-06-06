@@ -1,7 +1,18 @@
 class AppStrings {
   static const String splashTitle = 'يلا نطلب';
   static const String splashSubtitle = 'اطلبوا سوا بسهولة';
-  static const String splashLoading = 'جار تجوز يلا نطلب...';
+  static const String splashLoading = 'جار تجهيز يلا نطلب...';
+
+  // Home Screen
+  static const String appName = 'يلا نطلب';
+  static const String homeTitle = 'أكل لـ اللمة';
+  static const String homeSubtitle = 'اختر مطعمًا لتبدأ طلبك الجماعي.';
+  static const String allKitchens = 'كل المطابخ';
+  static const String navHome = 'الرئيسية';
+  static const String navOrders = 'الطلبات';
+  static const String navHistory = 'السجل';
+  static const String minOrderFallback = 'أقل طلب 5 جنيه';
+  static const String startGroupOrder = 'بدء طلب جماعي';
 
   // Restaurant - Add Restaurant Screen
   static const String addRestaurantAppBar = 'إضافة مطعم';

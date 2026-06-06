@@ -3,10 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:yalla_notlop_app/core/theme/app_theme.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/restaurant_management_view.dart';
-import 'package:yalla_notlop_app/test/test_restaurants_view.dart';
-import 'package:yalla_notlop_app/features/splash/views/splash_view.dart';
+import 'package:yalla_notlop_app/features/home/presentation/view/home_view.dart';
 import 'package:yalla_notlop_app/core/services/init_app.dart';
 
 void main() async {
@@ -31,7 +28,7 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const AddRestaurantView(),
+      home: const HomeView(),
     );
   }
 }

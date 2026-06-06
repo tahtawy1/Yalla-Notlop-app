@@ -45,6 +45,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                     color: AppColors.splashTitleColor,
+                    fontFamily: 'Cairo',
                   ),
                   children: [
                     TextSpan(text: 'اسم القسم'),

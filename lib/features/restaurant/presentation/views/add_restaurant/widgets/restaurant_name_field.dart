@@ -17,6 +17,7 @@ class RestaurantNameField extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.w800,
               color: AppColors.splashTitleColor,
+              fontFamily: 'Cairo',
             ),
             children: [
               TextSpan(text: AppStrings.restaurantNameLabel),
