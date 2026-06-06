@@ -1,7 +1,10 @@
 import 'dart:ui';
 
 class AppColors {
-  static const Color primaryColor = Color(0xffFF7A2F);
+  static const Color primaryColor = Color(0xff9C3F00);
+
+  static const Color secondaryColor = Color(0xffFF7A2F);
+  static const Color backgroundColor = Color(0xffFFF4EF);
 
   static const Color splashGradientStart = Color(0xffFF7A2F);
   static const Color splashGradientEnd = Color(0xffFFEDE4);
@@ -14,5 +17,18 @@ class AppColors {
   static const Color splashDivider = Color(0xffD4875A);
   static const Color splashBottomText = Color(0xff5C3D2E);
 
-  static const Color splashIndicator = Color(0xff9C3F00);
+  // Restaurant - Add Restaurant Screen
+  static const Color restaurantIconBg = Color(0xffFFE5D5);
+  static const Color restaurantFieldBorder = Color(0xffFFCEAD);
+  static const Color restaurantFieldHint = Color(0xffC4A28E);
+  static const Color restaurantTextMuted = Color(0xff7A6055);
+  static const Color restaurantChipSelectedBg = Color(0xffFFF0E8);
+  static const Color restaurantBackground = Color(0xffFFF8F4);
+  static const Color restaurantDashedBorder = Color(0x80FF7A2F);
+
+  // Restaurant Management Screen
+  static const Color successColor = Color(0xff1B7A2D);
+  static const Color dangerColor = Color(0xffB52B1D);
+  static const Color dangerBackground = Color(0xffFDECEB);
+  static const Color glassOverlay = Color(0xE6FFFFFF);
 }

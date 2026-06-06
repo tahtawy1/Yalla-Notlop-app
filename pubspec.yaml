@@ -28,6 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
 
@@ -36,6 +38,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   device_preview: ^1.3.1
   dashed_border: ^1.0.2
+  flutter_bloc: ^8.1.6
+  image_picker: ^1.2.2
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.13
+  uuid: ^4.5.3
+  dartz: ^0.10.1
 
 
 dev_dependencies:
@@ -58,6 +68,5 @@ flutter:
     - family: Cairo
       fonts:
         - asset: assets/fonts/Cairo-Regular.ttf
-          weight: 400
         - asset: assets/fonts/Cairo-ExtraBold.ttf
           weight: 800
