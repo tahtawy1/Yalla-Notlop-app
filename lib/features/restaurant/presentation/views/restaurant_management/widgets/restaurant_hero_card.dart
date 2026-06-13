@@ -29,9 +29,11 @@ class RestaurantHeroCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(40),
         color: AppColors.primaryColor.withAlpha(25),
         image: DecorationImage(
-          opacity: 0.7,
+          opacity: 0.8,
           image: imagePath != null && imagePath!.isNotEmpty
-              ? FileImage(File(imagePath!)) as ImageProvider
+              ? imagePath!.startsWith('assets')
+                    ? AssetImage(imagePath!) as ImageProvider
+                    : FileImage(File(imagePath!)) as ImageProvider
               : const AssetImage(AppImageAssets.restaurantDefaultImg),
           fit: BoxFit.cover,
         ),

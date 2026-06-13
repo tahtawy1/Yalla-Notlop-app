@@ -32,6 +32,14 @@ class MealCard extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 4),
+              Text(
+                meal.price,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: AppColors.splashTitleColor,
+                ),
+              ),
+              SizedBox(width: 4),
               InkWell(
                 onTap: onDelete,
                 child: Icon(Icons.close, color: AppColors.primaryColor),

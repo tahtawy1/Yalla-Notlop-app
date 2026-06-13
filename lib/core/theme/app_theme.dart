@@ -13,7 +13,13 @@ class AppTheme {
       error: Colors.red,
     ),
     scaffoldBackgroundColor: AppColors.backgroundColor,
-
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      backgroundColor: AppColors.backgroundColor,
+      elevation: 0,
+      foregroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),

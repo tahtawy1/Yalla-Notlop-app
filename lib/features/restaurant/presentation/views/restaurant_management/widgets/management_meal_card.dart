@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
@@ -53,7 +54,7 @@ class ManagementMealCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${meal.price} جنيه',
+                  '${meal.price} ${AppStrings.mealPriceSuffix}',
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,

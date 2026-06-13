@@ -1,42 +1,87 @@
 class AppStrings {
-  static const String splashTitle = 'يلا نطلب';
-  static const String splashSubtitle = 'اطلبوا سوا بسهولة';
-  static const String splashLoading = 'جار تجهيز يلا نطلب...';
-
-  // Home Screen
-  static const String appName = 'يلا نطلب';
-  static const String homeTitle = 'أكل لـ اللمة';
-  static const String homeSubtitle = 'اختر مطعمًا لتبدأ طلبك الجماعي.';
-  static const String allKitchens = 'كل المطابخ';
-  static const String navHome = 'الرئيسية';
-  static const String navOrders = 'الطلبات';
-  static const String navHistory = 'السجل';
-  static const String minOrderFallback = 'أقل طلب 5 جنيه';
-  static const String startGroupOrder = 'بدء طلب جماعي';
-
-  // Restaurant - Add Restaurant Screen
+  static const String addCategoryButton = 'إضافة قسم';
+  static const String addCategoryError = 'حدث خطأ في إضافة الفئة';
+  static const String addMealButton = 'إضافة وجبة';
+  static const String addMealError = 'حدث خطأ في إضافة الوجبة';
+  static const String addMeals = 'إضافة وجبات';
   static const String addRestaurantAppBar = 'إضافة مطعم';
-  static const String addRestaurantTitle = 'توسيع القائمة';
+  static const String addRestaurantError = 'حدث خطأ في إضافة المطعم';
   static const String addRestaurantSubtitle =
       "أضف مطعمًا جديدًا إلى 'يلا نطلب' وابدأ في تنسيق الطلبات الجماعية مع أصدقائك.";
-  static const String restaurantNameLabel = 'اسم المطعم';
-  static const String restaurantNameHint = 'مثال: مطعم الصفحة';
-  static const String restaurantImageLabel = 'صورة المطعم';
-  static const String restaurantUploadHint = 'اضغط لإضافة صورة';
-  static const String restaurantImageAdded = 'تم إضافة الصورة';
-  static const String addMeals = 'إضافة وجبات';
-  static const String saveRestaurant = 'حفظ المطعم';
+  static const String addRestaurantTitle = 'توسيع القائمة';
+  static const String allKitchens = 'كل المطابخ';
+  static const String appName = 'يلا نطلب';
+  static const String cancelButton = 'إلغاء';
   static const String cancelOperation = 'إلغاء العملية';
-  static const String categoryFastFood = 'وجبات سريعة';
-  static const String categoryPizza = 'بيتزا وباستا';
+  static const String cannotDeleteCategoryLinked = 'لا يمكن حذف القسم لوجود مطاعم مرتبطة به';
+  static const String categoriesLabel = 'الأقسام';
+  static const String categoryAlreadyExists = 'يوجد قسم بهذا الاسم بالفعل';
   static const String categoryBakery = 'بازار ومعجنات';
-
-  // Restaurant - Management Screen
-  static const String restaurantManagementAppBar = 'إدارة المطعم';
-  static const String saveChanges = 'حفظ التعديلات';
-  static const String mealsListTitle = 'قائمة الوجبات';
-  static const String addMealButton = 'إضافة وجبة';
+  static const String categoryDeletedSuccess = 'تم حذف القسم بنجاح';
+  static const String categoryFastFood = 'وجبات سريعة';
+  static const String categoryNameHint = 'أدخل اسم القسم';
+  static const String categoryNameLabel = 'اسم القسم';
+  static const String categoryPizza = 'بيتزا وباستا';
+  static const String deleteCategoryError = 'حدث خطأ في حذف الفئة';
+  static const String deleteConfirmButton = 'حذف';
+  static const String deleteMealError = 'حدث خطأ في حذف الوجبة';
+  static const String deleteRestaurantConfirmMessage =
+      'هل أنت متأكد من حذف هذا المطعم؟ لا يمكن التراجع عن هذا الإجراء.';
+  static const String deleteRestaurantError = 'حدث خطأ في حذف المطعم';
   static const String deleteRestaurantPermanently = 'حذف المطعم نهائياً';
+  static const String deleteRestaurantTitle = 'حذف المطعم';
   static const String deleteRestaurantWarning =
       'سيؤدي هذا الإجراء إلى حذف كافة البيانات المتعلقة بالمطعم.';
+  static const String editRestaurantNameLabel = 'تعديل اسم المطعم';
+  static const String enterNameValidation = 'الرجاء إدخال الاسم';
+  static const String friendsLabel = 'اصدقائك';
+  static const String genericError = 'حدث خطأ';
+  static const String getCategoriesError = 'حدث خطأ في جلب الفئات';
+  static const String getMealsError = 'حدث خطأ في جلب الوجبات';
+  static const String getRestaurantsError = 'حدث خطأ في جلب المطاعم';
+  static const String homeSubtitle = 'اختر مطعمًا لتبدأ طلبك الجماعي.';
+  static const String homeTitle = 'أكل لـ اللمة';
+  static const String invalidPriceValidation = 'الرجاء إدخال سعر صحيح';
+  static const String mealCountSuffix = 'وجبة';
+  static const String mealNameHint = 'أدخل اسم الوجبة';
+  static const String mealNameLabel = 'اسم الوجبة';
+  static const String mealPriceHint = 'أدخل السعر';
+  static const String mealPriceLabel = 'السعر';
+  static const String mealPriceRequired = 'الرجاء إدخال السعر';
+  static const String mealPriceSuffix = 'جنيه';
+  static const String mealsLabel = 'الوجبات';
+  static const String mealsListTitle = 'قائمة الوجبات';
+  static const String minOrderFallback = 'أقل طلب 5 جنيه';
+  static const String navHistory = 'السجل';
+  static const String navHome = 'الرئيسية';
+  static const String navOrders = 'الطلبات';
+  static const String noCategory = 'بدون قسم';
+  static const String noImageSelected = 'لم يتم اختيار صورة';
+  static const String noRestaurantsAvailable = 'لا توجد مطاعم متاحة';
+  static const String orderNowButton = 'أطلب الآن';
+  static const String pickImageError = 'حدث خطأ في اختيار الصورة';
+  static const String priorityToUploadedImageWarning = 'الأولوية لـ الصورة التي تم رفعها !';
+  static const String restaurantAddedSuccess = 'تمت إضافة المطعم بنجاح ✓';
+  static const String restaurantDeletedSuccess = 'تم حذف المطعم بنجاح';
+  static const String restaurantImageAdded = 'تم إضافة الصورة';
+  static const String restaurantImageLabel = 'صورة المطعم';
+  static const String restaurantManagementAppBar = 'إدارة المطعم';
+  static const String restaurantNameHint = 'مثال: مطعم الصفحة';
+  static const String restaurantNameInputHint = 'أدخل اسم المطعم';
+  static const String restaurantNameLabel = 'اسم المطعم';
+  static const String restaurantNameValidation = 'الرجاء إدخال اسم المطعم';
+  static const String restaurantUpdatedSuccess = 'تم تحديث المطعم بنجاح';
+  static const String restaurantUploadHint = 'اضغط لإضافة صورة';
+  static const String saveButton = 'حفظ';
+  static const String saveChanges = 'حفظ التعديلات';
+  static const String saveRestaurant = 'حفظ المطعم';
+  static const String selectCategoryValidation = 'الرجاء اختيار قسم';
+  static const String splashLoading = 'جار تجهيز يلا نطلب...';
+  static const String splashSubtitle = 'اطلبوا سوا بسهولة';
+  static const String splashTitle = 'يلا نطلب';
+  static const String startGroupOrder = 'بدء طلب جماعي';
+  static const String updateCategoryError = 'حدث خطأ في تحديث الفئة';
+  static const String updateMealError = 'حدث خطأ في تحديث الوجبة';
+  static const String updateRestaurantError = 'حدث خطأ في تحديث المطعم';
+  static const String uploadFromDeviceOrSelectHint = 'أضف صورة من جهازك، أو اختر من الصور المتاحة';
 }

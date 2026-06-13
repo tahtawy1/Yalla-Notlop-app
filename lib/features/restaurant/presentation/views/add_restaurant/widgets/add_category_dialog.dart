@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_field.dart';
@@ -48,7 +49,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                     fontFamily: 'Cairo',
                   ),
                   children: [
-                    TextSpan(text: 'اسم القسم'),
+                    TextSpan(text: AppStrings.categoryNameLabel),
                     TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.secondaryColor),
@@ -58,14 +59,14 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
               ),
               const SizedBox(height: 8),
               MealField(
-                hintText: 'أدخل اسم القسم',
+                hintText: AppStrings.categoryNameHint,
                 controller: widget.categoryNameController,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'الرجاء إدخال الاسم';
+                    return AppStrings.enterNameValidation;
                   }
                   if (widget.existingCategories.contains(value.trim())) {
-                    return 'هذا القسم موجود بالفعل';
+                    return AppStrings.categoryAlreadyExists;
                   }
                   return null;
                 },
@@ -74,7 +75,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: 'حفظ',
+                    title: AppStrings.saveButton,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveCategory();
@@ -85,7 +86,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                   ),
                   const SizedBox(width: 20),
                   ActionButton(
-                    title: 'إلغاء',
+                    title: AppStrings.cancelButton,
                     onTap: () {
                       formKey.currentState!.reset();
                       widget.categoryNameController.clear();

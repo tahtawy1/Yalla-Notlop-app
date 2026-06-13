@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class MealField extends StatelessWidget {
@@ -24,10 +25,10 @@ class MealField extends StatelessWidget {
           validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return 'الرجاء إدخال ${isPrice ? 'السعر' : 'الاسم'}';
+              return isPrice ? AppStrings.mealPriceRequired : AppStrings.enterNameValidation;
             }
             if (isPrice && double.tryParse(value.trim()) == null) {
-              return 'الرجاء إدخال سعر صحيح';
+              return AppStrings.invalidPriceValidation;
             }
             return null;
           },

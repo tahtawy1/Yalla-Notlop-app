@@ -19,7 +19,7 @@ class RestaurantNameFeild extends StatelessWidget {
       autovalidateMode: autovalidateMode,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'الرجاء إدخال اسم المطعم';
+          return AppStrings.restaurantNameValidation;
         }
         return null;
       },

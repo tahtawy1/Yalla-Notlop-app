@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/restaurant_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/restaurant_management_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 
 class RestaurantList extends StatelessWidget {
-  const RestaurantList({
-    super.key,
-    required this.restaurants,
-  });
+  const RestaurantList({super.key, required this.restaurants});
 
   final List<RestaurantModel> restaurants;
 
@@ -20,7 +18,7 @@ class RestaurantList extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Text(
-            'لا توجد مطاعم متاحة',
+            AppStrings.noRestaurantsAvailable,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -41,12 +39,9 @@ class RestaurantList extends StatelessWidget {
         return RestaurantCard(
           restaurant: restaurants[index],
           onTap: () async {
-            final result = await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    RestaurantManagementView(restaurant: restaurants[index]),
-              ),
+            final result = await context.push(
+              '/restaurant-management',
+              extra: restaurants[index],
             );
             if (result == true) {
               if (context.mounted) {

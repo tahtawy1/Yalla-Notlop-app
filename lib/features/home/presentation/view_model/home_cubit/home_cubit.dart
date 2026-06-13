@@ -17,21 +17,16 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> loadHomeData() async {
     emit(const HomeLoading());
 
-    // Load categories first
+    // Load categories
     List<CategoryModel> loadedCategories = [];
     final categoryRes = await categoryRepo.getCategories();
-    categoryRes.fold(
-      (failure) {
-        // We can ignore category failure and just proceed with empty categories
-      },
-      (categories) {
-        loadedCategories = categories;
-      },
-    );
+    categoryRes.fold((failure) {}, (categories) {
+      loadedCategories = categories;
+    });
 
     // Load restaurants
     final res = await restaurantRepo.getRestaurants();
-    res.fold((failure) => emit(HomeError(errMessage: failure.errMessage)), (
+    res.fold((failure) => emit(HomeFailure(errMessage: failure.errMessage)), (
       restaurants,
     ) {
       _allRestaurants = restaurants;

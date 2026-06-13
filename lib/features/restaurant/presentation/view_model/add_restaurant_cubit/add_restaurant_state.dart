@@ -47,6 +47,8 @@ class GetCategoriesSuccess extends AddRestaurantState {
   GetCategoriesSuccess({required this.categories});
 }
 
+class ImagePathUpdated extends AddRestaurantState {}
+
 class GetCategoriesFailure extends AddRestaurantState {
   final String errMessage;
   GetCategoriesFailure({required this.errMessage});

@@ -40,7 +40,7 @@ class HomeLoaded extends HomeState {
   }
 }
 
-class HomeError extends HomeState {
+class HomeFailure extends HomeState {
   final String errMessage;
-  const HomeError({required this.errMessage});
+  const HomeFailure({required this.errMessage});
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
@@ -8,11 +9,14 @@ class HomeHeader extends StatelessWidget {
   final VoidCallback onRestaurantAdded;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
+          const SizedBox(height: 48),
           Center(
             child: const Text(
               AppStrings.appName,
@@ -23,7 +27,7 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           const Text(
             AppStrings.homeTitle,
             textAlign: TextAlign.center,
@@ -43,47 +47,6 @@ class HomeHeader extends StatelessWidget {
               color: AppColors.restaurantTextMuted,
             ),
           ),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () async {
-              final result = await Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddRestaurantView()),
-              );
-              if (result == true) {
-                onRestaurantAdded();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(100, 50),
-              backgroundColor: AppColors.primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              elevation: 0,
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.add_circle_outline_rounded,
-                  color: Colors.white,
-                  size: 20,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  AppStrings.addRestaurantAppBar,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 22),
         ],
       ),
     );

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
+import 'package:yalla_notlop_app/core/utils/app_snack_bar.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/cancel_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/categories_section.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meals_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/image_upload_section.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/restaurant_name_feild.dart';
 
 class AddRetaurantForm extends StatefulWidget {
@@ -18,8 +22,9 @@ class AddRetaurantForm extends StatefulWidget {
 
 class _AddRetaurantFormState extends State<AddRetaurantForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController nameController = TextEditingController();
   final AutovalidateMode autovalidateMode = AutovalidateMode.onUnfocus;
+  //Controllers
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController categoryNameController = TextEditingController();
   final TextEditingController mealNameController = TextEditingController();
   final TextEditingController mealPriceController = TextEditingController();
@@ -32,7 +37,6 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
   void initState() {
     super.initState();
     restaurantCubit = BlocProvider.of<AddRestaurantCubit>(context);
-    // Load categories from Hive on screen init
     WidgetsBinding.instance.addPostFrameCallback((_) {
       restaurantCubit.getCategories();
     });
@@ -52,24 +56,20 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
     return BlocListener<AddRestaurantCubit, AddRestaurantState>(
       listener: (context, state) {
         if (state is AddRestaurantSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('تمت إضافة المطعم بنجاح ✓'),
-              backgroundColor: Colors.green,
-              duration: Duration(seconds: 2),
-            ),
+          AppSnackBar.showSnackBar(
+            context,
+            AppStrings.restaurantAddedSuccess,
+            SnackBarType.success,
           );
-          Navigator.pop(context, true);
+          context.pop(true);
         } else if (state is AddRestaurantFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errMessage),
-              backgroundColor: Colors.red,
-            ),
+          AppSnackBar.showSnackBar(
+            context,
+            state.errMessage,
+            SnackBarType.error,
           );
         }
         if (state is AddCategorySuccess) {
-          // Refresh category list in RestaurantCubit after any change
           restaurantCubit.getCategories();
         }
         if (state is GetCategoriesSuccess) {
@@ -79,7 +79,10 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
       child: Form(
         key: formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const HeaderText(title: AppStrings.restaurantNameLabel),
+            const SizedBox(height: 8),
             RestaurantNameFeild(
               nameController: nameController,
               autovalidateMode: autovalidateMode,
@@ -98,6 +101,13 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                       : () async {
                           await context.read<AddRestaurantCubit>().pickImage();
                         },
+                  onSelect: (image) {
+                    context.read<AddRestaurantCubit>().selectImagePath(
+                      imagePath: image,
+                    );
+                    setState(() {});
+                  },
+                  selectedImage: restaurantCubit.selectedImagePath,
                 );
               },
             ),
@@ -171,54 +181,6 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
-    super.key,
-    required this.onTap,
-    required this.title,
-    required this.icon,
-    this.isLoading = false,
-    required this.color,
-  });
-
-  final VoidCallback onTap;
-  final String title;
-  final IconData icon;
-  final Color color;
-  final bool isLoading;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: isLoading ? null : onTap,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        elevation: 0,
-      ),
-      child: isLoading
-          ? const Center(child: CircularProgressIndicator(color: Colors.white))
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, color: Colors.white, size: 20),
-                SizedBox(width: 8),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
     );
   }
 }

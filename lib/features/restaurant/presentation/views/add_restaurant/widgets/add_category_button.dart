@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class AddCategoryButton extends StatelessWidget {
@@ -36,7 +37,7 @@ class AddCategoryButton extends StatelessWidget {
                   Icon(Icons.add, color: AppColors.primaryColor, size: 20),
                   SizedBox(width: 8),
                   Text(
-                    'إضافة قسم',
+                    AppStrings.addCategoryButton,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,

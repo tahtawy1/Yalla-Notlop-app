@@ -2,8 +2,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:yalla_notlop_app/core/router/app_router.dart';
 import 'package:yalla_notlop_app/core/theme/app_theme.dart';
-import 'package:yalla_notlop_app/features/home/presentation/view/home_view.dart';
 import 'package:yalla_notlop_app/core/services/init_app.dart';
 
 void main() async {
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       locale: const Locale('ar'),
       supportedLocales: const [Locale('en'), Locale('ar')],
       localizationsDelegates: const [
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const HomeView(),
     );
   }
 }

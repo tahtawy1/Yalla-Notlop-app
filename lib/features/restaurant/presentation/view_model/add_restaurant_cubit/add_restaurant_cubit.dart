@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -20,6 +21,7 @@ class AddRestaurantCubit extends Cubit<AddRestaurantState> {
   List<CategoryModel> categories = [];
 
   CategoryModel? selectedCategory;
+  String? selectedImagePath;
   File? image;
 
   Future<void> addCategory({required String name}) async {
@@ -28,10 +30,12 @@ class AddRestaurantCubit extends Cubit<AddRestaurantState> {
       (c) => c.name.trim().toLowerCase() == normalized,
     );
     if (isDuplicate) {
-      emit(AddCategoryFailure(errMessage: 'يوجد قسم بهذا الاسم بالفعل'));
+      emit(AddCategoryFailure(errMessage: AppStrings.categoryAlreadyExists));
       return;
     }
-    final res = await categoryRepo.addCategory(category: _buildCategory(name.trim()));
+    final res = await categoryRepo.addCategory(
+      category: _buildCategory(name.trim()),
+    );
     res.fold(
       (failure) => emit(AddCategoryFailure(errMessage: failure.errMessage)),
       (r) => emit(AddCategorySuccess()),
@@ -86,6 +90,11 @@ class AddRestaurantCubit extends Cubit<AddRestaurantState> {
     );
   }
 
+  void selectImagePath({required String imagePath}) {
+    selectedImagePath = imagePath;
+    emit(ImagePathUpdated());
+  }
+
   //* ================== ADD RESTAURANT ==================
 
   Future<void> addRestaurant({required String name}) async {
@@ -109,7 +118,7 @@ class AddRestaurantCubit extends Cubit<AddRestaurantState> {
   RestaurantModel _buildRestaurant({required String name}) {
     return RestaurantModel(
       name: name,
-      imagePath: image?.path,
+      imagePath: image?.path ?? selectedImagePath,
       meals: List.from(meals),
       category: selectedCategory,
     );

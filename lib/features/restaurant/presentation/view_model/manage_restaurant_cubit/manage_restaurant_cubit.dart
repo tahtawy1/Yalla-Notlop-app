@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -59,7 +60,7 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
         emit(SaveUpdatedRestaurantFailure(errMessage: failure.errMessage));
       },
       (r) {
-        emit(SaveUpdatedRestaurantSuccess(message: 'تم تحديث المطعم بنجاح'));
+        emit(SaveUpdatedRestaurantSuccess(message: AppStrings.restaurantUpdatedSuccess));
       },
     );
   }
@@ -89,7 +90,7 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
       (c) => c.name.trim().toLowerCase() == normalized,
     );
     if (isDuplicate) {
-      emit(AddCategoryFailure(errMessage: 'يوجد قسم بهذا الاسم بالفعل'));
+      emit(AddCategoryFailure(errMessage: AppStrings.categoryAlreadyExists));
       return;
     }
     final newCategory = CategoryModel(name: category.name.trim());
@@ -116,7 +117,7 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
     if (isLinked) {
       emit(
         DeleteCategoryFailure(
-          errMessage: 'لا يمكن حذف القسم لوجود مطاعم مرتبطة به',
+          errMessage: AppStrings.cannotDeleteCategoryLinked,
         ),
       );
       return;
@@ -172,7 +173,7 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
           emit(DeleteRestaurantFailure(errMessage: failure.errMessage)),
       (r) {
         _reset();
-        emit(DeleteRestaurantSuccess(message: 'تم حذف المطعم بنجاح'));
+        emit(DeleteRestaurantSuccess(message: AppStrings.restaurantDeletedSuccess));
       },
     );
   }

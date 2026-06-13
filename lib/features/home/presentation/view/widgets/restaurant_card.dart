@@ -24,7 +24,7 @@ class RestaurantCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withAlpha(10), // ~4% opacity
+              color: Colors.black.withAlpha(10),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -33,14 +33,22 @@ class RestaurantCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Image
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(24),
               ),
               child: SizedBox(
                 height: 140,
-                child: restaurant.imagePath != null
+                child:
+                    restaurant.imagePath != null &&
+                        restaurant.imagePath!.startsWith('assets')
+                    ? Image.asset(
+                        restaurant.imagePath!,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            _buildFallbackImage(),
+                      )
+                    : restaurant.imagePath != null
                     ? Image.file(
                         File(restaurant.imagePath!),
                         fit: BoxFit.cover,
@@ -51,7 +59,6 @@ class RestaurantCard extends StatelessWidget {
               ),
             ),
 
-            // Content
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -83,14 +90,6 @@ class RestaurantCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        AppStrings.minOrderFallback,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.restaurantFieldHint,
-                        ),
-                      ),
                       GestureDetector(
                         onTap: () {
                           // TODO: Navigate to group order flow when ready
@@ -102,6 +101,14 @@ class RestaurantCard extends StatelessWidget {
                             fontWeight: FontWeight.w900,
                             color: AppColors.primaryColor,
                           ),
+                        ),
+                      ),
+                      Text(
+                        '${restaurant.meals?.length ?? 0} ${AppStrings.mealCountSuffix}',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.restaurantFieldHint,
                         ),
                       ),
                     ],

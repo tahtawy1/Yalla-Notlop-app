@@ -1,68 +1,145 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_strings.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
-import 'package:yalla_notlop_app/features/home/presentation/view/widgets/custom_bottom_nav_bar.dart';
-import 'package:yalla_notlop_app/features/home/presentation/view/widgets/home_view_body.dart';
+import 'package:yalla_notlop_app/features/home/presentation/view/widgets/category_filter_list.dart';
+import 'package:yalla_notlop_app/features/home/presentation/view/widgets/home_header.dart';
+import 'package:yalla_notlop_app/features/home/presentation/view/widgets/restaurant_list.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
-import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo_imp.dart';
-import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo_imp.dart';
+import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_state.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          HomeCubit(RestaurantRepoImp(), CategoryRepoImp())..loadHomeData(),
-      child: Scaffold(
-        body: const SafeArea(child: HomeViewBody()),
-        floatingActionButton: FAButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        bottomNavigationBar: const CustomBottomNavBar(),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        if (state is HomeLoading || state is HomeInitial) {
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          );
+        }
+
+        if (state is HomeFailure) {
+          return Center(child: Text(state.errMessage));
+        }
+
+        if (state is HomeLoaded) {
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: HomeHeader(
+                  onRestaurantAdded: () =>
+                      context.read<HomeCubit>().loadHomeData(),
+                ),
+              ),
+              SliverPersistentHeader(
+                floating: true,
+                delegate: _SliverHeaderDelegate(state: state),
+              ),
+              SliverToBoxAdapter(
+                child: RestaurantList(restaurants: state.restaurants),
+              ),
+            ],
+          );
+        }
+
+        return const SizedBox();
+      },
+    );
+  }
+}
+
+class _AddRestaurantButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final cubit = context.read<HomeCubit>();
+    return ElevatedButton(
+      onPressed: () async {
+        final result = await context.push('/add-restaurant');
+        if (result == true) {
+          cubit.loadHomeData();
+        }
+      },
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(100, 50),
+        backgroundColor: AppColors.primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        elevation: 0,
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.add_circle_outline_rounded, color: Colors.white, size: 20),
+          SizedBox(width: 8),
+          Text(
+            AppStrings.addRestaurantAppBar,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class FAButton extends StatelessWidget {
-  const FAButton({super.key});
+class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final HomeLoaded state;
+
+  _SliverHeaderDelegate({required this.state});
+  @override
+  double get minExtent => 180;
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        height: 40,
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 5,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            SizedBox(width: 4),
-            Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
-            Text(
-              "أطلب الآن",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(width: 12),
-          ],
-        ),
+  double get maxExtent => 180;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(5),
+            blurRadius: 12,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 42),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: _AddRestaurantButton(),
+          ),
+          SizedBox(height: 22),
+          CategoryFilterList(
+            categories: state.categories,
+            selectedCategory: state.selectedCategory,
+            onCategorySelected: (category) {
+              context.read<HomeCubit>().filterByCategory(category);
+            },
+          ),
+        ],
       ),
     );
   }
+
+  @override
+  bool shouldRebuild(covariant _SliverHeaderDelegate oldDelegate) => true;
 }
