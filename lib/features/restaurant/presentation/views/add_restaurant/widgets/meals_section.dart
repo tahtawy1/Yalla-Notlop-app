@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_meal_dialog.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_meals_button.dart';
@@ -35,8 +35,8 @@ class _MealsSectionState extends State<MealsSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            AppStrings.mealsLabel,
+          Text(
+            S.of(context).meals,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w800,

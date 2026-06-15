@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo.dart';
@@ -18,7 +18,7 @@ class CategoryRepoImp implements CategoryRepo {
       await hiveService.addCategory(category);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.addCategoryError));
+      return Left(AppFailure(S.current.addCategoryError));
     }
   }
 
@@ -30,7 +30,7 @@ class CategoryRepoImp implements CategoryRepo {
       await hiveService.updateCategory(category);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.updateCategoryError));
+      return Left(AppFailure(S.current.updateCategoryError));
     }
   }
 
@@ -42,7 +42,7 @@ class CategoryRepoImp implements CategoryRepo {
       await hiveService.deleteCategory(category);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.deleteCategoryError));
+      return Left(AppFailure(S.current.deleteCategoryError));
     }
   }
 
@@ -51,7 +51,7 @@ class CategoryRepoImp implements CategoryRepo {
     try {
       return right(hiveService.getCategories());
     } catch (e) {
-      return Left(AppFailure(AppStrings.getCategoriesError));
+      return Left(AppFailure(S.current.fetchCategoriesError));
     }
   }
 }

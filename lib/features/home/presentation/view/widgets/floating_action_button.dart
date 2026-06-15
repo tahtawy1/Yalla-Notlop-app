@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class FAButton extends StatelessWidget {
@@ -26,11 +26,11 @@ class FAButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             SizedBox(width: 4),
             Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
             Text(
-              AppStrings.orderNowButton,
+              S.of(context).orderNow,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

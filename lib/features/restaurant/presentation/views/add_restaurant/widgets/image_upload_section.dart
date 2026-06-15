@@ -2,7 +2,7 @@ import 'package:dashed_border/dashed_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
 
@@ -23,8 +23,8 @@ class ImageUploadSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          AppStrings.restaurantImageLabel,
+        Text(
+          S.of(context).restaurantImage,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w800,
@@ -65,11 +65,11 @@ class ImageUploadSection extends StatelessWidget {
                                 : AppColors.restaurantFieldHint,
                             size: 32,
                           ),
-                          const SizedBox(height: 6),
+                          SizedBox(height: 6),
                           Text(
                             context.read<AddRestaurantCubit>().image != null
-                                ? AppStrings.restaurantImageAdded
-                                : AppStrings.restaurantUploadHint,
+                                ? S.of(context).restaurantImageAdded
+                                : S.of(context).restaurantUploadHint,
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -137,7 +137,7 @@ class ImageUploadSection extends StatelessWidget {
         ),
         SizedBox(height: 8),
         Text(
-          AppStrings.uploadFromDeviceOrSelectHint,
+          S.of(context).uploadImageOrSelectExisting,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             color: AppColors.restaurantFieldHint,
@@ -145,7 +145,7 @@ class ImageUploadSection extends StatelessWidget {
         ),
         SizedBox(height: 6),
         Text(
-          AppStrings.priorityToUploadedImageWarning,
+          S.of(context).uploadedImagePriorityWarning,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w400,

@@ -24,7 +24,6 @@ dependencies:
   go_router: ^17.3.0
   get_it: ^9.2.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,3 +45,5 @@ flutter:
         - asset: assets/fonts/Cairo-Regular.ttf
         - asset: assets/fonts/Cairo-ExtraBold.ttf
           weight: 800
+flutter_intl:
+  enabled: true

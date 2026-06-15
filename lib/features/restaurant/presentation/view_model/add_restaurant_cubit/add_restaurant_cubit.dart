@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -30,7 +30,7 @@ class AddRestaurantCubit extends Cubit<AddRestaurantState> {
       (c) => c.name.trim().toLowerCase() == normalized,
     );
     if (isDuplicate) {
-      emit(AddCategoryFailure(errMessage: AppStrings.categoryAlreadyExists));
+      emit(AddCategoryFailure(errMessage: S.current.categoryAlreadyExists));
       return;
     }
     final res = await categoryRepo.addCategory(

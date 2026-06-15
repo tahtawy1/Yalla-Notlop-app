@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 
@@ -10,7 +10,7 @@ class ConfirmDialog extends StatelessWidget {
     required this.message,
     required this.confirmText,
     required this.onConfirm,
-    this.cancelText = AppStrings.cancelButton,
+    required this.cancelText,
     this.confirmColor = AppColors.dangerColor,
   });
 
@@ -26,7 +26,7 @@ class ConfirmDialog extends StatelessWidget {
     required String title,
     required String message,
     required String confirmText,
-    String cancelText = AppStrings.cancelButton,
+    required String cancelText,
     Color confirmColor = AppColors.dangerColor,
     required VoidCallback onConfirm,
   }) {

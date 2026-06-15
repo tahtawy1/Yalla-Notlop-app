@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/restaurant_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +14,11 @@ class RestaurantList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (restaurants.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Text(
-            AppStrings.noRestaurantsAvailable,
+            S.of(context).noRestaurantsAvailable,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,

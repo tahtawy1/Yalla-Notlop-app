@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/custom_bottom_nav_bar.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/home_view.dart';
@@ -51,7 +52,9 @@ class TestHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(AppStrings.navHistory, style: TextStyle(fontSize: 32)));
+    return Center(
+      child: Text(S.of(context).history, style: TextStyle(fontSize: 32)),
+    );
   }
 }
 
@@ -60,6 +63,13 @@ class TestFriendsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(AppStrings.friendsLabel, style: TextStyle(fontSize: 32)));
+    return Center(
+      child: IconButton(
+        onPressed: () {
+          context.read<LocalizationCubit>().changeLang();
+        },
+        icon: Icon(Icons.language),
+      ),
+    );
   }
 }

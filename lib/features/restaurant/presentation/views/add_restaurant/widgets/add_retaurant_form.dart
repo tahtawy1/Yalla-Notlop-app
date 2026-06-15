@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/utils/app_snack_bar.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
@@ -58,7 +58,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
         if (state is AddRestaurantSuccess) {
           AppSnackBar.showSnackBar(
             context,
-            AppStrings.restaurantAddedSuccess,
+            S.of(context).restaurantAddedSuccess,
             SnackBarType.success,
           );
           context.pop(true);
@@ -81,7 +81,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HeaderText(title: AppStrings.restaurantNameLabel),
+            HeaderText(title: S.of(context).restaurantNameLabel),
             const SizedBox(height: 8),
             RestaurantNameFeild(
               nameController: nameController,
@@ -155,7 +155,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                 builder: (context, state) {
                   final isLoading = state is AddRestaurantLoading;
                   return PrimaryButton(
-                    title: AppStrings.saveRestaurant,
+                    title: S.of(context).saveRestaurant,
                     icon: Icons.save_rounded,
                     color: AppColors.primaryColor,
                     isLoading: isLoading,

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo.dart';
@@ -21,7 +21,7 @@ class RestaurantRepoImp implements RestaurantRepo {
       await hiveService.addRestaurant(restaurant);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.addRestaurantError));
+      return Left(AppFailure(S.current.addRestaurantError));
     }
   }
 
@@ -33,7 +33,7 @@ class RestaurantRepoImp implements RestaurantRepo {
       await hiveService.updateRestaurant(restaurant);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.updateRestaurantError));
+      return Left(AppFailure(S.current.updateRestaurantError));
     }
   }
 
@@ -45,7 +45,7 @@ class RestaurantRepoImp implements RestaurantRepo {
       await hiveService.deleteRestaurant(restaurant);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.deleteRestaurantError));
+      return Left(AppFailure(S.current.deleteRestaurantError));
     }
   }
 
@@ -54,7 +54,7 @@ class RestaurantRepoImp implements RestaurantRepo {
     try {
       return right(hiveService.getRestaurants());
     } catch (e) {
-      return Left(AppFailure(AppStrings.getRestaurantsError));
+      return Left(AppFailure(S.current.fetchRestaurantsError));
     }
   }
 
@@ -63,11 +63,11 @@ class RestaurantRepoImp implements RestaurantRepo {
     try {
       final image = await pickkImage();
       if (image == null) {
-        return Left(AppFailure(AppStrings.noImageSelected));
+        return Left(AppFailure(S.current.noImageSelected));
       }
       return right(image);
     } catch (e) {
-      return Left(AppFailure(AppStrings.pickImageError));
+      return Left(AppFailure(S.current.pickImageError));
     }
   }
 }

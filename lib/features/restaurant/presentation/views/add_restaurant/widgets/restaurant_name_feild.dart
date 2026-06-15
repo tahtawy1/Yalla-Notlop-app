@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class RestaurantNameFeild extends StatelessWidget {
@@ -19,14 +19,14 @@ class RestaurantNameFeild extends StatelessWidget {
       autovalidateMode: autovalidateMode,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return AppStrings.restaurantNameValidation;
+          return S.of(context).restaurantNameValidation;
         }
         return null;
       },
       textDirection: TextDirection.rtl,
       style: const TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
       decoration: InputDecoration(
-        hintText: AppStrings.restaurantNameHint,
+        hintText: S.of(context).restaurantNameExample,
         hintStyle: const TextStyle(
           fontSize: 13,
           color: AppColors.restaurantFieldHint,

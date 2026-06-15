@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/category_filter_list.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/home_header.dart';
@@ -70,13 +70,13 @@ class _AddRestaurantButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         elevation: 0,
       ),
-      child: const Row(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.add_circle_outline_rounded, color: Colors.white, size: 20),
           SizedBox(width: 8),
           Text(
-            AppStrings.addRestaurantAppBar,
+            S.of(context).addRestaurant,
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,

@@ -1,7 +1,7 @@
 import 'package:yalla_notlop_app/features/restaurant/data/repos/meal_repo/meal_repo.dart';
 
 import 'package:dartz/dartz.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -22,7 +22,7 @@ class MealRepoImp implements MealRepo {
       await hiveService.addMeal(restaurant, meal);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.addMealError));
+      return Left(AppFailure(S.current.addMealError));
     }
   }
 
@@ -36,7 +36,7 @@ class MealRepoImp implements MealRepo {
       await hiveService.updateMeal(restaurant, oldMeal, newMeal);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.updateMealError));
+      return Left(AppFailure(S.current.updateMealError));
     }
   }
 
@@ -49,7 +49,7 @@ class MealRepoImp implements MealRepo {
       await hiveService.deleteMeal(restaurant, meal);
       return right(null);
     } catch (e) {
-      return Left(AppFailure(AppStrings.deleteMealError));
+      return Left(AppFailure(S.current.deleteMealError));
     }
   }
 
@@ -60,7 +60,7 @@ class MealRepoImp implements MealRepo {
     try {
       return right(hiveService.getMeals(restaurant));
     } catch (e) {
-      return Left(AppFailure(AppStrings.getMealsError));
+      return Left(AppFailure(S.current.fetchMealsError));
     }
   }
 }

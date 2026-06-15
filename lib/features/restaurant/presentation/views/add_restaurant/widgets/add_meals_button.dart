@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class AddMealsButton extends StatelessWidget {
@@ -40,9 +40,9 @@ class AddMealsButton extends StatelessWidget {
                     color: AppColors.secondaryColor,
                     size: 20,
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Text(
-                    AppStrings.addMeals,
+                    S.of(context).addMeals,
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
