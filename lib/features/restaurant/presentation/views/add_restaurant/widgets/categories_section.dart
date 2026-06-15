@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_category_dialog.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_category_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/category_card.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({
@@ -11,7 +13,7 @@ class CategoriesSection extends StatelessWidget {
     required this.selectedCategory,
     required this.onSelect,
     required this.onAdd,
-    required this.onDelete,
+    this.onDelete,
     this.showError = false,
     required this.categoryNameController,
   });
@@ -19,7 +21,7 @@ class CategoriesSection extends StatelessWidget {
   final CategoryModel? selectedCategory;
   final Function(CategoryModel) onSelect;
   final Function(String) onAdd;
-  final Function(CategoryModel) onDelete;
+  final Function(CategoryModel)? onDelete;
   final bool showError;
   final TextEditingController categoryNameController;
   @override
@@ -30,15 +32,8 @@ class CategoriesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            "الأقسام",
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w800,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 10),
+          HeaderText(title: S.of(context).categories),
+          const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -48,7 +43,9 @@ class CategoriesSection extends StatelessWidget {
                   category: category,
                   isSelected: selectedCategory?.name == category.name,
                   onTap: () => onSelect(category),
-                  onDelete: () => onDelete(category),
+                  onLongPress: onDelete != null
+                      ? () => onDelete!(category)
+                      : null,
                 ),
               ),
               AddCategoryButton(
@@ -71,10 +68,10 @@ class CategoriesSection extends StatelessWidget {
             ],
           ),
           if (showError && selectedCategory == null)
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(top: 8.0, right: 20),
               child: Text(
-                'الرجاء اختيار قسم',
+                S.of(context).selectCategoryValidation,
                 style: TextStyle(color: Colors.red, fontSize: 12),
               ),
             ),

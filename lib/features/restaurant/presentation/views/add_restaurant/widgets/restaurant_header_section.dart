@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class RestaurantHeaderSection extends StatelessWidget {
@@ -18,13 +18,13 @@ class RestaurantHeaderSection extends StatelessWidget {
           ),
           child: const Icon(
             Icons.storefront_rounded,
-            color: AppColors.secondaryColor,
+            color: AppColors.primaryColor,
             size: 38,
           ),
         ),
-        const SizedBox(height: 16),
-        const Text(
-          AppStrings.addRestaurantTitle,
+        SizedBox(height: 16),
+        Text(
+          S.of(context).addRestaurantTitle,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 26,
@@ -32,9 +32,9 @@ class RestaurantHeaderSection extends StatelessWidget {
             color: AppColors.splashTitleColor,
           ),
         ),
-        const SizedBox(height: 8),
-        const Text(
-          AppStrings.addRestaurantSubtitle,
+        SizedBox(height: 8),
+        Text(
+          S.of(context).addRestaurantSubtitle,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 13,

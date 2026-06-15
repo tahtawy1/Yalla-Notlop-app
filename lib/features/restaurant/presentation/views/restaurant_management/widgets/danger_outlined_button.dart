@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class DangerOutlinedButton extends StatelessWidget {
@@ -31,9 +31,9 @@ class DangerOutlinedButton extends StatelessWidget {
                   color: AppColors.dangerColor,
                   size: 20,
                 ),
-                const SizedBox(width: 8),
-                const Text(
-                  AppStrings.deleteRestaurantPermanently,
+                SizedBox(width: 8),
+                Text(
+                  S.of(context).deleteRestaurantPermanently,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
@@ -44,9 +44,9 @@ class DangerOutlinedButton extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8),
-        const Text(
-          AppStrings.deleteRestaurantWarning,
+        SizedBox(height: 8),
+        Text(
+          S.of(context).deleteRestaurantWarning,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 11, color: AppColors.restaurantFieldHint),
         ),

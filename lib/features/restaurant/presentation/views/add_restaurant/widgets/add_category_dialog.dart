@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_field.dart';
@@ -40,31 +41,32 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               RichText(
-                text: const TextSpan(
-                  style: TextStyle(
+                text: TextSpan(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                     color: AppColors.splashTitleColor,
+                    fontFamily: 'Cairo',
                   ),
                   children: [
-                    TextSpan(text: 'اسم القسم'),
-                    TextSpan(
+                    TextSpan(text: S.of(context).categoryNameLabel),
+                    const TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.secondaryColor),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
-              MealField(
-                hintText: 'أدخل اسم القسم',
+              SizedBox(height: 8),
+              MiniField(
+                hintText: S.of(context).categoryNameHint,
                 controller: widget.categoryNameController,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'الرجاء إدخال الاسم';
+                    return S.of(context).enterNameValidation;
                   }
                   if (widget.existingCategories.contains(value.trim())) {
-                    return 'هذا القسم موجود بالفعل';
+                    return S.of(context).categoryAlreadyExists;
                   }
                   return null;
                 },
@@ -73,7 +75,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: 'حفظ',
+                    title: S.of(context).save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveCategory();
@@ -82,9 +84,9 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                     },
                     color: AppColors.primaryColor,
                   ),
-                  const SizedBox(width: 20),
+                  SizedBox(width: 20),
                   ActionButton(
-                    title: 'إلغاء',
+                    title: S.of(context).cancel,
                     onTap: () {
                       formKey.currentState!.reset();
                       widget.categoryNameController.clear();

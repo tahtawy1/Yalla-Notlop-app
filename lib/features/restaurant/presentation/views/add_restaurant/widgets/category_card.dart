@@ -8,17 +8,18 @@ class CategoryCard extends StatelessWidget {
     required this.category,
     required this.isSelected,
     required this.onTap,
-    required this.onDelete,
+    this.onLongPress,
   });
   final CategoryModel category;
   final bool isSelected;
   final VoidCallback onTap;
-  final VoidCallback onDelete;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -32,25 +33,15 @@ class CategoryCard extends StatelessWidget {
             width: 1.5,
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              category.name,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w800,
-                color: isSelected
-                    ? AppColors.primaryColor
-                    : AppColors.primaryColor.withAlpha(200),
-              ),
-            ),
-            const SizedBox(width: 4),
-            InkWell(
-              onTap: onDelete,
-              child: Icon(Icons.close, color: AppColors.primaryColor, size: 16),
-            ),
-          ],
+        child: Text(
+          category.name,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w800,
+            color: isSelected
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withAlpha(200),
+          ),
         ),
       ),
     );

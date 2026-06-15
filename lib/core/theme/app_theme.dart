@@ -13,7 +13,13 @@ class AppTheme {
       error: Colors.red,
     ),
     scaffoldBackgroundColor: AppColors.backgroundColor,
-
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      backgroundColor: AppColors.backgroundColor,
+      elevation: 0,
+      foregroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -43,6 +49,17 @@ class AppTheme {
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(color: Colors.red, width: 1.5),
+      ),
+    ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: AppColors.primaryColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
+        shape: WidgetStatePropertyAll(CircleBorder()),
+        padding: WidgetStatePropertyAll(EdgeInsets.zero),
       ),
     ),
   );

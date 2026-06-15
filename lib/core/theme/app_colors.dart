@@ -21,6 +21,8 @@ class AppColors {
   static const Color restaurantIconBg = Color(0xffFFE5D5);
   static const Color restaurantFieldBorder = Color(0xffFFCEAD);
   static const Color restaurantFieldHint = Color(0xffC4A28E);
+  static const Color restaurantFieldFillColor = Color(0xffDBA078);
+
   static const Color restaurantTextMuted = Color(0xff7A6055);
   static const Color restaurantChipSelectedBg = Color(0xffFFF0E8);
   static const Color restaurantBackground = Color(0xffFFF8F4);

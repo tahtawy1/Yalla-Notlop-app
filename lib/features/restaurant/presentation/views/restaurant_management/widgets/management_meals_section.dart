@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/core/constants/app_strings.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class ManagementMealsSection extends StatelessWidget {
@@ -12,7 +12,6 @@ class ManagementMealsSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Title with indicator
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -24,9 +23,9 @@ class ManagementMealsSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
-            const SizedBox(width: 8),
-            const Text(
-              AppStrings.mealsListTitle,
+            SizedBox(width: 8),
+            Text(
+              S.of(context).mealsListTitle,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -48,10 +47,10 @@ class ManagementMealsSection extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.add, color: Colors.white, size: 18),
-                const SizedBox(width: 6),
-                const Text(
-                  AppStrings.addMealButton,
+                Icon(Icons.add, color: Colors.white, size: 18),
+                SizedBox(width: 6),
+                Text(
+                  S.of(context).addMeal,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,

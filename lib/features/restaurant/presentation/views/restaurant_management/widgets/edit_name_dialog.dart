@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_field.dart';
@@ -45,14 +46,14 @@ class _EditNameDialogState extends State<EditNameDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                     color: AppColors.splashTitleColor,
                   ),
                   children: [
-                    TextSpan(text: 'تعديل اسم المطعم'),
+                    TextSpan(text: S.of(context).editRestaurantName),
                     TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.secondaryColor),
@@ -60,13 +61,13 @@ class _EditNameDialogState extends State<EditNameDialog> {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
-              MealField(
-                hintText: 'أدخل اسم المطعم',
+              SizedBox(height: 12),
+              MiniField(
+                hintText: S.of(context).restaurantNameHint,
                 controller: nameController,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'الرجاء إدخال الاسم';
+                    return S.of(context).enterNameValidation;
                   }
                   return null;
                 },
@@ -75,7 +76,7 @@ class _EditNameDialogState extends State<EditNameDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: 'حفظ',
+                    title: S.of(context).save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveName(nameController.text.trim());
@@ -84,9 +85,9 @@ class _EditNameDialogState extends State<EditNameDialog> {
                     },
                     color: AppColors.primaryColor,
                   ),
-                  const SizedBox(width: 20),
+                  SizedBox(width: 20),
                   ActionButton(
-                    title: 'إلغاء',
+                    title: S.of(context).cancel,
                     onTap: () => Navigator.pop(context),
                     color: AppColors.secondaryColor,
                   ),

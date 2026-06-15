@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_field.dart';
 
 class AddMealDialog extends StatefulWidget {
@@ -34,47 +36,17 @@ class _AddMealDialogState extends State<AddMealDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
-                  ),
-                  children: [
-                    TextSpan(text: 'اسم الوجبة'),
-                    TextSpan(
-                      text: ' *',
-                      style: TextStyle(color: AppColors.secondaryColor),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              MealField(
-                hintText: 'أدخل اسم الوجبة',
+              HeaderText(title: S.of(context).mealNameLabel),
+              SizedBox(height: 8),
+              MiniField(
+                hintText: S.of(context).mealNameHint,
                 controller: widget.mealNameController,
               ),
-              const SizedBox(height: 8),
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
-                  ),
-                  children: [
-                    TextSpan(text: 'السعر'),
-                    TextSpan(
-                      text: ' *',
-                      style: TextStyle(color: AppColors.secondaryColor),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              MealField(
-                hintText: 'أدخل السعر',
+              SizedBox(height: 8),
+              HeaderText(title: S.of(context).mealPriceLabel),
+              SizedBox(height: 8),
+              MiniField(
+                hintText: S.of(context).mealPriceHint,
                 controller: widget.mealPriceController,
                 isPrice: true,
               ),
@@ -82,7 +54,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: 'حفظ',
+                    title: S.of(context).save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveMeal();
@@ -93,7 +65,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
                   ),
                   SizedBox(width: 20),
                   ActionButton(
-                    title: 'إلغاء',
+                    title: S.of(context).cancel,
                     onTap: () {
                       formKey.currentState!.reset();
                       widget.mealNameController.clear();
