@@ -46,6 +46,11 @@ class CustomBottomNavBar extends StatelessWidget {
               label: S.of(context).orders,
               index: 2,
             ),
+            _buildNavItem(
+              icon: Icons.group,
+              label: S.of(context).members,
+              index: 3,
+            ),
           ],
         ),
       ),

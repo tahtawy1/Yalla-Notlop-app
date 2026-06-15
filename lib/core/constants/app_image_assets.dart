@@ -15,4 +15,5 @@ class AppImageAssets {
       'assets/images/fast_food_card.png';
   static const String restaurantDesertsCategory =
       'assets/images/deserts_card.png';
+  static const String profileIcon = 'assets/images/profile.png';
 }

@@ -45,7 +45,6 @@ class HomeView extends StatelessWidget {
             ],
           );
         }
-
         return const SizedBox();
       },
     );

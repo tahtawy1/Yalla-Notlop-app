@@ -120,6 +120,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "mealPriceSuffix": MessageLookupByLibrary.simpleMessage("EGP"),
     "meals": MessageLookupByLibrary.simpleMessage("Meals"),
     "mealsListTitle": MessageLookupByLibrary.simpleMessage("Meals List"),
+    "memberNameHint": MessageLookupByLibrary.simpleMessage("Enter member name"),
+    "memberNameValidation": MessageLookupByLibrary.simpleMessage(
+      "Please enter the member name",
+    ),
+    "members": MessageLookupByLibrary.simpleMessage("members"),
+    "membersViewDiscription": MessageLookupByLibrary.simpleMessage(
+      "Gather your friends and we\'ll take care of the rest.",
+    ),
+    "membersViewSubTitle": MessageLookupByLibrary.simpleMessage(
+      "Who is eating with you?",
+    ),
     "minimumOrderFallback": MessageLookupByLibrary.simpleMessage(
       "Minimum order 5 EGP",
     ),
@@ -127,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noImageSelected": MessageLookupByLibrary.simpleMessage(
       "No image selected",
     ),
+    "noMembers": MessageLookupByLibrary.simpleMessage("No members"),
     "noRestaurantsAvailable": MessageLookupByLibrary.simpleMessage(
       "No restaurants available",
     ),

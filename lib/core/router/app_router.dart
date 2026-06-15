@@ -4,6 +4,8 @@ import 'package:yalla_notlop_app/core/services/service_locator.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/home_view.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:yalla_notlop_app/features/layout/layout.dart';
+import 'package:yalla_notlop_app/features/member/presentation/view/members_view.dart';
+import 'package:yalla_notlop_app/features/member/presentation/view_model/cubit/member_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/manage_restaurant_cubit/manage_restaurant_cubit.dart';
@@ -41,5 +43,12 @@ final appRouter = GoRouter(
         );
       },
     ),
+    // GoRoute(
+    //   path: '/members',
+    //   builder: (context, state) => BlocProvider<MemberCubit>(
+    //     create: (context) => getIt<MemberCubit>()..getMembers(),
+    //     child: MembersView(),
+    //   ),
+    // ),
   ],
 );

@@ -80,5 +80,11 @@
   "updateCategoryError": "An error occurred while updating the category",
   "updateMealError": "An error occurred while updating the meal",
   "updateRestaurantError": "An error occurred while updating the restaurant",
-  "uploadImageOrSelectExisting": "Upload an image from your device or choose from the available images"
+  "uploadImageOrSelectExisting": "Upload an image from your device or choose from the available images",
+  "members": "members",
+  "membersViewSubTitle": "Who is eating with you?",
+  "membersViewDiscription": "Gather your friends and we'll take care of the rest.",
+  "memberNameValidation": "Please enter the member name",
+  "memberNameHint": "Enter member name",
+  "noMembers": "No members"
 }

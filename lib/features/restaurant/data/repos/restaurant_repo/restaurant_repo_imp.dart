@@ -5,11 +5,11 @@ import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo.dart';
-import 'package:yalla_notlop_app/features/restaurant/data/services/hive_service.dart';
+import 'package:yalla_notlop_app/features/restaurant/data/services/restaurant_hive_service.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/services/pick_image.dart';
 
 class RestaurantRepoImp implements RestaurantRepo {
-  final HiveService hiveService;
+  final RestaurantHiveService hiveService;
 
   RestaurantRepoImp({required this.hiveService});
   //* Restraunts ========================

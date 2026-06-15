@@ -3,10 +3,13 @@ import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 
-class HiveService {
+class RestaurantHiveService {
   final Box<RestaurantModel> restaurantsBox;
   final Box<CategoryModel> categoryBox;
-  HiveService({required this.restaurantsBox, required this.categoryBox});
+  RestaurantHiveService({
+    required this.restaurantsBox,
+    required this.categoryBox,
+  });
 
   List<RestaurantModel> getRestaurants() {
     return restaurantsBox.values.toList();

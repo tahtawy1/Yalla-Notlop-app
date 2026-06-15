@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
+import 'package:yalla_notlop_app/shared/widgets/app_logo.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key, required this.onRestaurantAdded});
@@ -17,20 +18,10 @@ class HomeHeader extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 48),
-          Center(
-            child: Text(
-              S.of(context).appName,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: AppColors.primaryColor,
-              ),
-            ),
-          ),
+          Center(child: AppLogo()),
           SizedBox(height: 16),
           Text(
             S.of(context).homeTitle,
-            // textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.w900,

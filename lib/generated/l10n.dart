@@ -783,6 +783,56 @@ class S {
       args: [],
     );
   }
+
+  /// `members`
+  String get members {
+    return Intl.message('members', name: 'members', desc: '', args: []);
+  }
+
+  /// `Who is eating with you?`
+  String get membersViewSubTitle {
+    return Intl.message(
+      'Who is eating with you?',
+      name: 'membersViewSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gather your friends and we'll take care of the rest.`
+  String get membersViewDiscription {
+    return Intl.message(
+      'Gather your friends and we\'ll take care of the rest.',
+      name: 'membersViewDiscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the member name`
+  String get memberNameValidation {
+    return Intl.message(
+      'Please enter the member name',
+      name: 'memberNameValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter member name`
+  String get memberNameHint {
+    return Intl.message(
+      'Enter member name',
+      name: 'memberNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No members`
+  String get noMembers {
+    return Intl.message('No members', name: 'noMembers', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -114,6 +114,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "mealPriceSuffix": MessageLookupByLibrary.simpleMessage("جنيه"),
     "meals": MessageLookupByLibrary.simpleMessage("الوجبات"),
     "mealsListTitle": MessageLookupByLibrary.simpleMessage("قائمة الوجبات"),
+    "memberNameHint": MessageLookupByLibrary.simpleMessage("أدخل اسم العضو"),
+    "memberNameValidation": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال اسم العضو",
+    ),
+    "members": MessageLookupByLibrary.simpleMessage("الأعضاء"),
+    "membersViewDiscription": MessageLookupByLibrary.simpleMessage(
+      "اجمع صحابك واحنا علينا الباقي.",
+    ),
+    "membersViewSubTitle": MessageLookupByLibrary.simpleMessage(
+      "مين بياكل معاك؟",
+    ),
     "minimumOrderFallback": MessageLookupByLibrary.simpleMessage(
       "أقل طلب 5 جنيه",
     ),
@@ -121,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noImageSelected": MessageLookupByLibrary.simpleMessage(
       "لم يتم اختيار صورة",
     ),
+    "noMembers": MessageLookupByLibrary.simpleMessage("لا يوجد أعضاء"),
     "noRestaurantsAvailable": MessageLookupByLibrary.simpleMessage(
       "لا توجد مطاعم متاحة",
     ),

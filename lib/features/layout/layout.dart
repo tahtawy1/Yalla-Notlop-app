@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
+import 'package:yalla_notlop_app/core/services/service_locator.dart';
+import 'package:yalla_notlop_app/features/member/presentation/view/members_view.dart';
+import 'package:yalla_notlop_app/features/member/presentation/view_model/cubit/member_cubit.dart';
 import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/custom_bottom_nav_bar.dart';
@@ -16,7 +19,15 @@ class Layout extends StatefulWidget {
 
 class _LayoutState extends State<Layout> {
   int currentIndex = 0;
-  final pages = [HomeView(), TestHistoryPage(), TestFriendsPage()];
+  final pages = [
+    HomeView(),
+    TestFriendsPage(),
+    TestHistoryPage(),
+    BlocProvider(
+      create: (context) => getIt<MemberCubit>()..getMembers(),
+      child: MembersView(),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +45,9 @@ class _LayoutState extends State<Layout> {
         blendMode: BlendMode.dstIn,
         child: pages[currentIndex],
       ),
-      floatingActionButton: currentIndex == 0 ? FAButton() : null,
+      floatingActionButton: currentIndex == 0 || currentIndex == 3
+          ? FAButton()
+          : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: currentIndex,

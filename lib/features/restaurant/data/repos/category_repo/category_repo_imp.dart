@@ -3,10 +3,10 @@ import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo.dart';
-import 'package:yalla_notlop_app/features/restaurant/data/services/hive_service.dart';
+import 'package:yalla_notlop_app/features/restaurant/data/services/restaurant_hive_service.dart';
 
 class CategoryRepoImp implements CategoryRepo {
-  final HiveService hiveService;
+  final RestaurantHiveService hiveService;
 
   CategoryRepoImp({required this.hiveService});
   //* Category ========================

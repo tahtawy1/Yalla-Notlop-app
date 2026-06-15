@@ -11,7 +11,7 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_rest
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meals_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/image_upload_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/restaurant_name_feild.dart';
+import 'package:yalla_notlop_app/shared/widgets/custom_text_field.dart';
 
 class AddRetaurantForm extends StatefulWidget {
   const AddRetaurantForm({super.key});
@@ -83,9 +83,17 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
           children: [
             HeaderText(title: S.of(context).restaurantNameLabel),
             const SizedBox(height: 8),
-            RestaurantNameFeild(
-              nameController: nameController,
+            CustomTextField(
+              controller: nameController,
               autovalidateMode: autovalidateMode,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return S.of(context).restaurantNameValidation;
+                }
+                return null;
+              },
+              prefixIcon: Icons.restaurant_menu_rounded,
+              hintText: S.of(context).restaurantNameExample,
             ),
             SizedBox(height: 20),
             BlocBuilder<AddRestaurantCubit, AddRestaurantState>(

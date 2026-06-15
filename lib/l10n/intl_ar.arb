@@ -80,5 +80,11 @@
   "updateCategoryError": "حدث خطأ في تحديث الفئة",
   "updateMealError": "حدث خطأ في تحديث الوجبة",
   "updateRestaurantError": "حدث خطأ في تحديث المطعم",
-  "uploadImageOrSelectExisting": "أضف صورة من جهازك، أو اختر من الصور المتاحة"
+  "uploadImageOrSelectExisting": "أضف صورة من جهازك، أو اختر من الصور المتاحة",
+  "members": "الأعضاء",
+  "membersViewSubTitle": "مين بياكل معاك؟",
+  "membersViewDiscription": "اجمع صحابك واحنا علينا الباقي.",
+  "memberNameValidation": "الرجاء إدخال اسم العضو",
+  "memberNameHint": "أدخل اسم العضو",
+  "noMembers": "لا يوجد أعضاء"
 }
