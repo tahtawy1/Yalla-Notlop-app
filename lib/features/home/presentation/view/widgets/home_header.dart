@@ -30,7 +30,7 @@ class HomeHeader extends StatelessWidget {
           SizedBox(height: 16),
           Text(
             S.of(context).homeTitle,
-            textAlign: TextAlign.center,
+            // textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.w900,
