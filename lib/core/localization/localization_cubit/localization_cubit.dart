@@ -17,4 +17,8 @@ class LocalizationCubit extends Cubit<LocalizationState> {
     }
     emit(LocaleChanged());
   }
+
+  bool isRtl() {
+    return locale == const Locale('ar');
+  }
 }

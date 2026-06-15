@@ -37,7 +37,7 @@ final appRouter = GoRouter(
         return BlocProvider<ManageRestaurantCubit>(
           create: (context) =>
               getIt<ManageRestaurantCubit>()..initDraft(restaurant),
-          child: RestaurantManagementView(restaurant: restaurant),
+          child: RestaurantDetailsView(restaurant: restaurant),
         );
       },
     ),

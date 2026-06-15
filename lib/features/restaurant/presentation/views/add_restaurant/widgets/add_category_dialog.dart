@@ -58,7 +58,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                 ),
               ),
               SizedBox(height: 8),
-              MealField(
+              MiniField(
                 hintText: S.of(context).categoryNameHint,
                 controller: widget.categoryNameController,
                 validator: (value) {

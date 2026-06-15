@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
@@ -15,15 +16,14 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaura
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/widgets/management_meals_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/widgets/restaurant_hero_card.dart';
 
-class RestaurantManagementView extends StatefulWidget {
-  const RestaurantManagementView({super.key, required this.restaurant});
+class RestaurantDetailsView extends StatefulWidget {
+  const RestaurantDetailsView({super.key, required this.restaurant});
   final RestaurantModel restaurant;
   @override
-  State<RestaurantManagementView> createState() =>
-      _RestaurantManagementViewState();
+  State<RestaurantDetailsView> createState() => _RestaurantDetailsViewState();
 }
 
-class _RestaurantManagementViewState extends State<RestaurantManagementView> {
+class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController mealNameController = TextEditingController();
@@ -118,16 +118,7 @@ class _RestaurantManagementViewState extends State<RestaurantManagementView> {
               ),
               leading: Padding(
                 padding: const EdgeInsetsDirectional.only(start: 8),
-                child: IconButton(
-                  onPressed: () {
-                    cubit.discardChanges();
-                    Navigator.maybePop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_forward_rounded,
-                    color: AppColors.primaryColor,
-                  ),
-                ),
+                child: BackButton(),
               ),
             ),
             body: SingleChildScrollView(

@@ -38,14 +38,14 @@ class _AddMealDialogState extends State<AddMealDialog> {
             children: [
               HeaderText(title: S.of(context).mealNameLabel),
               SizedBox(height: 8),
-              MealField(
+              MiniField(
                 hintText: S.of(context).mealNameHint,
                 controller: widget.mealNameController,
               ),
               SizedBox(height: 8),
               HeaderText(title: S.of(context).mealPriceLabel),
               SizedBox(height: 8),
-              MealField(
+              MiniField(
                 hintText: S.of(context).mealPriceHint,
                 controller: widget.mealPriceController,
                 isPrice: true,

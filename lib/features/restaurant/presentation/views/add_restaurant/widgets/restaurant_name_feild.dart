@@ -23,7 +23,6 @@ class RestaurantNameFeild extends StatelessWidget {
         }
         return null;
       },
-      textDirection: TextDirection.rtl,
       style: const TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
       decoration: InputDecoration(
         hintText: S.of(context).restaurantNameExample,

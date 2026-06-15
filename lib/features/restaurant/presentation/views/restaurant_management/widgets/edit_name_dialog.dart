@@ -62,7 +62,7 @@ class _EditNameDialogState extends State<EditNameDialog> {
                 ),
               ),
               SizedBox(height: 12),
-              MealField(
+              MiniField(
                 hintText: S.of(context).restaurantNameHint,
                 controller: nameController,
                 validator: (value) {

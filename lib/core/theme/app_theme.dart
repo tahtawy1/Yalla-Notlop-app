@@ -51,5 +51,16 @@ class AppTheme {
         borderSide: const BorderSide(color: Colors.red, width: 1.5),
       ),
     ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: AppColors.primaryColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
+        shape: WidgetStatePropertyAll(CircleBorder()),
+        padding: WidgetStatePropertyAll(EdgeInsets.zero),
+      ),
+    ),
   );
 }

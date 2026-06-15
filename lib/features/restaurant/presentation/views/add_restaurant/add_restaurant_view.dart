@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_retaurant_form.dart';
@@ -11,7 +13,6 @@ class AddRestaurantView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // elevation: 10,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
@@ -24,13 +25,7 @@ class AddRestaurantView extends StatelessWidget {
         ),
         leading: Padding(
           padding: const EdgeInsetsDirectional.only(start: 8),
-          child: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_forward_rounded,
-              color: AppColors.primaryColor,
-            ),
-          ),
+          child: BackButton(),
         ),
         shadowColor: AppColors.primaryColor.withAlpha(50),
         scrolledUnderElevation: 10,

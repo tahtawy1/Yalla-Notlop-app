@@ -172,7 +172,7 @@ class CategoryImagePreview extends StatelessWidget {
     return GestureDetector(
       onTap: onSelect,
       child: Container(
-        margin: EdgeInsets.only(left: 12),
+        margin: EdgeInsetsDirectional.only(end: 12),
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
-class MealField extends StatelessWidget {
-  const MealField({
+class MiniField extends StatelessWidget {
+  const MiniField({
     super.key,
     required this.hintText,
     required this.controller,
@@ -25,14 +25,15 @@ class MealField extends StatelessWidget {
           validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return isPrice ? S.of(context).mealPriceRequired : S.of(context).enterNameValidation;
+              return isPrice
+                  ? S.of(context).mealPriceRequired
+                  : S.of(context).enterNameValidation;
             }
             if (isPrice && double.tryParse(value.trim()) == null) {
               return S.of(context).invalidPriceValidation;
             }
             return null;
           },
-      textDirection: TextDirection.rtl,
       style: const TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
       decoration: InputDecoration(
         hintText: hintText,
