@@ -164,7 +164,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                   final isLoading = state is AddRestaurantLoading;
                   return PrimaryButton(
                     title: S.of(context).saveRestaurant,
-                    icon: Icons.save_rounded,
+                    postfixIcon: Icons.save_rounded,
                     color: AppColors.primaryColor,
                     isLoading: isLoading,
                     onTap: () {

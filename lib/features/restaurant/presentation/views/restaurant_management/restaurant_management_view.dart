@@ -163,7 +163,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                   SizedBox(height: 24),
                   PrimaryButton(
                     title: S.of(context).saveChanges,
-                    icon: Icons.save_rounded,
+                    postfixIcon: Icons.save_rounded,
                     color: AppColors.primaryColor,
                     onTap: () => cubit.saveUpdatedRestaurant(),
                   ),

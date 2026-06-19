@@ -33,7 +33,7 @@ class MealCard extends StatelessWidget {
               ),
               SizedBox(width: 4),
               Text(
-                meal.price,
+                meal.price as String,
                 style: TextStyle(
                   fontSize: 14,
                   color: AppColors.splashTitleColor,

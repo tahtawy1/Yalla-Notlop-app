@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:hive/hive.dart';
-import 'package:yalla_notlop_app/features/member/data/models/member_model.dart';
+import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 
 class MemberHiveServices {
   final Box<MemberModel> membersBox;

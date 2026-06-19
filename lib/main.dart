@@ -12,12 +12,9 @@ import 'package:yalla_notlop_app/generated/l10n.dart';
 void main() async {
   await initApp();
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => BlocProvider<LocalizationCubit>(
-        create: (context) => LocalizationCubit(),
-        child: const MyApp(),
-      ),
+    BlocProvider<LocalizationCubit>(
+      create: (context) => LocalizationCubit(),
+      child: const MyApp(),
     ),
   );
 }

@@ -9,15 +9,17 @@ class RestaurantCard extends StatelessWidget {
   const RestaurantCard({
     super.key,
     required this.restaurant,
-    required this.onTap,
+    required this.onCardTap,
+    required this.onStartOrderTap,
   });
 
   final RestaurantModel restaurant;
-  final VoidCallback onTap;
+  final VoidCallback onCardTap;
+  final VoidCallback onStartOrderTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onCardTap,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -91,9 +93,7 @@ class RestaurantCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          // TODO: Navigate to group order flow when ready
-                        },
+                        onTap: onStartOrderTap,
                         child: Text(
                           S.of(context).startGroupOrder,
                           style: TextStyle(

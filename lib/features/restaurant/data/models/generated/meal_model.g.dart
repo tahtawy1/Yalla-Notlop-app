@@ -19,10 +19,7 @@ class MealModelAdapter extends TypeAdapter<MealModel> {
     // Backward compatible: old data had 2 fields (name=0, price=1)
     // New data has 3 fields (name=0, id=1, price=2)
     if (numOfFields == 2) {
-      return MealModel(
-        name: fields[0] as String,
-        price: fields[1] as String,
-      );
+      return MealModel(name: fields[0] as String, price: fields[1] as String);
     }
     return MealModel(
       name: fields[0] as String,

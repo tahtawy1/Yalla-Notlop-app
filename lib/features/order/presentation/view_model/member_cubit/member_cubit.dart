@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
-import 'package:yalla_notlop_app/features/member/data/models/member_model.dart';
-import 'package:yalla_notlop_app/features/member/data/repos/member_repo.dart';
+import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
+import 'package:yalla_notlop_app/features/order/data/repos/member_repo/member_repo.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 
 part 'member_state.dart';
 
@@ -54,5 +56,17 @@ class MemberCubit extends Cubit<MemberState> {
       (failure) => emit(GetMembersFailure(errMessage: failure.errMessage)),
       (members) => emit(GetMembersSuccess(members: members)),
     );
+  }
+
+  void checkButtonState(BuildContext context) {
+    if (memberRepo.isReadyToStart()) {
+      final List<MemberModel> members = memberRepo.getMembers().fold(
+        (failure) => [],
+        (members) => members,
+      );
+      emit(ReadyToStart(members: members));
+    } else {
+      emit(NotEnoughMembers(message: S.of(context).noEnoughMembersWarning));
+    }
   }
 }

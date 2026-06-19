@@ -33,4 +33,7 @@ class AppColors {
   static const Color dangerColor = Color(0xffB52B1D);
   static const Color dangerBackground = Color(0xffFDECEB);
   static const Color glassOverlay = Color(0xE6FFFFFF);
+
+  static const Color cardColor = Color(0xffFFE3D2);
+  static const Color tagColor = Color(0xffFFD4B9);
 }

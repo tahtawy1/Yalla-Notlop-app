@@ -9,12 +9,14 @@ class MiniField extends StatelessWidget {
     required this.controller,
     this.isPrice = false,
     this.validator,
+    this.wantValidation = false,
   });
 
   final String hintText;
   final TextEditingController controller;
   final bool isPrice;
   final String? Function(String?)? validator;
+  final bool wantValidation;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class MiniField extends StatelessWidget {
           },
       style: const TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
       decoration: InputDecoration(
+        errorStyle: wantValidation ? null : TextStyle(fontSize: 0),
         hintText: hintText,
         hintStyle: const TextStyle(
           fontSize: 13,

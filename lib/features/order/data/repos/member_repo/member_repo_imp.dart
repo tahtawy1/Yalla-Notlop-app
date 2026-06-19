@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
-import 'package:yalla_notlop_app/features/member/data/models/member_model.dart';
-import 'package:yalla_notlop_app/features/member/data/repos/member_repo.dart';
-import 'package:yalla_notlop_app/features/member/data/services/member_hive_services.dart';
+import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
+import 'package:yalla_notlop_app/features/order/data/repos/member_repo/member_repo.dart';
+import 'package:yalla_notlop_app/features/order/data/services/member_hive_services.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class MemberRepoImp implements MemberRepo {
   final MemberHiveServices hiveService;
@@ -14,7 +15,7 @@ class MemberRepoImp implements MemberRepo {
       await hiveService.addMember(member);
       return right(null);
     } catch (e) {
-      return left(AppFailure('حدث خطأ في إضافة العضو'));
+      return left(AppFailure(S.current.memberAddError));
     }
   }
 
@@ -24,7 +25,7 @@ class MemberRepoImp implements MemberRepo {
       await hiveService.deleteMember(member);
       return right(null);
     } catch (e) {
-      return left(AppFailure('حدث خطأ في حذف العضو'));
+      return left(AppFailure(S.current.memberDeleteError));
     }
   }
 
@@ -33,11 +34,11 @@ class MemberRepoImp implements MemberRepo {
     try {
       final result = hiveService.getMembers();
       if (result.isEmpty) {
-        return left(AppFailure('لا يوجد أعضاء'));
+        return left(AppFailure(S.current.memberGetEmpty));
       }
       return right(result);
     } catch (e) {
-      return left(AppFailure('حدث خطأ في جلب الأعضاء'));
+      return left(AppFailure(S.current.memberGetError));
     }
   }
 
@@ -47,7 +48,13 @@ class MemberRepoImp implements MemberRepo {
       await hiveService.updateMember(member);
       return right(null);
     } catch (e) {
-      return left(AppFailure('حدث خطأ في تحديث بيانات العضو'));
+      return left(AppFailure(S.current.memberUpdateError));
     }
+  }
+
+  @override
+  bool isReadyToStart() {
+    final members = hiveService.getMembers();
+    return members.length >= 2;
   }
 }

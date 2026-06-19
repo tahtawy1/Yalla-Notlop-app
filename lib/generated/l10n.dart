@@ -833,6 +833,311 @@ class S {
   String get noMembers {
     return Intl.message('No members', name: 'noMembers', desc: '', args: []);
   }
+
+  /// `Shuffle`
+  String get shuffle {
+    return Intl.message('Shuffle', name: 'shuffle', desc: '', args: []);
+  }
+
+  /// `Pass the phone`
+  String get passButtonTitle {
+    return Intl.message(
+      'Pass the phone',
+      name: 'passButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You cannot continue until at least 2 members are added`
+  String get noEnoughMembersWarning {
+    return Intl.message(
+      'You cannot continue until at least 2 members are added',
+      name: 'noEnoughMembersWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Restaurant`
+  String get chooseRestaurantTitle {
+    return Intl.message(
+      'Choose Restaurant',
+      name: 'chooseRestaurantTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's order food`
+  String get chooseRestaurantTitle2 {
+    return Intl.message(
+      'Let\'s order food',
+      name: 'chooseRestaurantTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a restaurant to start`
+  String get chooseRestaurantSubTitle {
+    return Intl.message(
+      'Select a restaurant to start',
+      name: 'chooseRestaurantSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message('Next', name: 'next', desc: '', args: []);
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
+
+  /// `Please select a restaurant`
+  String get selectRestaurantValidation {
+    return Intl.message(
+      'Please select a restaurant',
+      name: 'selectRestaurantValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your turn`
+  String get yourTurn {
+    return Intl.message('Your turn', name: 'yourTurn', desc: '', args: []);
+  }
+
+  /// `Choose your favorite meals from the menu.`
+  String get chooseYourFavMeals {
+    return Intl.message(
+      'Choose your favorite meals from the menu.',
+      name: 'chooseYourFavMeals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full amount`
+  String get payFullCostBtnTitle {
+    return Intl.message(
+      'Full amount',
+      name: 'payFullCostBtnTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom amount`
+  String get payCustomCostBtnTitle {
+    return Intl.message(
+      'Custom amount',
+      name: 'payCustomCostBtnTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zero (guest)`
+  String get payZeroCostBtnTitle {
+    return Intl.message(
+      'Zero (guest)',
+      name: 'payZeroCostBtnTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total your order`
+  String get totalYourOrder {
+    return Intl.message(
+      'Total your order',
+      name: 'totalYourOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please choose meals`
+  String get chooseMealsValidation {
+    return Intl.message(
+      'Please choose meals',
+      name: 'chooseMealsValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please choose a payment option`
+  String get choosePayOptionValidation {
+    return Intl.message(
+      'Please choose a payment option',
+      name: 'choosePayOptionValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order confirmed!`
+  String get order_confirmed {
+    return Intl.message(
+      'Order confirmed!',
+      name: 'order_confirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The kitchen is preparing your order.`
+  String get kitchen_preparing {
+    return Intl.message(
+      'The kitchen is preparing your order.',
+      name: 'kitchen_preparing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kitchen order`
+  String get kitchen_order {
+    return Intl.message(
+      'Kitchen order',
+      name: 'kitchen_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grouped`
+  String get grouped {
+    return Intl.message('Grouped', name: 'grouped', desc: '', args: []);
+  }
+
+  /// `No orders`
+  String get no_orders {
+    return Intl.message('No orders', name: 'no_orders', desc: '', args: []);
+  }
+
+  /// `Per person details`
+  String get per_person_details {
+    return Intl.message(
+      'Per person details',
+      name: 'per_person_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share order`
+  String get share_order {
+    return Intl.message('Share order', name: 'share_order', desc: '', args: []);
+  }
+
+  /// `Preparing...`
+  String get sharing_loading {
+    return Intl.message(
+      'Preparing...',
+      name: 'sharing_loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to home`
+  String get back_home {
+    return Intl.message('Back to home', name: 'back_home', desc: '', args: []);
+  }
+
+  /// `Paid`
+  String get paid {
+    return Intl.message('Paid', name: 'paid', desc: '', args: []);
+  }
+
+  /// `Collected`
+  String get collected {
+    return Intl.message('Collected', name: 'collected', desc: '', args: []);
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message('Total', name: 'total', desc: '', args: []);
+  }
+
+  /// `EGP`
+  String get meal_price_suffix {
+    return Intl.message('EGP', name: 'meal_price_suffix', desc: '', args: []);
+  }
+
+  /// `Settled`
+  String get settled {
+    return Intl.message('Settled', name: 'settled', desc: '', args: []);
+  }
+
+  /// `Owes`
+  String get owes {
+    return Intl.message('Owes', name: 'owes', desc: '', args: []);
+  }
+
+  /// `Overpaid`
+  String get overpaid {
+    return Intl.message('Overpaid', name: 'overpaid', desc: '', args: []);
+  }
+
+  /// `Error adding member`
+  String get memberAddError {
+    return Intl.message(
+      'Error adding member',
+      name: 'memberAddError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error deleting member`
+  String get memberDeleteError {
+    return Intl.message(
+      'Error deleting member',
+      name: 'memberDeleteError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No members found`
+  String get memberGetEmpty {
+    return Intl.message(
+      'No members found',
+      name: 'memberGetEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error fetching members`
+  String get memberGetError {
+    return Intl.message(
+      'Error fetching members',
+      name: 'memberGetError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error updating member`
+  String get memberUpdateError {
+    return Intl.message(
+      'Error updating member',
+      name: 'memberUpdateError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

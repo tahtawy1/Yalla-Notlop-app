@@ -36,18 +36,22 @@ class RestaurantList extends StatelessWidget {
       itemCount: restaurants.length,
       separatorBuilder: (context, index) => const SizedBox(height: 20),
       itemBuilder: (context, index) {
+        final restaurant = restaurants[index];
         return RestaurantCard(
-          restaurant: restaurants[index],
-          onTap: () async {
+          restaurant: restaurant,
+          onCardTap: () async {
             final result = await context.push(
               '/restaurant-management',
-              extra: restaurants[index],
+              extra: restaurant,
             );
             if (result == true) {
               if (context.mounted) {
                 context.read<HomeCubit>().loadHomeData();
               }
             }
+          },
+          onStartOrderTap: () {
+            context.push('/members', extra: restaurant);
           },
         );
       },

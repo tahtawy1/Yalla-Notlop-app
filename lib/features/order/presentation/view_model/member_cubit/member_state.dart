@@ -39,3 +39,13 @@ class GetMembersFailure extends MemberState {
   final String errMessage;
   GetMembersFailure({required this.errMessage});
 }
+
+class ReadyToStart extends MemberState {
+  final List<MemberModel> members;
+  ReadyToStart({required this.members});
+}
+
+class NotEnoughMembers extends MemberState {
+  final String message;
+  NotEnoughMembers({required this.message});
+}

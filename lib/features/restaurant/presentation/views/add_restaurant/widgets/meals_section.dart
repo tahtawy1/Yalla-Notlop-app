@@ -26,7 +26,6 @@ class MealsSection extends StatefulWidget {
 }
 
 class _MealsSectionState extends State<MealsSection> {
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
