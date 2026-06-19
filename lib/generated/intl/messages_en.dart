@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "An error occurred while adding the restaurant",
     ),
     "addRestaurantSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Add a new restaurant to \'Yalla Notlob\' and start organizing group orders with your friends.",
+      "Add a new restaurant to the \'Yalla Notlob\' app and start organizing group orders with your friends.",
     ),
     "addRestaurantTitle": MessageLookupByLibrary.simpleMessage(
       "Expand the Menu",
@@ -44,12 +44,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "allCuisines": MessageLookupByLibrary.simpleMessage("All Cuisines"),
     "appName": MessageLookupByLibrary.simpleMessage("Yalla Notlob"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
-    "back_home": MessageLookupByLibrary.simpleMessage("Back to home"),
+    "back_home": MessageLookupByLibrary.simpleMessage("Back to Home"),
     "bakeryCategory": MessageLookupByLibrary.simpleMessage("Bakery & Pastries"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelOperation": MessageLookupByLibrary.simpleMessage("Cancel Operation"),
     "cannotDeleteCategoryWithRestaurants": MessageLookupByLibrary.simpleMessage(
-      "Cannot delete the category because restaurants are linked to it",
+      "This category cannot be deleted because it has linked restaurants",
     ),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "categoryAlreadyExists": MessageLookupByLibrary.simpleMessage(
@@ -58,27 +58,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryDeletedSuccess": MessageLookupByLibrary.simpleMessage(
       "Category deleted successfully",
     ),
-    "categoryNameHint": MessageLookupByLibrary.simpleMessage(
-      "Enter category name",
-    ),
-    "categoryNameLabel": MessageLookupByLibrary.simpleMessage("Category Name"),
     "chooseMealsValidation": MessageLookupByLibrary.simpleMessage(
-      "Please choose meals",
+      "Please select meals",
     ),
     "choosePayOptionValidation": MessageLookupByLibrary.simpleMessage(
-      "Please choose a payment option",
+      "Please choose a payment method",
     ),
     "chooseRestaurantSubTitle": MessageLookupByLibrary.simpleMessage(
-      "Select a restaurant to start",
+      "Select a restaurant to get started",
     ),
     "chooseRestaurantTitle": MessageLookupByLibrary.simpleMessage(
       "Choose Restaurant",
     ),
     "chooseRestaurantTitle2": MessageLookupByLibrary.simpleMessage(
-      "Let\'s order food",
+      "Let’s order food",
     ),
     "chooseYourFavMeals": MessageLookupByLibrary.simpleMessage(
-      "Choose your favorite meals from the menu.",
+      "Choose your favorite meals from the list",
     ),
     "collected": MessageLookupByLibrary.simpleMessage("Collected"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -95,13 +91,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "An error occurred while deleting the restaurant",
     ),
     "deleteRestaurantPermanently": MessageLookupByLibrary.simpleMessage(
-      "Delete Restaurant Permanently",
+      "Permanently Delete Restaurant",
     ),
     "deleteRestaurantTitle": MessageLookupByLibrary.simpleMessage(
       "Delete Restaurant",
     ),
     "deleteRestaurantWarning": MessageLookupByLibrary.simpleMessage(
-      "This action will permanently delete all restaurant-related data.",
+      "This action will permanently remove all restaurant data.",
     ),
     "editRestaurantName": MessageLookupByLibrary.simpleMessage(
       "Edit Restaurant Name",
@@ -120,22 +116,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "An error occurred while fetching restaurants",
     ),
     "friends": MessageLookupByLibrary.simpleMessage("Your Friends"),
-    "genericError": MessageLookupByLibrary.simpleMessage("An error occurred"),
+    "genericError": MessageLookupByLibrary.simpleMessage(
+      "An unexpected error occurred",
+    ),
     "grouped": MessageLookupByLibrary.simpleMessage("Grouped"),
     "history": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "homeSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Choose a restaurant to start your group order.",
+      "Choose a restaurant to start your group order",
     ),
     "homeTitle": MessageLookupByLibrary.simpleMessage("Food for the Gathering"),
     "invalidPriceValidation": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid price",
     ),
-    "kitchen_order": MessageLookupByLibrary.simpleMessage("Kitchen order"),
+    "kitchen_order": MessageLookupByLibrary.simpleMessage("Kitchen Order"),
     "kitchen_preparing": MessageLookupByLibrary.simpleMessage(
-      "The kitchen is preparing your order.",
+      "Your order is being prepared in the kitchen.",
     ),
-    "mealCount": MessageLookupByLibrary.simpleMessage("Meal"),
+    "meal": MessageLookupByLibrary.simpleMessage("Meal"),
     "mealNameHint": MessageLookupByLibrary.simpleMessage("Enter meal name"),
     "mealNameLabel": MessageLookupByLibrary.simpleMessage("Meal Name"),
     "mealPriceHint": MessageLookupByLibrary.simpleMessage("Enter price"),
@@ -144,40 +142,38 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter the price",
     ),
     "mealPriceSuffix": MessageLookupByLibrary.simpleMessage("EGP"),
-    "meal_price_suffix": MessageLookupByLibrary.simpleMessage("EGP"),
-    "meals": MessageLookupByLibrary.simpleMessage("Meals"),
     "mealsListTitle": MessageLookupByLibrary.simpleMessage("Meals List"),
     "memberAddError": MessageLookupByLibrary.simpleMessage(
-      "Error adding member",
+      "An error occurred while adding the member",
     ),
     "memberDeleteError": MessageLookupByLibrary.simpleMessage(
-      "Error deleting member",
+      "An error occurred while deleting the member",
     ),
     "memberGetEmpty": MessageLookupByLibrary.simpleMessage("No members found"),
     "memberGetError": MessageLookupByLibrary.simpleMessage(
-      "Error fetching members",
+      "An error occurred while fetching members",
     ),
     "memberNameHint": MessageLookupByLibrary.simpleMessage("Enter member name"),
     "memberNameValidation": MessageLookupByLibrary.simpleMessage(
       "Please enter the member name",
     ),
     "memberUpdateError": MessageLookupByLibrary.simpleMessage(
-      "Error updating member",
+      "An error occurred while updating member data",
     ),
-    "members": MessageLookupByLibrary.simpleMessage("members"),
+    "members": MessageLookupByLibrary.simpleMessage("Members"),
     "membersViewDiscription": MessageLookupByLibrary.simpleMessage(
-      "Gather your friends and we\'ll take care of the rest.",
+      "Gather your friends and we’ll take care of the rest.",
     ),
     "membersViewSubTitle": MessageLookupByLibrary.simpleMessage(
-      "Who is eating with you?",
+      "Who will join your meal?",
     ),
     "minimumOrderFallback": MessageLookupByLibrary.simpleMessage(
-      "Minimum order 5 EGP",
+      "Minimum order is 5 EGP",
     ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noCategory": MessageLookupByLibrary.simpleMessage("No Category"),
     "noEnoughMembersWarning": MessageLookupByLibrary.simpleMessage(
-      "You cannot continue until at least 2 members are added",
+      "You need at least 2 members to continue",
     ),
     "noImageSelected": MessageLookupByLibrary.simpleMessage(
       "No image selected",
@@ -195,12 +191,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "paid": MessageLookupByLibrary.simpleMessage("Paid"),
     "passButtonTitle": MessageLookupByLibrary.simpleMessage("Pass the phone"),
     "payCustomCostBtnTitle": MessageLookupByLibrary.simpleMessage(
-      "Custom amount",
+      "Custom Amount",
     ),
-    "payFullCostBtnTitle": MessageLookupByLibrary.simpleMessage("Full amount"),
-    "payZeroCostBtnTitle": MessageLookupByLibrary.simpleMessage("Zero (guest)"),
+    "payFullCostBtnTitle": MessageLookupByLibrary.simpleMessage("Full Payment"),
+    "payZeroCostBtnTitle": MessageLookupByLibrary.simpleMessage(
+      "No Payment (Guest)",
+    ),
     "per_person_details": MessageLookupByLibrary.simpleMessage(
-      "Per person details",
+      "Per Person Details",
     ),
     "pickImageError": MessageLookupByLibrary.simpleMessage(
       "An error occurred while selecting the image",
@@ -218,9 +216,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "restaurantManagement": MessageLookupByLibrary.simpleMessage(
       "Restaurant Management",
-    ),
-    "restaurantNameExample": MessageLookupByLibrary.simpleMessage(
-      "Example: Al Safha Restaurant",
     ),
     "restaurantNameHint": MessageLookupByLibrary.simpleMessage(
       "Enter restaurant name",
@@ -247,7 +242,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please select a restaurant",
     ),
     "settled": MessageLookupByLibrary.simpleMessage("Settled"),
-    "share_order": MessageLookupByLibrary.simpleMessage("Share order"),
+    "share_order": MessageLookupByLibrary.simpleMessage("Share Order"),
     "sharing_loading": MessageLookupByLibrary.simpleMessage("Preparing..."),
     "shuffle": MessageLookupByLibrary.simpleMessage("Shuffle"),
     "splashLoading": MessageLookupByLibrary.simpleMessage(
@@ -261,7 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Start Group Order",
     ),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
-    "totalYourOrder": MessageLookupByLibrary.simpleMessage("Total your order"),
+    "totalYourOrder": MessageLookupByLibrary.simpleMessage("Your Order Total"),
     "updateCategoryError": MessageLookupByLibrary.simpleMessage(
       "An error occurred while updating the category",
     ),
@@ -272,10 +267,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "An error occurred while updating the restaurant",
     ),
     "uploadImageOrSelectExisting": MessageLookupByLibrary.simpleMessage(
-      "Upload an image from your device or choose from the available images",
+      "Upload an image from your device or choose from available images",
     ),
     "uploadedImagePriorityWarning": MessageLookupByLibrary.simpleMessage(
-      "Priority will be given to the uploaded image!",
+      "Uploaded image will take priority",
     ),
     "yourTurn": MessageLookupByLibrary.simpleMessage("Your turn"),
   };

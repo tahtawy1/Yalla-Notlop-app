@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class RestaurantHeaderSection extends StatelessWidget {
@@ -24,7 +24,7 @@ class RestaurantHeaderSection extends StatelessWidget {
         ),
         SizedBox(height: 16),
         Text(
-          S.of(context).addRestaurantTitle,
+          context.l10n.addRestaurantTitle,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 26,
@@ -34,7 +34,7 @@ class RestaurantHeaderSection extends StatelessWidget {
         ),
         SizedBox(height: 8),
         Text(
-          S.of(context).addRestaurantSubtitle,
+          context.l10n.addRestaurantSubtitle,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 13,

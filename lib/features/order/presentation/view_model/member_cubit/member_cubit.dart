@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/data/repos/member_repo/member_repo.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 
 part 'member_state.dart';
 
@@ -66,7 +66,7 @@ class MemberCubit extends Cubit<MemberState> {
       );
       emit(ReadyToStart(members: members));
     } else {
-      emit(NotEnoughMembers(message: S.of(context).noEnoughMembersWarning));
+      emit(NotEnoughMembers(message: context.l10n.noEnoughMembersWarning));
     }
   }
 }

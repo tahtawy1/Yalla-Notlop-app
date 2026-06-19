@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class AddCategoryButton extends StatelessWidget {
@@ -37,7 +37,7 @@ class AddCategoryButton extends StatelessWidget {
                   Icon(Icons.add, color: AppColors.primaryColor, size: 20),
                   SizedBox(width: 8),
                   Text(
-                    S.of(context).addCategory,
+                    context.l10n.addCategory,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,

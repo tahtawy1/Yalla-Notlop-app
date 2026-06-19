@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 
@@ -95,7 +95,7 @@ class RestaurantCard extends StatelessWidget {
                       GestureDetector(
                         onTap: onStartOrderTap,
                         child: Text(
-                          S.of(context).startGroupOrder,
+                          context.l10n.startGroupOrder,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
@@ -104,7 +104,7 @@ class RestaurantCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${restaurant.meals?.length ?? 0} ${S.of(context).mealCount}',
+                        '${restaurant.meals?.length ?? 0} ${context.l10n.meal}',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,

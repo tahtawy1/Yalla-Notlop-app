@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
 import 'package:yalla_notlop_app/core/services/service_locator.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:yalla_notlop_app/features/layout/layout.dart';
@@ -17,21 +18,21 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/manage_restaurant_cubit/manage_restaurant_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/restaurant_management_view.dart';
-import 'package:yalla_notlop_app/features/splash/views/splash_view.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/views/splash_view.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: AppRoutes.splash,
   routes: [
-    GoRoute(path: '/', builder: (context, state) => SplashView()),
+    GoRoute(path: AppRoutes.splash, builder: (context, state) => SplashView()),
     GoRoute(
-      path: '/home',
+      path: AppRoutes.home,
       builder: (context, state) => BlocProvider<HomeCubit>(
         create: (context) => getIt<HomeCubit>()..loadHomeData(),
         child: Layout(),
       ),
     ),
     GoRoute(
-      path: '/add-restaurant',
+      path: AppRoutes.addRestaurant,
       builder: (context, state) => BlocProvider<AddRestaurantCubit>(
         create: (context) => getIt<AddRestaurantCubit>(),
         child: AddRestaurantView(),
@@ -39,7 +40,7 @@ final appRouter = GoRouter(
     ),
 
     GoRoute(
-      path: '/restaurant-management',
+      path: AppRoutes.restaurantManagement,
       builder: (context, state) {
         final restaurant = state.extra as RestaurantModel;
         return BlocProvider<ManageRestaurantCubit>(
@@ -50,7 +51,7 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/members',
+      path: AppRoutes.members,
       builder: (context, state) {
         final restaurant = state.extra as RestaurantModel;
         return BlocProvider<MemberCubit>(
@@ -60,7 +61,7 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/pass-phone-view',
+      path: AppRoutes.passPhoneView,
       builder: (context, state) {
         final data = state.extra as Map<String, dynamic>;
         final cubit = data['orderCubit'] as OrderCubit;
@@ -74,14 +75,14 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/choose-restaurant-view',
+      path: AppRoutes.chooseRestaurantView,
       builder: (context, state) => BlocProvider<ChooseRestaurantCubit>(
         create: (context) => getIt<ChooseRestaurantCubit>()..getRestaurants(),
         child: ChooseRestaurantView(),
       ),
     ),
     GoRoute(
-      path: '/finish-order-view',
+      path: AppRoutes.finishOrderView,
       builder: (context, state) {
         final data = state.extra as Map<String, dynamic>;
         return BlocProvider<OrderCubit>.value(

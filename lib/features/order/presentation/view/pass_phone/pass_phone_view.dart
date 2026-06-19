@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
@@ -9,7 +11,6 @@ import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/wid
 import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/widgets/member_order_card.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class PassPhoneView extends StatefulWidget {
   final List<MemberModel> members;
@@ -59,7 +60,7 @@ class _PassPhoneViewState extends State<PassPhoneView> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            S.of(context).appName,
+            context.l10n.appName,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w800,
@@ -97,7 +98,7 @@ class _PassPhoneViewState extends State<PassPhoneView> {
                         }
                         if (state is FinishTheOrder) {
                           context.pushReplacement(
-                            '/finish-order-view',
+                            AppRoutes.finishOrderView,
                             extra: {
                               'orderModel': state.orderModel,
                               'orderCubit': context.read<OrderCubit>(),
@@ -125,7 +126,7 @@ class _PassPhoneViewState extends State<PassPhoneView> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: ', ${S.of(context).yourTurn}',
+                                    text: ', ${context.l10n.yourTurn}',
                                     style: TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.w800,
@@ -138,7 +139,7 @@ class _PassPhoneViewState extends State<PassPhoneView> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              S.of(context).chooseYourFavMeals,
+                              context.l10n.chooseYourFavMeals,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,

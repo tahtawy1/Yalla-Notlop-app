@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
@@ -36,17 +36,17 @@ class _AddMealDialogState extends State<AddMealDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              HeaderText(title: S.of(context).mealNameLabel),
+              HeaderText(title: context.l10n.mealNameLabel),
               SizedBox(height: 8),
               MiniField(
-                hintText: S.of(context).mealNameHint,
+                hintText: context.l10n.mealNameHint,
                 controller: widget.mealNameController,
               ),
               SizedBox(height: 8),
-              HeaderText(title: S.of(context).mealPriceLabel),
+              HeaderText(title: context.l10n.mealPriceLabel),
               SizedBox(height: 8),
               MiniField(
-                hintText: S.of(context).mealPriceHint,
+                hintText: context.l10n.mealPriceHint,
                 controller: widget.mealPriceController,
                 isPrice: true,
               ),
@@ -54,7 +54,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: S.of(context).save,
+                    title: context.l10n.save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveMeal();
@@ -65,7 +65,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
                   ),
                   SizedBox(width: 20),
                   ActionButton(
-                    title: S.of(context).cancel,
+                    title: context.l10n.cancel,
                     onTap: () {
                       formKey.currentState!.reset();
                       widget.mealNameController.clear();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/utils/app_snack_bar.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
@@ -58,7 +58,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
         if (state is AddRestaurantSuccess) {
           AppSnackBar.showSnackBar(
             context,
-            S.of(context).restaurantAddedSuccess,
+            context.l10n.restaurantAddedSuccess,
             SnackBarType.success,
           );
           context.pop(true);
@@ -81,19 +81,19 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeaderText(title: S.of(context).restaurantNameLabel),
+            HeaderText(title: context.l10n.restaurantNameLabel),
             const SizedBox(height: 8),
             CustomTextField(
               controller: nameController,
               autovalidateMode: autovalidateMode,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return S.of(context).restaurantNameValidation;
+                  return context.l10n.restaurantNameValidation;
                 }
                 return null;
               },
               prefixIcon: Icons.restaurant_menu_rounded,
-              hintText: S.of(context).restaurantNameExample,
+              hintText: context.l10n.restaurantNameHint,
             ),
             SizedBox(height: 20),
             BlocBuilder<AddRestaurantCubit, AddRestaurantState>(
@@ -163,7 +163,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                 builder: (context, state) {
                   final isLoading = state is AddRestaurantLoading;
                   return PrimaryButton(
-                    title: S.of(context).saveRestaurant,
+                    title: context.l10n.saveRestaurant,
                     postfixIcon: Icons.save_rounded,
                     color: AppColors.primaryColor,
                     isLoading: isLoading,

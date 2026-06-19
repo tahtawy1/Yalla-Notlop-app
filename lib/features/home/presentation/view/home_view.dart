@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/category_filter_list.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/home_header.dart';
@@ -57,7 +58,7 @@ class _AddRestaurantButton extends StatelessWidget {
     final cubit = context.read<HomeCubit>();
     return ElevatedButton(
       onPressed: () async {
-        final result = await context.push('/add-restaurant');
+        final result = await context.push(AppRoutes.addRestaurant);
         if (result == true) {
           cubit.loadHomeData();
         }
@@ -75,7 +76,7 @@ class _AddRestaurantButton extends StatelessWidget {
           Icon(Icons.add_circle_outline_rounded, color: Colors.white, size: 20),
           SizedBox(width: 8),
           Text(
-            S.of(context).addRestaurant,
+            context.l10n.addRestaurant,
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,

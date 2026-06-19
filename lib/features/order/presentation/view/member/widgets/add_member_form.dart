@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/member_cubit/member_cubit.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/shared/widgets/custom_text_field.dart';
 
 class AddMemberForm extends StatefulWidget {
@@ -34,11 +34,11 @@ class _AddMemberFormState extends State<AddMemberForm> {
                   autovalidateMode: autovalidateMode,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return S.of(context).memberNameValidation;
+                      return context.l10n.memberNameValidation;
                     }
                     return null;
                   },
-                  hintText: S.of(context).memberNameHint,
+                  hintText: context.l10n.memberNameHint,
                   radius: 32,
                   hintColor: AppColors.restaurantFieldFillColor,
                   fillColor: AppColors.splashGradientEnd,

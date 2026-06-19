@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class MiniField extends StatelessWidget {
@@ -28,11 +28,11 @@ class MiniField extends StatelessWidget {
           (value) {
             if (value == null || value.isEmpty) {
               return isPrice
-                  ? S.of(context).mealPriceRequired
-                  : S.of(context).enterNameValidation;
+                  ? context.l10n.mealPriceRequired
+                  : context.l10n.enterNameValidation;
             }
             if (isPrice && double.tryParse(value.trim()) == null) {
-              return S.of(context).invalidPriceValidation;
+              return context.l10n.invalidPriceValidation;
             }
             return null;
           },

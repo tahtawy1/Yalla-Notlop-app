@@ -1,9 +1,10 @@
 import 'package:dashed_border/dashed_border.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -24,7 +25,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     _setupAnimation();
     Future.delayed(Duration(seconds: 4), () {
       // ignore: use_build_context_synchronously
-      context.go('/home');
+      context.go(AppRoutes.home);
     });
     super.initState();
   }
@@ -108,7 +109,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                         );
                       },
                       child: Text(
-                        S.of(context).splashTitle,
+                        context.l10n.splashTitle,
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w800,
@@ -130,7 +131,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                         );
                       },
                       child: Text(
-                        S.of(context).splashSubtitle,
+                        context.l10n.splashSubtitle,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,

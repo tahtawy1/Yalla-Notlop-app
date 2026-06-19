@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/shared/widgets/mini_field.dart';
@@ -53,7 +53,7 @@ class _EditNameDialogState extends State<EditNameDialog> {
                     color: AppColors.splashTitleColor,
                   ),
                   children: [
-                    TextSpan(text: S.of(context).editRestaurantName),
+                    TextSpan(text: context.l10n.editRestaurantName),
                     TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.secondaryColor),
@@ -63,11 +63,11 @@ class _EditNameDialogState extends State<EditNameDialog> {
               ),
               SizedBox(height: 12),
               MiniField(
-                hintText: S.of(context).restaurantNameHint,
+                hintText: context.l10n.restaurantNameHint,
                 controller: nameController,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return S.of(context).enterNameValidation;
+                    return context.l10n.enterNameValidation;
                   }
                   return null;
                 },
@@ -76,7 +76,7 @@ class _EditNameDialogState extends State<EditNameDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: S.of(context).save,
+                    title: context.l10n.save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveName(nameController.text.trim());
@@ -87,7 +87,7 @@ class _EditNameDialogState extends State<EditNameDialog> {
                   ),
                   SizedBox(width: 20),
                   ActionButton(
-                    title: S.of(context).cancel,
+                    title: context.l10n.cancel,
                     onTap: () => Navigator.pop(context),
                     color: AppColors.secondaryColor,
                   ),

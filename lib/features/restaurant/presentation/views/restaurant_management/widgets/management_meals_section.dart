@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class ManagementMealsSection extends StatelessWidget {
@@ -25,7 +25,7 @@ class ManagementMealsSection extends StatelessWidget {
             ),
             SizedBox(width: 8),
             Text(
-              S.of(context).mealsListTitle,
+              context.l10n.mealsListTitle,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -50,7 +50,7 @@ class ManagementMealsSection extends StatelessWidget {
                 Icon(Icons.add, color: Colors.white, size: 18),
                 SizedBox(width: 6),
                 Text(
-                  S.of(context).addMeal,
+                  context.l10n.addMeal,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,

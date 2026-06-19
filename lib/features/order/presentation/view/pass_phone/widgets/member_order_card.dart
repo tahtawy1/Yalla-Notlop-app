@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/pass_phone_view.dart';
@@ -9,7 +10,6 @@ import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/wid
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/shared/widgets/mini_field.dart';
 
 class MemberOrderCard extends StatefulWidget {
@@ -52,7 +52,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              S.of(context).totalYourOrder,
+              context.l10n.totalYourOrder,
               style: TextStyle(color: AppColors.primaryColor, fontSize: 14),
             ),
           ),
@@ -79,7 +79,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                           ),
                         ),
                         Text(
-                          '${double.parse(e.key.price) * e.value} ${S.of(context).mealPriceSuffix}',
+                          '${double.parse(e.key.price) * e.value} ${context.l10n.mealPriceSuffix}',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w800,
@@ -99,7 +99,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
             alignment: WrapAlignment.start,
             children: [
               PayButton(
-                title: S.of(context).payFullCostBtnTitle,
+                title: context.l10n.payFullCostBtnTitle,
                 onTap: () {
                   if (widget.orderMeals.isEmpty) {
                     setState(() {
@@ -118,7 +118,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
               ),
               !openField
                   ? PayButton(
-                      title: S.of(context).payCustomCostBtnTitle,
+                      title: context.l10n.payCustomCostBtnTitle,
                       onTap: () {
                         if (widget.orderMeals.isEmpty) {
                           setState(() {
@@ -198,7 +198,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                       ],
                     ),
               PayButton(
-                title: S.of(context).payZeroCostBtnTitle,
+                title: context.l10n.payZeroCostBtnTitle,
                 onTap: () {
                   if (widget.orderMeals.isEmpty) {
                     setState(() {
@@ -221,7 +221,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(
-                S.of(context).chooseMealsValidation,
+                context.l10n.chooseMealsValidation,
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: 14,
@@ -233,7 +233,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(
-                S.of(context).choosePayOptionValidation,
+                context.l10n.choosePayOptionValidation,
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: 14,
@@ -274,7 +274,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                             }
                             context.read<OrderCubit>().nextMember();
                           },
-                          title: S.of(context).order_confirmed,
+                          title: context.l10n.order_confirmed,
                           color: AppColors.secondaryColor,
                         )
                       : PrimaryButton(
@@ -298,7 +298,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                             }
                             context.read<OrderCubit>().nextMember();
                           },
-                          title: S.of(context).next,
+                          title: context.l10n.next,
                           color: AppColors.primaryColor,
                         ),
                 ),
@@ -310,7 +310,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                       onTap: () {
                         context.read<OrderCubit>().previousMember();
                       },
-                      title: S.of(context).back,
+                      title: context.l10n.back,
                       color: AppColors.secondaryColor.withAlpha(50),
                       textColor: AppColors.primaryColor,
                     ),

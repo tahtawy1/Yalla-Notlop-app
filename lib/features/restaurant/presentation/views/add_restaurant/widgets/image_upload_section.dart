@@ -2,7 +2,7 @@ import 'package:dashed_border/dashed_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
 
@@ -24,7 +24,7 @@ class ImageUploadSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          S.of(context).restaurantImage,
+          context.l10n.restaurantImage,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w800,
@@ -68,8 +68,8 @@ class ImageUploadSection extends StatelessWidget {
                           SizedBox(height: 6),
                           Text(
                             context.read<AddRestaurantCubit>().image != null
-                                ? S.of(context).restaurantImageAdded
-                                : S.of(context).restaurantUploadHint,
+                                ? context.l10n.restaurantImageAdded
+                                : context.l10n.restaurantUploadHint,
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -137,7 +137,7 @@ class ImageUploadSection extends StatelessWidget {
         ),
         SizedBox(height: 8),
         Text(
-          S.of(context).uploadImageOrSelectExisting,
+          context.l10n.uploadImageOrSelectExisting,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             color: AppColors.restaurantFieldHint,
@@ -145,7 +145,7 @@ class ImageUploadSection extends StatelessWidget {
         ),
         SizedBox(height: 6),
         Text(
-          S.of(context).uploadedImagePriorityWarning,
+          context.l10n.uploadedImagePriorityWarning,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w400,

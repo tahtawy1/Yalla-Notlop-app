@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/restaurant_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class RestaurantList extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Text(
-            S.of(context).noRestaurantsAvailable,
+            context.l10n.noRestaurantsAvailable,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -41,7 +42,7 @@ class RestaurantList extends StatelessWidget {
           restaurant: restaurant,
           onCardTap: () async {
             final result = await context.push(
-              '/restaurant-management',
+              AppRoutes.restaurantManagement,
               extra: restaurant,
             );
             if (result == true) {
@@ -51,7 +52,7 @@ class RestaurantList extends StatelessWidget {
             }
           },
           onStartOrderTap: () {
-            context.push('/members', extra: restaurant);
+            context.push(AppRoutes.members, extra: restaurant);
           },
         );
       },

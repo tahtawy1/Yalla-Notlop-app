@@ -1,11 +1,11 @@
 import 'package:yalla_notlop_app/features/restaurant/data/repos/meal_repo/meal_repo.dart';
 
 import 'package:dartz/dartz.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/error/app_failure.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/services/restaurant_hive_service.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class MealRepoImp implements MealRepo {
   final RestaurantHiveService hiveService;

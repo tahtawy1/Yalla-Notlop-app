@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/order_model.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/order/widgets/summary_and_actions.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/shared/widgets/app_logo.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -30,7 +31,7 @@ class FinishOrderView extends StatelessWidget {
             elevation: 0,
             title: const AppLogo(),
             centerTitle: true,
-            leading: CloseButton(onPressed: () => context.go('/home')),
+            leading: CloseButton(onPressed: () => context.go(AppRoutes.home)),
           ),
           body: SafeArea(
             child: Column(
@@ -55,7 +56,7 @@ class FinishOrderView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        S.of(context).order_confirmed,
+                        context.l10n.order_confirmed,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 26,
@@ -65,7 +66,7 @@ class FinishOrderView extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        S.of(context).kitchen_preparing,
+                        context.l10n.kitchen_preparing,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
@@ -78,7 +79,7 @@ class FinishOrderView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            S.of(context).kitchen_order,
+                            context.l10n.kitchen_order,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class FinishOrderView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Text(
-                              S.of(context).grouped,
+                              context.l10n.grouped,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -161,7 +162,7 @@ class FinishOrderView extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                       Text(
-                        S.of(context).per_person_details,
+                        context.l10n.per_person_details,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -196,18 +197,18 @@ class FinishOrderView extends StatelessWidget {
     bool owes = false;
 
     if (diff == 0 && memberCost >= 0) {
-      statusText = S.of(context).settled;
+      statusText = context.l10n.settled;
       statusColor = Colors.green.shade700;
       badge = const Icon(Icons.check_circle, color: Colors.green, size: 16);
     } else if (diff < 0) {
       owes = true;
       statusText =
-          '${S.of(context).owes} ${diff.abs().toStringAsFixed(0)} ${S.of(context).meal_price_suffix}';
+          '${context.l10n.owes} ${diff.abs().toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
       statusColor = AppColors.dangerColor;
       badge = const Icon(Icons.error, color: AppColors.dangerColor, size: 16);
     } else {
       statusText =
-          '${S.of(context).overpaid} ${diff.toStringAsFixed(0)} ${S.of(context).meal_price_suffix}';
+          '${context.l10n.overpaid} ${diff.toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
       statusColor = Colors.green.shade700;
       isPayer = true;
     }
@@ -330,7 +331,7 @@ class FinishOrderView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${double.parse(e.key.price) * e.value} ${S.of(context).mealPriceSuffix}',
+                        '${double.parse(e.key.price) * e.value} ${context.l10n.mealPriceSuffix}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -343,7 +344,7 @@ class FinishOrderView extends StatelessWidget {
               ),
             ] else ...[
               Text(
-                S.of(context).no_orders,
+                context.l10n.no_orders,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
@@ -358,7 +359,7 @@ class FinishOrderView extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: '${S.of(context).paid}: ',
+                        text: '${context.l10n.paid}: ',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -368,7 +369,7 @@ class FinishOrderView extends StatelessWidget {
                       ),
                       TextSpan(
                         text:
-                            '${member.payedAmount == member.payedAmount?.toInt() ? member.payedAmount?.toInt() : member.payedAmount?.toStringAsFixed(2)} ${S.of(context).mealPriceSuffix}',
+                            '${member.payedAmount == member.payedAmount?.toInt() ? member.payedAmount?.toInt() : member.payedAmount?.toStringAsFixed(2)} ${context.l10n.mealPriceSuffix}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,

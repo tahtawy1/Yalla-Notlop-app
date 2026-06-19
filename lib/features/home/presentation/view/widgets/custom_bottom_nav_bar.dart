@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -31,19 +31,19 @@ class CustomBottomNavBar extends StatelessWidget {
           children: [
             _buildNavItem(
               icon: Icons.home_rounded,
-              label: S.of(context).home,
+              label: context.l10n.home,
 
               index: 0,
             ),
             _buildNavItem(
               icon: Icons.history_rounded,
-              label: S.of(context).history,
+              label: context.l10n.history,
 
               index: 1,
             ),
             _buildNavItem(
               icon: Icons.category_rounded,
-              label: S.of(context).orders,
+              label: context.l10n.orders,
               index: 2,
             ),
           ],

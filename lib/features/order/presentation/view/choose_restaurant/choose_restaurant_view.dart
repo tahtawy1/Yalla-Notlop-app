@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/choose_restaurant/widgets/restaurants_list.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/choose_restaurant_cubit/choose_restaurant_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class ChooseRestaurantView extends StatelessWidget {
   const ChooseRestaurantView({super.key});
@@ -17,7 +18,7 @@ class ChooseRestaurantView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).chooseRestaurantTitle,
+          context.l10n.chooseRestaurantTitle,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
@@ -59,7 +60,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
       children: [
         SizedBox(height: 12),
         Text(
-          S.of(context).chooseRestaurantTitle2,
+          context.l10n.chooseRestaurantTitle2,
           style: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w900,
@@ -68,7 +69,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
         ),
         SizedBox(height: 8),
         Text(
-          S.of(context).chooseRestaurantSubTitle,
+          context.l10n.chooseRestaurantSubTitle,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -90,7 +91,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
                   child: Padding(
                     padding: EdgeInsets.all(40),
                     child: Text(
-                      S.of(context).noRestaurantsAvailable,
+                      context.l10n.noRestaurantsAvailable,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -118,7 +119,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
         if (showRestaurantValidation &&
             widget.chooseRestaurantCubit.selectedRestaurant == null)
           Text(
-            S.of(context).selectRestaurantValidation,
+            context.l10n.selectRestaurantValidation,
             style: TextStyle(
               color: Colors.red,
               fontSize: 14,
@@ -136,11 +137,11 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
                 return;
               }
               context.push(
-                '/members',
+                AppRoutes.members,
                 extra: widget.chooseRestaurantCubit.selectedRestaurant,
               );
             },
-            title: S.of(context).next,
+            title: context.l10n.next,
             color: AppColors.primaryColor,
             fontSize: 18,
             postfixIcon: context.read<LocalizationCubit>().isRtl()

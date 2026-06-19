@@ -34,7 +34,7 @@ class MemberRepoImp implements MemberRepo {
     try {
       final result = hiveService.getMembers();
       if (result.isEmpty) {
-        return left(AppFailure(S.current.memberGetEmpty));
+        return left(AppFailure(S.current.noMembers));
       }
       return right(result);
     } catch (e) {

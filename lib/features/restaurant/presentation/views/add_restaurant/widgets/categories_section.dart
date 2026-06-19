@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_category_dialog.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_category_button.dart';
@@ -32,7 +32,7 @@ class CategoriesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          HeaderText(title: S.of(context).categories),
+          HeaderText(title: context.l10n.categories),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
@@ -71,7 +71,7 @@ class CategoriesSection extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 8.0, right: 20),
               child: Text(
-                S.of(context).selectCategoryValidation,
+                context.l10n.selectCategoryValidation,
                 style: TextStyle(color: Colors.red, fontSize: 12),
               ),
             ),

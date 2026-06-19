@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/action_button.dart';
 import 'package:yalla_notlop_app/shared/widgets/mini_field.dart';
@@ -49,7 +49,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                     fontFamily: 'Cairo',
                   ),
                   children: [
-                    TextSpan(text: S.of(context).categoryNameLabel),
+                    TextSpan(text: context.l10n.categories),
                     const TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.secondaryColor),
@@ -59,14 +59,14 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
               ),
               SizedBox(height: 8),
               MiniField(
-                hintText: S.of(context).categoryNameHint,
+                hintText: context.l10n.addCategory,
                 controller: widget.categoryNameController,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return S.of(context).enterNameValidation;
+                    return context.l10n.enterNameValidation;
                   }
                   if (widget.existingCategories.contains(value.trim())) {
-                    return S.of(context).categoryAlreadyExists;
+                    return context.l10n.categoryAlreadyExists;
                   }
                   return null;
                 },
@@ -75,7 +75,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
               Row(
                 children: [
                   ActionButton(
-                    title: S.of(context).save,
+                    title: context.l10n.save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveCategory();
@@ -86,7 +86,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                   ),
                   SizedBox(width: 20),
                   ActionButton(
-                    title: S.of(context).cancel,
+                    title: context.l10n.cancel,
                     onTap: () {
                       formKey.currentState!.reset();
                       widget.categoryNameController.clear();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class CancelButton extends StatelessWidget {
@@ -22,7 +22,7 @@ class CancelButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
         child: Text(
-          S.of(context).cancelOperation,
+          context.l10n.cancelOperation,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w800,

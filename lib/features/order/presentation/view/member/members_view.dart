@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/utils/app_snack_bar.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/member/widgets/add_member_form.dart';
@@ -10,7 +12,6 @@ import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cu
 import 'package:yalla_notlop_app/core/services/service_locator.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/shared/widgets/app_logo.dart';
 
 class MembersView extends StatefulWidget {
@@ -51,7 +52,7 @@ class _MembersViewState extends State<MembersView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    S.of(context).membersViewSubTitle,
+                    context.l10n.membersViewSubTitle,
                     style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.w900,
@@ -60,7 +61,7 @@ class _MembersViewState extends State<MembersView> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    S.of(context).membersViewDiscription,
+                    context.l10n.membersViewDiscription,
                     style: TextStyle(
                       fontSize: 14,
                       color: AppColors.restaurantTextMuted,
@@ -70,7 +71,7 @@ class _MembersViewState extends State<MembersView> {
                   AddMemberForm(),
                   SizedBox(height: 26),
                   Text(
-                    S.of(context).members,
+                    context.l10n.members,
                     style: TextStyle(
                       color: AppColors.splashTitleColor,
                       fontSize: 18,
@@ -96,7 +97,7 @@ class _MembersViewState extends State<MembersView> {
                           return Expanded(
                             child: Center(
                               child: Text(
-                                S.of(context).noMembers,
+                                context.l10n.noMembers,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -118,7 +119,7 @@ class _MembersViewState extends State<MembersView> {
                   if (state is ReadyToStart) {
                     _orderCubit.getMembers(state.members);
                     context.push(
-                      '/pass-phone-view',
+                      AppRoutes.passPhoneView,
                       extra: {
                         'members': state.members,
                         'restaurant': widget.restaurant,
@@ -144,7 +145,7 @@ class _MembersViewState extends State<MembersView> {
                       onTap: () {
                         context.read<MemberCubit>().checkButtonState(context);
                       },
-                      title: S.of(context).passButtonTitle,
+                      title: context.l10n.passButtonTitle,
                       prefixIcon: Icons.cell_tower_outlined,
                       color: AppColors.primaryColor,
                       radius: 32,
@@ -161,4 +162,3 @@ class _MembersViewState extends State<MembersView> {
     );
   }
 }
-

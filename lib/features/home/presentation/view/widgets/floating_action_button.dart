@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class FAButton extends StatelessWidget {
@@ -10,7 +11,7 @@ class FAButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push('/choose-restaurant-view');
+        context.push(AppRoutes.chooseRestaurantView);
       },
       borderRadius: BorderRadius.circular(12),
       child: Container(
@@ -33,7 +34,7 @@ class FAButton extends StatelessWidget {
             SizedBox(width: 4),
             Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
             Text(
-              S.of(context).orderNow,
+              context.l10n.orderNow,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

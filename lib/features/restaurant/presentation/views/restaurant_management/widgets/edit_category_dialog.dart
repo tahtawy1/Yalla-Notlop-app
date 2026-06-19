@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/manage_restaurant_cubit/manage_restaurant_cubit.dart';
@@ -51,9 +51,9 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           );
         }
         if (state is DeleteCategorySuccess) {
-           ScaffoldMessenger.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(S.of(context).categoryDeletedSuccess),
+              content: Text(context.l10n.categoryDeletedSuccess),
               backgroundColor: Colors.green,
             ),
           );
@@ -97,7 +97,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                 Row(
                   children: [
                     ActionButton(
-                      title: S.of(context).save,
+                      title: context.l10n.save,
                       onTap: () {
                         widget.onSaveCategory(selectedCategory);
                         Navigator.pop(context);
@@ -106,7 +106,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                     ),
                     SizedBox(width: 20),
                     ActionButton(
-                      title: S.of(context).cancel,
+                      title: context.l10n.cancel,
                       onTap: () => Navigator.pop(context),
                       color: AppColors.secondaryColor,
                     ),

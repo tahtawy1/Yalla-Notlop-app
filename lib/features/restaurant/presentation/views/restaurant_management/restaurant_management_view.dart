@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -59,7 +59,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                       ? state.errMessage
                       : state is DeleteRestaurantFailure
                       ? state.errMessage
-                      : S.of(context).genericError,
+                      : context.l10n.genericError,
                 ),
                 backgroundColor: Colors.red,
               ),
@@ -109,7 +109,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
               centerTitle: true,
               automaticallyImplyLeading: false,
               title: Text(
-                S.of(context).restaurantManagement,
+                context.l10n.restaurantManagement,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
@@ -129,8 +129,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                   RestaurantHeroCard(
                     restaurantName: cubit.name ?? '',
                     categoryName:
-                        cubit.selectedCategory?.name ??
-                        S.of(context).noCategory,
+                        cubit.selectedCategory?.name ?? context.l10n.noCategory,
                     imagePath: cubit.image?.path ?? cubit.imagePath,
                     onEditName: () {
                       showDialog(
@@ -162,7 +161,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                   ),
                   SizedBox(height: 24),
                   PrimaryButton(
-                    title: S.of(context).saveChanges,
+                    title: context.l10n.saveChanges,
                     postfixIcon: Icons.save_rounded,
                     color: AppColors.primaryColor,
                     onTap: () => cubit.saveUpdatedRestaurant(),
@@ -220,12 +219,12 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                     onTap: () {
                       ConfirmDialog.show(
                         context,
-                        title: S.of(context).deleteRestaurantTitle,
-                        message: S.of(context).deleteRestaurantConfirmation,
-                        confirmText: S.of(context).delete,
+                        title: context.l10n.deleteRestaurantTitle,
+                        message: context.l10n.deleteRestaurantConfirmation,
+                        confirmText: context.l10n.delete,
                         onConfirm: () =>
                             cubit.deleteRestaurant(cubit.originalRestaurant),
-                        cancelText: S.of(context).cancel,
+                        cancelText: context.l10n.cancel,
                       );
                     },
                   ),

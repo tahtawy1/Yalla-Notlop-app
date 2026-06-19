@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yalla_notlop_app/core/constants/app_routes.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/order_model.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/order/widgets/order_bill_card.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/primary_button.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 
 class SummaryAndActions extends StatelessWidget {
   const SummaryAndActions({
@@ -49,7 +50,7 @@ class SummaryAndActions extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    S.of(context).collected,
+                    context.l10n.collected,
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
@@ -57,7 +58,7 @@ class SummaryAndActions extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${order.totalPayed.toStringAsFixed(0)} ${S.of(context).mealPriceSuffix}',
+                    '${order.totalPayed.toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -70,7 +71,7 @@ class SummaryAndActions extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    S.of(context).total,
+                    context.l10n.total,
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
@@ -78,7 +79,7 @@ class SummaryAndActions extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${order.totalAmount.toStringAsFixed(0)} ${S.of(context).mealPriceSuffix}',
+                    '${order.totalAmount.toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}',
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 20,
@@ -143,8 +144,8 @@ class SummaryAndActions extends StatelessWidget {
                       await cubit.shareOrder(imageBytes);
                     },
                     title: state is ShareOrderLoading
-                        ? S.of(context).sharing_loading
-                        : S.of(context).share_order,
+                        ? context.l10n.sharing_loading
+                        : context.l10n.share_order,
                     color: AppColors.primaryColor,
                   ),
                 ),
@@ -155,9 +156,9 @@ class SummaryAndActions extends StatelessWidget {
                   // height: 40,
                   child: PrimaryButton(
                     onTap: () {
-                      context.go('/home');
+                      context.go(AppRoutes.home);
                     },
-                    title: S.of(context).back_home,
+                    title: context.l10n.back_home,
                     textColor: AppColors.primaryColor,
                     color: AppColors.secondaryColor.withAlpha(50),
                   ),

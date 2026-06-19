@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:yalla_notlop_app/core/constants/hive_boxes.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/data/repos/member_repo/member_repo.dart';
@@ -27,12 +28,12 @@ final getIt = GetIt.instance;
 
 Future<void> setupLocators() async {
   getIt.registerLazySingleton(
-    () => Hive.box<RestaurantModel>("restaurantsBox"),
+    () => Hive.box<RestaurantModel>(HiveBoxes.restaurantsBox),
   );
 
-  getIt.registerLazySingleton(() => Hive.box<CategoryModel>("categoriesBox"));
-  getIt.registerLazySingleton(() => Hive.box<MemberModel>("membersBox"));
-  getIt.registerLazySingleton(() => Hive.box<OrderModel>("ordersBox"));
+  getIt.registerLazySingleton(() => Hive.box<CategoryModel>(HiveBoxes.categoriesBox));
+  getIt.registerLazySingleton(() => Hive.box<MemberModel>(HiveBoxes.membersBox));
+  getIt.registerLazySingleton(() => Hive.box<OrderModel>(HiveBoxes.ordersBox));
 
   getIt.registerLazySingleton(
     () => RestaurantHiveService(restaurantsBox: getIt(), categoryBox: getIt()),

@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:yalla_notlop_app/generated/l10n.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/meal_repo/meal_repo.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo.dart';
+import 'package:yalla_notlop_app/generated/l10n.dart';
 
 part 'manage_restaurant_state.dart';
 
@@ -60,7 +60,11 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
         emit(SaveUpdatedRestaurantFailure(errMessage: failure.errMessage));
       },
       (r) {
-        emit(SaveUpdatedRestaurantSuccess(message: S.current.restaurantUpdatedSuccess));
+        emit(
+          SaveUpdatedRestaurantSuccess(
+            message: S.current.restaurantUpdatedSuccess,
+          ),
+        );
       },
     );
   }
@@ -173,7 +177,9 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
           emit(DeleteRestaurantFailure(errMessage: failure.errMessage)),
       (r) {
         _reset();
-        emit(DeleteRestaurantSuccess(message: S.current.restaurantDeletedSuccess));
+        emit(
+          DeleteRestaurantSuccess(message: S.current.restaurantDeletedSuccess),
+        );
       },
     );
   }

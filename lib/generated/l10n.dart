@@ -114,10 +114,10 @@ class S {
     );
   }
 
-  /// `Add a new restaurant to 'Yalla Notlob' and start organizing group orders with your friends.`
+  /// `Add a new restaurant to the 'Yalla Notlob' app and start organizing group orders with your friends.`
   String get addRestaurantSubtitle {
     return Intl.message(
-      'Add a new restaurant to \'Yalla Notlob\' and start organizing group orders with your friends.',
+      'Add a new restaurant to the \'Yalla Notlob\' app and start organizing group orders with your friends.',
       name: 'addRestaurantSubtitle',
       desc: '',
       args: [],
@@ -164,10 +164,10 @@ class S {
     );
   }
 
-  /// `Cannot delete the category because restaurants are linked to it`
+  /// `This category cannot be deleted because it has linked restaurants`
   String get cannotDeleteCategoryWithRestaurants {
     return Intl.message(
-      'Cannot delete the category because restaurants are linked to it',
+      'This category cannot be deleted because it has linked restaurants',
       name: 'cannotDeleteCategoryWithRestaurants',
       desc: '',
       args: [],
@@ -199,16 +199,6 @@ class S {
     );
   }
 
-  /// `Category deleted successfully`
-  String get categoryDeletedSuccess {
-    return Intl.message(
-      'Category deleted successfully',
-      name: 'categoryDeletedSuccess',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Fast Food`
   String get fastFoodCategory {
     return Intl.message(
@@ -219,31 +209,21 @@ class S {
     );
   }
 
-  /// `Enter category name`
-  String get categoryNameHint {
-    return Intl.message(
-      'Enter category name',
-      name: 'categoryNameHint',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Category Name`
-  String get categoryNameLabel {
-    return Intl.message(
-      'Category Name',
-      name: 'categoryNameLabel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Pizza & Pasta`
   String get pizzaCategory {
     return Intl.message(
       'Pizza & Pasta',
       name: 'pizzaCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category deleted successfully`
+  String get categoryDeletedSuccess {
+    return Intl.message(
+      'Category deleted successfully',
+      name: 'categoryDeletedSuccess',
       desc: '',
       args: [],
     );
@@ -294,10 +274,10 @@ class S {
     );
   }
 
-  /// `Delete Restaurant Permanently`
+  /// `Permanently Delete Restaurant`
   String get deleteRestaurantPermanently {
     return Intl.message(
-      'Delete Restaurant Permanently',
+      'Permanently Delete Restaurant',
       name: 'deleteRestaurantPermanently',
       desc: '',
       args: [],
@@ -314,10 +294,10 @@ class S {
     );
   }
 
-  /// `This action will permanently delete all restaurant-related data.`
+  /// `This action will permanently remove all restaurant data.`
   String get deleteRestaurantWarning {
     return Intl.message(
-      'This action will permanently delete all restaurant-related data.',
+      'This action will permanently remove all restaurant data.',
       name: 'deleteRestaurantWarning',
       desc: '',
       args: [],
@@ -349,10 +329,10 @@ class S {
     return Intl.message('Your Friends', name: 'friends', desc: '', args: []);
   }
 
-  /// `An error occurred`
+  /// `An unexpected error occurred`
   String get genericError {
     return Intl.message(
-      'An error occurred',
+      'An unexpected error occurred',
       name: 'genericError',
       desc: '',
       args: [],
@@ -389,10 +369,10 @@ class S {
     );
   }
 
-  /// `Choose a restaurant to start your group order.`
+  /// `Choose a restaurant to start your group order`
   String get homeSubtitle {
     return Intl.message(
-      'Choose a restaurant to start your group order.',
+      'Choose a restaurant to start your group order',
       name: 'homeSubtitle',
       desc: '',
       args: [],
@@ -417,11 +397,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Meal`
-  String get mealCount {
-    return Intl.message('Meal', name: 'mealCount', desc: '', args: []);
   }
 
   /// `Enter meal name`
@@ -469,9 +444,9 @@ class S {
     return Intl.message('EGP', name: 'mealPriceSuffix', desc: '', args: []);
   }
 
-  /// `Meals`
-  String get meals {
-    return Intl.message('Meals', name: 'meals', desc: '', args: []);
+  /// `Meal`
+  String get meal {
+    return Intl.message('Meal', name: 'meal', desc: '', args: []);
   }
 
   /// `Meals List`
@@ -484,10 +459,10 @@ class S {
     );
   }
 
-  /// `Minimum order 5 EGP`
+  /// `Minimum order is 5 EGP`
   String get minimumOrderFallback {
     return Intl.message(
-      'Minimum order 5 EGP',
+      'Minimum order is 5 EGP',
       name: 'minimumOrderFallback',
       desc: '',
       args: [],
@@ -549,10 +524,10 @@ class S {
     );
   }
 
-  /// `Priority will be given to the uploaded image!`
+  /// `Uploaded image will take priority`
   String get uploadedImagePriorityWarning {
     return Intl.message(
-      'Priority will be given to the uploaded image!',
+      'Uploaded image will take priority',
       name: 'uploadedImagePriorityWarning',
       desc: '',
       args: [],
@@ -604,16 +579,6 @@ class S {
     return Intl.message(
       'Restaurant Management',
       name: 'restaurantManagement',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Example: Al Safha Restaurant`
-  String get restaurantNameExample {
-    return Intl.message(
-      'Example: Al Safha Restaurant',
-      name: 'restaurantNameExample',
       desc: '',
       args: [],
     );
@@ -774,35 +739,35 @@ class S {
     );
   }
 
-  /// `Upload an image from your device or choose from the available images`
+  /// `Upload an image from your device or choose from available images`
   String get uploadImageOrSelectExisting {
     return Intl.message(
-      'Upload an image from your device or choose from the available images',
+      'Upload an image from your device or choose from available images',
       name: 'uploadImageOrSelectExisting',
       desc: '',
       args: [],
     );
   }
 
-  /// `members`
+  /// `Members`
   String get members {
-    return Intl.message('members', name: 'members', desc: '', args: []);
+    return Intl.message('Members', name: 'members', desc: '', args: []);
   }
 
-  /// `Who is eating with you?`
+  /// `Who will join your meal?`
   String get membersViewSubTitle {
     return Intl.message(
-      'Who is eating with you?',
+      'Who will join your meal?',
       name: 'membersViewSubTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Gather your friends and we'll take care of the rest.`
+  /// `Gather your friends and we’ll take care of the rest.`
   String get membersViewDiscription {
     return Intl.message(
-      'Gather your friends and we\'ll take care of the rest.',
+      'Gather your friends and we’ll take care of the rest.',
       name: 'membersViewDiscription',
       desc: '',
       args: [],
@@ -849,10 +814,10 @@ class S {
     );
   }
 
-  /// `You cannot continue until at least 2 members are added`
+  /// `You need at least 2 members to continue`
   String get noEnoughMembersWarning {
     return Intl.message(
-      'You cannot continue until at least 2 members are added',
+      'You need at least 2 members to continue',
       name: 'noEnoughMembersWarning',
       desc: '',
       args: [],
@@ -869,20 +834,20 @@ class S {
     );
   }
 
-  /// `Let's order food`
+  /// `Let’s order food`
   String get chooseRestaurantTitle2 {
     return Intl.message(
-      'Let\'s order food',
+      'Let’s order food',
       name: 'chooseRestaurantTitle2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Select a restaurant to start`
+  /// `Select a restaurant to get started`
   String get chooseRestaurantSubTitle {
     return Intl.message(
-      'Select a restaurant to start',
+      'Select a restaurant to get started',
       name: 'chooseRestaurantSubTitle',
       desc: '',
       args: [],
@@ -914,70 +879,70 @@ class S {
     return Intl.message('Your turn', name: 'yourTurn', desc: '', args: []);
   }
 
-  /// `Choose your favorite meals from the menu.`
+  /// `Choose your favorite meals from the list`
   String get chooseYourFavMeals {
     return Intl.message(
-      'Choose your favorite meals from the menu.',
+      'Choose your favorite meals from the list',
       name: 'chooseYourFavMeals',
       desc: '',
       args: [],
     );
   }
 
-  /// `Full amount`
+  /// `Full Payment`
   String get payFullCostBtnTitle {
     return Intl.message(
-      'Full amount',
+      'Full Payment',
       name: 'payFullCostBtnTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Custom amount`
+  /// `Custom Amount`
   String get payCustomCostBtnTitle {
     return Intl.message(
-      'Custom amount',
+      'Custom Amount',
       name: 'payCustomCostBtnTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Zero (guest)`
+  /// `No Payment (Guest)`
   String get payZeroCostBtnTitle {
     return Intl.message(
-      'Zero (guest)',
+      'No Payment (Guest)',
       name: 'payZeroCostBtnTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Total your order`
+  /// `Your Order Total`
   String get totalYourOrder {
     return Intl.message(
-      'Total your order',
+      'Your Order Total',
       name: 'totalYourOrder',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please choose meals`
+  /// `Please select meals`
   String get chooseMealsValidation {
     return Intl.message(
-      'Please choose meals',
+      'Please select meals',
       name: 'chooseMealsValidation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please choose a payment option`
+  /// `Please choose a payment method`
   String get choosePayOptionValidation {
     return Intl.message(
-      'Please choose a payment option',
+      'Please choose a payment method',
       name: 'choosePayOptionValidation',
       desc: '',
       args: [],
@@ -994,20 +959,20 @@ class S {
     );
   }
 
-  /// `The kitchen is preparing your order.`
+  /// `Your order is being prepared in the kitchen.`
   String get kitchen_preparing {
     return Intl.message(
-      'The kitchen is preparing your order.',
+      'Your order is being prepared in the kitchen.',
       name: 'kitchen_preparing',
       desc: '',
       args: [],
     );
   }
 
-  /// `Kitchen order`
+  /// `Kitchen Order`
   String get kitchen_order {
     return Intl.message(
-      'Kitchen order',
+      'Kitchen Order',
       name: 'kitchen_order',
       desc: '',
       args: [],
@@ -1024,19 +989,19 @@ class S {
     return Intl.message('No orders', name: 'no_orders', desc: '', args: []);
   }
 
-  /// `Per person details`
+  /// `Per Person Details`
   String get per_person_details {
     return Intl.message(
-      'Per person details',
+      'Per Person Details',
       name: 'per_person_details',
       desc: '',
       args: [],
     );
   }
 
-  /// `Share order`
+  /// `Share Order`
   String get share_order {
-    return Intl.message('Share order', name: 'share_order', desc: '', args: []);
+    return Intl.message('Share Order', name: 'share_order', desc: '', args: []);
   }
 
   /// `Preparing...`
@@ -1049,9 +1014,9 @@ class S {
     );
   }
 
-  /// `Back to home`
+  /// `Back to Home`
   String get back_home {
-    return Intl.message('Back to home', name: 'back_home', desc: '', args: []);
+    return Intl.message('Back to Home', name: 'back_home', desc: '', args: []);
   }
 
   /// `Paid`
@@ -1069,11 +1034,6 @@ class S {
     return Intl.message('Total', name: 'total', desc: '', args: []);
   }
 
-  /// `EGP`
-  String get meal_price_suffix {
-    return Intl.message('EGP', name: 'meal_price_suffix', desc: '', args: []);
-  }
-
   /// `Settled`
   String get settled {
     return Intl.message('Settled', name: 'settled', desc: '', args: []);
@@ -1089,20 +1049,20 @@ class S {
     return Intl.message('Overpaid', name: 'overpaid', desc: '', args: []);
   }
 
-  /// `Error adding member`
+  /// `An error occurred while adding the member`
   String get memberAddError {
     return Intl.message(
-      'Error adding member',
+      'An error occurred while adding the member',
       name: 'memberAddError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Error deleting member`
+  /// `An error occurred while deleting the member`
   String get memberDeleteError {
     return Intl.message(
-      'Error deleting member',
+      'An error occurred while deleting the member',
       name: 'memberDeleteError',
       desc: '',
       args: [],
@@ -1119,20 +1079,20 @@ class S {
     );
   }
 
-  /// `Error fetching members`
+  /// `An error occurred while fetching members`
   String get memberGetError {
     return Intl.message(
-      'Error fetching members',
+      'An error occurred while fetching members',
       name: 'memberGetError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Error updating member`
+  /// `An error occurred while updating member data`
   String get memberUpdateError {
     return Intl.message(
-      'Error updating member',
+      'An error occurred while updating member data',
       name: 'memberUpdateError',
       desc: '',
       args: [],
