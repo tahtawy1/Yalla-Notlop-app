@@ -229,6 +229,116 @@ class S {
     );
   }
 
+  /// `Manage Categories`
+  String get manageCategories {
+    return Intl.message(
+      'Manage Categories',
+      name: 'manageCategories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Category`
+  String get editCategory {
+    return Intl.message(
+      'Edit Category',
+      name: 'editCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Category`
+  String get deleteCategoryConfirmationTitle {
+    return Intl.message(
+      'Delete Category',
+      name: 'deleteCategoryConfirmationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this category?`
+  String get deleteCategoryEmptyConfirmationMsg {
+    return Intl.message(
+      'Are you sure you want to delete this category?',
+      name: 'deleteCategoryEmptyConfirmationMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This category has linked restaurants. What do you want to do?`
+  String get deleteCategoryWithRestaurantsMsg {
+    return Intl.message(
+      'This category has linked restaurants. What do you want to do?',
+      name: 'deleteCategoryWithRestaurantsMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Move restaurants to another category`
+  String get moveRestaurantsToAnotherCategory {
+    return Intl.message(
+      'Move restaurants to another category',
+      name: 'moveRestaurantsToAnotherCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete category and all its restaurants`
+  String get deleteAllRestaurantsWithCategory {
+    return Intl.message(
+      'Delete category and all its restaurants',
+      name: 'deleteAllRestaurantsWithCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select target category`
+  String get selectTargetCategory {
+    return Intl.message(
+      'Select target category',
+      name: 'selectTargetCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category updated successfully`
+  String get categoryUpdateSuccess {
+    return Intl.message(
+      'Category updated successfully',
+      name: 'categoryUpdateSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action will permanently delete the category and all its linked restaurants. Are you sure?`
+  String get deleteCategoryWithRestaurantsWarning {
+    return Intl.message(
+      'This action will permanently delete the category and all its linked restaurants. Are you sure?',
+      name: 'deleteCategoryWithRestaurantsWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Linked Restaurants: `
+  String get linkedRestaurants {
+    return Intl.message(
+      'Linked Restaurants: ',
+      name: 'linkedRestaurants',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An error occurred while deleting the category`
   String get deleteCategoryError {
     return Intl.message(
@@ -484,9 +594,14 @@ class S {
     return Intl.message('Orders', name: 'orders', desc: '', args: []);
   }
 
-  /// `No Category`
-  String get noCategory {
-    return Intl.message('No Category', name: 'noCategory', desc: '', args: []);
+  /// `No Categories available`
+  String get noCategoriesAvailable {
+    return Intl.message(
+      'No Categories available',
+      name: 'noCategoriesAvailable',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `No image selected`
@@ -1094,6 +1209,56 @@ class S {
     return Intl.message(
       'An error occurred while updating member data',
       name: 'memberUpdateError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order History`
+  String get orderHistory {
+    return Intl.message(
+      'Order History',
+      name: 'orderHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No orders yet`
+  String get noOrdersYet {
+    return Intl.message(
+      'No orders yet',
+      name: 'noOrdersYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't completed any orders yet. Start an order to see it here.`
+  String get historyEmptyMessage {
+    return Intl.message(
+      'You haven\'t completed any orders yet. Start an order to see it here.',
+      name: 'historyEmptyMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear History`
+  String get clearHistory {
+    return Intl.message(
+      'Clear History',
+      name: 'clearHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order deleted successfully`
+  String get orderDeleted {
+    return Intl.message(
+      'Order deleted successfully',
+      name: 'orderDeleted',
       desc: '',
       args: [],
     );

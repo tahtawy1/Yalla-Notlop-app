@@ -5,6 +5,8 @@ sealed class OrderState {}
 
 final class OrderInitial extends OrderState {}
 
+class OrderLoading extends OrderState {}
+
 class PassToNextMember extends OrderState {}
 
 class PassToPreviousMember extends OrderState {}

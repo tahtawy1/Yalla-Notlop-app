@@ -58,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryDeletedSuccess": MessageLookupByLibrary.simpleMessage(
       "Category deleted successfully",
     ),
+    "categoryUpdateSuccess": MessageLookupByLibrary.simpleMessage(
+      "Category updated successfully",
+    ),
     "chooseMealsValidation": MessageLookupByLibrary.simpleMessage(
       "Please select meals",
     ),
@@ -78,8 +81,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "collected": MessageLookupByLibrary.simpleMessage("Collected"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deleteAllRestaurantsWithCategory": MessageLookupByLibrary.simpleMessage(
+      "Delete category and all its restaurants",
+    ),
+    "deleteCategoryConfirmationTitle": MessageLookupByLibrary.simpleMessage(
+      "Delete Category",
+    ),
+    "deleteCategoryEmptyConfirmationMsg": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this category?",
+    ),
     "deleteCategoryError": MessageLookupByLibrary.simpleMessage(
       "An error occurred while deleting the category",
+    ),
+    "deleteCategoryWithRestaurantsMsg": MessageLookupByLibrary.simpleMessage(
+      "This category has linked restaurants. What do you want to do?",
+    ),
+    "deleteCategoryWithRestaurantsWarning": MessageLookupByLibrary.simpleMessage(
+      "This action will permanently delete the category and all its linked restaurants. Are you sure?",
     ),
     "deleteMealError": MessageLookupByLibrary.simpleMessage(
       "An error occurred while deleting the meal",
@@ -99,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteRestaurantWarning": MessageLookupByLibrary.simpleMessage(
       "This action will permanently remove all restaurant data.",
     ),
+    "editCategory": MessageLookupByLibrary.simpleMessage("Edit Category"),
     "editRestaurantName": MessageLookupByLibrary.simpleMessage(
       "Edit Restaurant Name",
     ),
@@ -132,6 +151,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "kitchen_order": MessageLookupByLibrary.simpleMessage("Kitchen Order"),
     "kitchen_preparing": MessageLookupByLibrary.simpleMessage(
       "Your order is being prepared in the kitchen.",
+    ),
+    "linkedRestaurants": MessageLookupByLibrary.simpleMessage(
+      "Linked Restaurants: ",
+    ),
+    "manageCategories": MessageLookupByLibrary.simpleMessage(
+      "Manage Categories",
     ),
     "meal": MessageLookupByLibrary.simpleMessage("Meal"),
     "mealNameHint": MessageLookupByLibrary.simpleMessage("Enter meal name"),
@@ -170,8 +195,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "minimumOrderFallback": MessageLookupByLibrary.simpleMessage(
       "Minimum order is 5 EGP",
     ),
+    "moveRestaurantsToAnotherCategory": MessageLookupByLibrary.simpleMessage(
+      "Move restaurants to another category",
+    ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
-    "noCategory": MessageLookupByLibrary.simpleMessage("No Category"),
+    "noCategoriesAvailable": MessageLookupByLibrary.simpleMessage(
+      "No Categories available",
+    ),
     "noEnoughMembersWarning": MessageLookupByLibrary.simpleMessage(
       "You need at least 2 members to continue",
     ),
@@ -241,6 +271,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectRestaurantValidation": MessageLookupByLibrary.simpleMessage(
       "Please select a restaurant",
     ),
+    "selectTargetCategory": MessageLookupByLibrary.simpleMessage(
+      "Select target category",
+    ),
     "settled": MessageLookupByLibrary.simpleMessage("Settled"),
     "share_order": MessageLookupByLibrary.simpleMessage("Share Order"),
     "sharing_loading": MessageLookupByLibrary.simpleMessage("Preparing..."),
@@ -273,5 +306,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Uploaded image will take priority",
     ),
     "yourTurn": MessageLookupByLibrary.simpleMessage("Your turn"),
+    "orderHistory": MessageLookupByLibrary.simpleMessage("Order History"),
+    "noOrdersYet": MessageLookupByLibrary.simpleMessage("No orders yet"),
+    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
+      "You haven't completed any orders yet. Start an order to see it here.",
+    ),
+    "clearHistory": MessageLookupByLibrary.simpleMessage("Clear History"),
+    "orderDeleted": MessageLookupByLibrary.simpleMessage("Order deleted successfully"),
   };
 }

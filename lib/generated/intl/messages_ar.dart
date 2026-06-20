@@ -56,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryDeletedSuccess": MessageLookupByLibrary.simpleMessage(
       "تم حذف القسم بنجاح",
     ),
+    "categoryUpdateSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم تحديث القسم بنجاح",
+    ),
     "chooseMealsValidation": MessageLookupByLibrary.simpleMessage(
       "يرجى اختيار الوجبات",
     ),
@@ -76,8 +79,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "collected": MessageLookupByLibrary.simpleMessage("المجموع"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deleteAllRestaurantsWithCategory": MessageLookupByLibrary.simpleMessage(
+      "حذف القسم وجميع مطاعمه",
+    ),
+    "deleteCategoryConfirmationTitle": MessageLookupByLibrary.simpleMessage(
+      "حذف القسم",
+    ),
+    "deleteCategoryEmptyConfirmationMsg": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من حذف هذا القسم؟",
+    ),
     "deleteCategoryError": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ أثناء حذف القسم",
+    ),
+    "deleteCategoryWithRestaurantsMsg": MessageLookupByLibrary.simpleMessage(
+      "هذا القسم مرتبط بمطاعم. ماذا تريد أن تفعل؟",
+    ),
+    "deleteCategoryWithRestaurantsWarning": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا الإجراء إلى حذف القسم وجميع المطاعم المرتبطة به نهائيًا. هل أنت متأكد؟",
     ),
     "deleteMealError": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ أثناء حذف الوجبة",
@@ -95,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteRestaurantWarning": MessageLookupByLibrary.simpleMessage(
       "سيؤدي هذا الإجراء إلى حذف جميع بيانات المطعم بشكل نهائي.",
     ),
+    "editCategory": MessageLookupByLibrary.simpleMessage("تعديل القسم"),
     "editRestaurantName": MessageLookupByLibrary.simpleMessage(
       "تعديل اسم المطعم",
     ),
@@ -127,6 +146,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "kitchen_preparing": MessageLookupByLibrary.simpleMessage(
       "يجري إعداد طلبكم في المطبخ.",
     ),
+    "linkedRestaurants": MessageLookupByLibrary.simpleMessage(
+      "المطاعم المرتبطة: ",
+    ),
+    "manageCategories": MessageLookupByLibrary.simpleMessage("إدارة الأقسام"),
     "meal": MessageLookupByLibrary.simpleMessage("وجبة"),
     "mealNameHint": MessageLookupByLibrary.simpleMessage("أدخل اسم الوجبة"),
     "mealNameLabel": MessageLookupByLibrary.simpleMessage("اسم الوجبة"),
@@ -164,8 +187,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "minimumOrderFallback": MessageLookupByLibrary.simpleMessage(
       "الحد الأدنى للطلب 5 جنيه",
     ),
+    "moveRestaurantsToAnotherCategory": MessageLookupByLibrary.simpleMessage(
+      "نقل المطاعم إلى قسم آخر",
+    ),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
-    "noCategory": MessageLookupByLibrary.simpleMessage("بدون قسم"),
+    "noCategoriesAvailable": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد أقسام متاحة",
+    ),
     "noEnoughMembersWarning": MessageLookupByLibrary.simpleMessage(
       "لا يمكن المتابعة قبل إضافة عضوين على الأقل",
     ),
@@ -231,6 +259,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectRestaurantValidation": MessageLookupByLibrary.simpleMessage(
       "يرجى اختيار مطعم",
     ),
+    "selectTargetCategory": MessageLookupByLibrary.simpleMessage(
+      "اختر القسم المستهدف",
+    ),
     "settled": MessageLookupByLibrary.simpleMessage("تم التسوية"),
     "share_order": MessageLookupByLibrary.simpleMessage("مشاركة الطلب"),
     "sharing_loading": MessageLookupByLibrary.simpleMessage("جارٍ التحضير..."),
@@ -261,5 +292,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "سيتم إعطاء الأولوية للصورة المرفوعة",
     ),
     "yourTurn": MessageLookupByLibrary.simpleMessage("دورك"),
+    "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
+    "noOrdersYet": MessageLookupByLibrary.simpleMessage("لا توجد طلبات بعد"),
+    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
+      "لم تقم بإكمال أي طلبات حتى الآن. ابدأ طلباً لتراه هنا.",
+    ),
+    "clearHistory": MessageLookupByLibrary.simpleMessage("مسح السجل"),
+    "orderDeleted": MessageLookupByLibrary.simpleMessage("تم حذف الطلب بنجاح"),
   };
 }

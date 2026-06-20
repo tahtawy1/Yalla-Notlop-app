@@ -28,6 +28,16 @@ class CategoryRepoImp implements CategoryRepo {
   }) async {
     try {
       await hiveService.updateCategory(category);
+
+      // Cascade update to all restaurants using this category
+      final restaurants = hiveService.getRestaurants();
+      for (var restaurant in restaurants) {
+        if (restaurant.category?.id == category.id) {
+          final updatedRestaurant = restaurant.copyWith(category: category);
+          await hiveService.updateRestaurant(updatedRestaurant);
+        }
+      }
+
       return right(null);
     } catch (e) {
       return Left(AppFailure(S.current.updateCategoryError));

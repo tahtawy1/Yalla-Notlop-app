@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:yalla_notlop_app/core/constants/app_routes.dart';
-import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class FAButton extends StatelessWidget {
-  const FAButton({super.key});
-
+  const FAButton({
+    super.key,
+    required this.onTap,
+    required this.icon,
+    required this.title,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+    this.padding = 0,
+  });
+  final VoidCallback onTap;
+  final IconData icon;
+  final String title;
+  final MainAxisAlignment mainAxisAlignment;
+  final double padding;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.push(AppRoutes.chooseRestaurantView);
-      },
+      onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
         height: 40,
+        padding: EdgeInsetsDirectional.only(start: padding),
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(12),
@@ -28,13 +35,13 @@ class FAButton extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: mainAxisAlignment,
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 4),
-            Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
+            Icon(icon, color: Colors.white, size: 28),
             Text(
-              context.l10n.orderNow,
+              title,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

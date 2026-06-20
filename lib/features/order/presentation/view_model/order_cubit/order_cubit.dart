@@ -8,11 +8,12 @@ import 'package:yalla_notlop_app/features/order/data/models/order_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/order/data/repos/share_repo/share_repo.dart';
+import 'package:yalla_notlop_app/features/order/data/repos/order_repo/order_repo.dart';
 
 part 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {
-  OrderCubit(this.shareRepo) : super(OrderInitial());
+  OrderCubit(this.shareRepo, this.orderRepo) : super(OrderInitial());
   List<MemberModel> members = [];
   int currentIndex = 0;
   double? totalAmount;
@@ -20,6 +21,7 @@ class OrderCubit extends Cubit<OrderState> {
   int? selectedPayOption;
   late OrderModel order;
   final ShareRepo shareRepo;
+  final OrderRepo orderRepo;
 
   void getMembers(List<MemberModel> members) {
     this.members = members;
@@ -27,13 +29,16 @@ class OrderCubit extends Cubit<OrderState> {
     log(this.members.length.toString());
   }
 
-  void nextMember() {
+  Future<void> nextMember() async {
     if (currentIndex < members.length - 1) {
       selectedPayOption = null;
       emit(PassToNextMember());
       currentIndex++;
     } else {
-      emit(FinishTheOrder(orderModel: _buildOrder()));
+      order = _buildOrder();
+      emit(OrderLoading());
+      await orderRepo.saveOrderToHistory(order);
+      emit(FinishTheOrder(orderModel: order));
     }
   }
 

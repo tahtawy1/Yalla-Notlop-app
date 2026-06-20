@@ -23,5 +23,6 @@ Future<void> initApp() async {
   await Hive.openBox<CategoryModel>(HiveBoxes.categoriesBox);
   await Hive.openBox<MemberModel>(HiveBoxes.membersBox);
   await Hive.openBox<OrderModel>(HiveBoxes.ordersBox);
+  await Hive.openBox<OrderModel>(HiveBoxes.orderHistoryBox);
   await setupLocators();
 }

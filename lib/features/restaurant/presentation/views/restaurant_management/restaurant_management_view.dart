@@ -129,7 +129,8 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                   RestaurantHeroCard(
                     restaurantName: cubit.name ?? '',
                     categoryName:
-                        cubit.selectedCategory?.name ?? context.l10n.noCategory,
+                        cubit.selectedCategory?.name ??
+                        context.l10n.noCategoriesAvailable,
                     imagePath: cubit.image?.path ?? cubit.imagePath,
                     onEditName: () {
                       showDialog(

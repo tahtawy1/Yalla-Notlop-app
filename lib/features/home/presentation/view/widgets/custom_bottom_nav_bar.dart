@@ -26,27 +26,31 @@ class CustomBottomNavBar extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(16),
       child: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildNavItem(
-              icon: Icons.home_rounded,
-              label: context.l10n.home,
+        child: AnimatedSwitcher(
+          duration: Duration(milliseconds: 200),
+          child: Row(
+            key: ValueKey(selectedIndex),
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(
+                icon: Icons.home_rounded,
+                label: context.l10n.home,
 
-              index: 0,
-            ),
-            _buildNavItem(
-              icon: Icons.history_rounded,
-              label: context.l10n.history,
+                index: 0,
+              ),
+              _buildNavItem(
+                icon: Icons.category_rounded,
+                label: context.l10n.categories,
+                index: 1,
+              ),
+              _buildNavItem(
+                icon: Icons.history_rounded,
+                label: context.l10n.history,
 
-              index: 1,
-            ),
-            _buildNavItem(
-              icon: Icons.category_rounded,
-              label: context.l10n.orders,
-              index: 2,
-            ),
-          ],
+                index: 2,
+              ),
+            ],
+          ),
         ),
       ),
     );
