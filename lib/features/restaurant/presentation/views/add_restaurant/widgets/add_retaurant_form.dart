@@ -31,6 +31,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
   late AddRestaurantCubit restaurantCubit;
 
   bool showCategoryError = false;
+  bool showMealError = false;
 
   @override
   void initState() {
@@ -144,9 +145,13 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
               builder: (context, state) {
                 return MealsSection(
                   meals: restaurantCubit.meals,
+                  showError: showMealError,
                   mealNameController: mealNameController,
                   mealPriceController: mealPriceController,
-                  onSaveMeal: (meal) => restaurantCubit.addMeal(meal),
+                  onSaveMeal: (meal) {
+                    setState(() => showMealError = false);
+                    restaurantCubit.addMeal(meal);
+                  },
                   onDelete: (meal) => restaurantCubit.removeMeal(meal),
                 );
               },
@@ -170,12 +175,15 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                     onTap: () {
                       final bool isCategorySelected =
                           restaurantCubit.selectedCategory != null;
+                      final bool isMealsAdded =
+                          restaurantCubit.meals.isNotEmpty;
                       final bool isImageSelected =
                           restaurantCubit.image != null ||
                           restaurantCubit.selectedImagePath != null;
                       
                       setState(() {
                         showCategoryError = !isCategorySelected;
+                        showMealError = !isMealsAdded;
                       });
 
                       if (!isImageSelected) {
@@ -188,6 +196,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
 
                       if (formKey.currentState!.validate() &&
                           isCategorySelected &&
+                          isMealsAdded &&
                           isImageSelected) {
                         BlocProvider.of<AddRestaurantCubit>(
                           context,

@@ -4,6 +4,7 @@ import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_meal_dialog.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_meals_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meal_card.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class MealsSection extends StatefulWidget {
   const MealsSection({
@@ -13,8 +14,10 @@ class MealsSection extends StatefulWidget {
     required this.mealPriceController,
     required this.onSaveMeal,
     required this.onDelete,
+    this.showError = false,
   });
   final List<MealModel> meals;
+  final bool showError;
 
   final TextEditingController mealNameController;
   final TextEditingController mealPriceController;
@@ -73,6 +76,14 @@ class _MealsSectionState extends State<MealsSection> {
               ),
             ],
           ),
+          if (widget.showError && widget.meals.isEmpty)
+            Padding(
+              padding: EdgeInsets.only(top: 8.0, right: 20, left: 20),
+              child: Text(
+                context.l10n.addMealValidation,
+                style: TextStyle(color: AppColors.danger, fontSize: 12),
+              ),
+            ),
         ],
       ),
     );

@@ -3,6 +3,7 @@
     "addCategoryError": "An error occurred while adding the category",
     "addMeal": "Add Meal",
     "addMealError": "An error occurred while adding the meal",
+    "addMealValidation": "Please add at least one meal",
     "addMeals": "Add Meals",
     "addRestaurant": "Add Restaurant",
     "addRestaurantError": "An error occurred while adding the restaurant",

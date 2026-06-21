@@ -3,6 +3,7 @@
     "addCategoryError": "حدث خطأ أثناء إضافة القسم",
     "addMeal": "إضافة وجبة",
     "addMealError": "حدث خطأ أثناء إضافة الوجبة",
+    "addMealValidation": "يرجى إضافة وجبة واحدة على الأقل",
     "addMeals": "إضافة وجبات",
     "addRestaurant": "إضافة مطعم",
     "addRestaurantError": "حدث خطأ أثناء إضافة المطعم",
