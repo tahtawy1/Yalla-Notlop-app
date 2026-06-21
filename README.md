@@ -99,7 +99,7 @@ is stored locally using Hive, allowing users to access and manage their data wit
 ## 📱 Screenshots
 
 <p float="left">
-  <img src="assets/screenshots/splash.png" width="200"/>
+  <img src="assets/screenshots/splash.jpg" width="200"/>
   <img src="assets/screenshots/home.png" width="200"/>
   <img src="assets/screenshots/home_empty.png" width="200"/>
 </p>
