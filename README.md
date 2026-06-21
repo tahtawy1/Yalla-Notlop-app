@@ -98,44 +98,42 @@ is stored locally using Hive, allowing users to access and manage their data wit
 
 ## 📱 Screenshots
 
-## 📱 Screenshots
-
 <p float="left">
-  <img src="assets/images/screenshots/splash.png" width="200"/>
-  <img src="assets/images/screenshots/home.png" width="200"/>
-  <img src="assets/images/screenshots/home_empty.png" width="200"/>
+  <img src="assets/screenshots/splash.png" width="200"/>
+  <img src="assets/screenshots/home.png" width="200"/>
+  <img src="assets/screenshots/home_empty.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/categories_view.png" width="200"/>
-  <img src="assets/images/screenshots/choose_restaurant.png" width="200"/>
-  <img src="assets/images/screenshots/restaurant_details.png" width="200"/>
+  <img src="assets/screenshots/categories_view.png" width="200"/>
+  <img src="assets/screenshots/choose_restaurant.png" width="200"/>
+  <img src="assets/screenshots/restaurant_details.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/members.png" width="200"/>
-  <img src="assets/images/screenshots/member_order.png" width="200"/>
-  <img src="assets/images/screenshots/member_order2.png" width="200"/>
+  <img src="assets/screenshots/members.png" width="200"/>
+  <img src="assets/screenshots/member_order.png" width="200"/>
+  <img src="assets/screenshots/member_order2.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/member_order3.png" width="200"/>
-  <img src="assets/images/screenshots/member_order_summary.png" width="200"/>
-  <img src="assets/images/screenshots/order_share.png" width="200"/>
+  <img src="assets/screenshots/member_order3.png" width="200"/>
+  <img src="assets/screenshots/member_order_summary.png" width="200"/>
+  <img src="assets/screenshots/order_share.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/finish_order.png" width="200"/>
-  <img src="assets/images/screenshots/order_history.png" width="200"/>
-  <img src="assets/images/screenshots/add_restaurant.png" width="200"/>
+  <img src="assets/screenshots/finish_order.png" width="200"/>
+  <img src="assets/screenshots/order_history.png" width="200"/>
+  <img src="assets/screenshots/add_restaurant.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/delete_category.png" width="200"/>
-  <img src="assets/images/screenshots/app_drawer.png" width="200"/>
-  <img src="assets/images/screenshots/app_drawer_arabic.png" width="200"/>
+  <img src="assets/screenshots/delete_category.png" width="200"/>
+  <img src="assets/screenshots/app_drawer.png" width="200"/>
+  <img src="assets/screenshots/app_drawer_arabic.png" width="200"/>
 </p>
 
 <p float="left">
-  <img src="assets/images/screenshots/about_us.png" width="200"/>
+  <img src="assets/screenshots/about_us.png" width="200"/>
 </p>
