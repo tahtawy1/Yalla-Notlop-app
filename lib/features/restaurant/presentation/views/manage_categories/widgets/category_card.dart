@@ -22,16 +22,16 @@ class CategoryCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.secondaryColor.withOpacity(0.1),
+            color: AppColors.secondary.withAlpha(2),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
         ],
-        border: Border.all(color: AppColors.restaurantFieldBorder, width: 1),
+        border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -41,12 +41,12 @@ class CategoryCard extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: AppColors.restaurantIconBg,
+                color: AppColors.iconBackground,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Icon(
                 Icons.category_rounded,
-                color: AppColors.primaryColor,
+                color: AppColors.primary,
                 size: 22,
               ),
             ),
@@ -61,7 +61,7 @@ class CategoryCard extends StatelessWidget {
                       fontFamily: 'Cairo',
                       fontWeight: FontWeight.w800,
                       fontSize: 15,
-                      color: AppColors.splashTitleColor,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -70,7 +70,7 @@ class CategoryCard extends StatelessWidget {
                       const Icon(
                         Icons.restaurant_rounded,
                         size: 13,
-                        color: AppColors.restaurantTextMuted,
+                        color: AppColors.textMuted,
                       ),
                       const SizedBox(width: 4),
                       Text(
@@ -78,7 +78,7 @@ class CategoryCard extends StatelessWidget {
                         style: const TextStyle(
                           fontFamily: 'Cairo',
                           fontSize: 12,
-                          color: AppColors.restaurantTextMuted,
+                          color: AppColors.textMuted,
                         ),
                       ),
                     ],
@@ -89,9 +89,9 @@ class CategoryCard extends StatelessWidget {
             IconButton(
               onPressed: onEdit,
               icon: const Icon(Icons.edit_rounded, size: 20),
-              color: AppColors.primaryColor,
+              color: AppColors.primary,
               style: IconButton.styleFrom(
-                backgroundColor: AppColors.restaurantIconBg,
+                backgroundColor: AppColors.iconBackground,
                 minimumSize: const Size(36, 36),
               ),
             ),
@@ -99,7 +99,7 @@ class CategoryCard extends StatelessWidget {
             IconButton(
               onPressed: onDelete,
               icon: const Icon(Icons.delete_rounded, size: 20),
-              color: AppColors.dangerColor,
+              color: AppColors.danger,
               style: IconButton.styleFrom(
                 backgroundColor: AppColors.dangerBackground,
                 minimumSize: const Size(36, 36),

@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -86,6 +85,12 @@ class ManageRestaurantCubit extends Cubit<ManageRestaurantState> {
         emit(PickRestaurantImageSuccess(image: file!));
       },
     );
+  }
+
+  void selectImagePath(String path) {
+    imagePath = path;
+    image = null;
+    emit(ManageRestaurantInitial());
   }
 
   Future<void> addCategory(CategoryModel category) async {

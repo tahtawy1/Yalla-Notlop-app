@@ -21,9 +21,9 @@ class MealChoosingCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       padding: EdgeInsets.all(8),
-      height: 75,
+      // height: 75,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -42,7 +42,7 @@ class MealChoosingCard extends StatelessWidget {
             height: 55,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.primaryColor.withAlpha(25),
+              color: AppColors.primary.withAlpha(25),
             ),
             child: Padding(
               padding: const EdgeInsets.all(3),
@@ -60,7 +60,7 @@ class MealChoosingCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -69,7 +69,7 @@ class MealChoosingCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                 ),
               ],
@@ -91,7 +91,7 @@ class MealChoosingCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               SizedBox(width: 6),

@@ -26,7 +26,7 @@ class OrderHistoryView extends StatelessWidget {
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w800,
               fontSize: 18,
-              color: AppColors.splashTitleColor,
+              color: AppColors.textPrimary,
             ),
           ),
           actions: [
@@ -34,7 +34,10 @@ class OrderHistoryView extends StatelessWidget {
               builder: (context, state) {
                 if (state is OrderHistoryLoaded && state.orders.isNotEmpty) {
                   return IconButton(
-                    icon: const Icon(Icons.delete_sweep_rounded, color: AppColors.dangerColor),
+                    icon: const Icon(
+                      Icons.delete_sweep_rounded,
+                      color: AppColors.danger,
+                    ),
                     tooltip: context.l10n.clearHistory,
                     onPressed: () {
                       _showClearHistoryDialog(context);
@@ -50,7 +53,9 @@ class OrderHistoryView extends StatelessWidget {
           builder: (context, state) {
             if (state is OrderHistoryLoading) {
               return const Center(
-                child: CircularProgressIndicator(color: AppColors.secondaryColor),
+                child: CircularProgressIndicator(
+                  color: AppColors.secondary,
+                ),
               );
             }
             if (state is OrderHistoryEmpty || state is OrderHistoryInitial) {
@@ -83,27 +88,13 @@ class OrderHistoryView extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: 88,
-            height: 88,
-            decoration: BoxDecoration(
-              color: AppColors.restaurantIconBg,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.history_rounded,
-              size: 44,
-              color: AppColors.primaryColor,
-            ),
-          ),
-          const SizedBox(height: 20),
           Text(
             context.l10n.noOrdersYet,
             style: const TextStyle(
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w800,
-              fontSize: 18,
-              color: AppColors.splashTitleColor,
+              fontSize: 16,
+              color: AppColors.emptyState,
             ),
           ),
           const SizedBox(height: 8),
@@ -114,8 +105,8 @@ class OrderHistoryView extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: 'Cairo',
-                fontSize: 13,
-                color: AppColors.restaurantTextMuted,
+                fontSize: 14,
+                color: AppColors.emptyState,
               ),
             ),
           ),
@@ -137,11 +128,8 @@ class OrderHistoryView extends StatelessWidget {
           ),
         ),
         content: Text(
-          context.l10n.deleteRestaurantWarning, // Reusing warning string
-          style: const TextStyle(
-            fontFamily: 'Cairo',
-            fontSize: 14,
-          ),
+          context.l10n.deleteRestaurantWarning,
+          style: const TextStyle(fontFamily: 'Cairo', fontSize: 14),
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         actions: [
@@ -150,7 +138,7 @@ class OrderHistoryView extends StatelessWidget {
             child: Text(
               context.l10n.cancel,
               style: const TextStyle(
-                color: Colors.grey,
+                color: AppColors.emptyState,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -161,7 +149,7 @@ class OrderHistoryView extends StatelessWidget {
               cubit.clearAllHistory();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.dangerColor,
+              backgroundColor: AppColors.danger,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -169,7 +157,7 @@ class OrderHistoryView extends StatelessWidget {
             child: Text(
               context.l10n.delete,
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.surface,
                 fontWeight: FontWeight.bold,
               ),
             ),

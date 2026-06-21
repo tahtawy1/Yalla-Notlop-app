@@ -8,14 +8,14 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: 'Cairo',
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primaryColor,
-      primary: AppColors.primaryColor,
-      error: Colors.red,
+      seedColor: AppColors.primary,
+      primary: AppColors.primary,
+      error: AppColors.danger,
     ),
-    scaffoldBackgroundColor: AppColors.backgroundColor,
+    scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
       centerTitle: true,
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.background,
       elevation: 0,
       foregroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
@@ -24,40 +24,40 @@ class AppTheme {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.restaurantFieldBorder,
+          color: AppColors.border,
           width: 1.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.restaurantFieldBorder,
+          color: AppColors.border,
           width: 1.5,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.secondaryColor,
+          color: AppColors.secondary,
           width: 1.5,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Colors.red, width: 1.5),
+        borderSide: const BorderSide(color: AppColors.danger, width: 1.5),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Colors.red, width: 1.5),
+        borderSide: const BorderSide(color: AppColors.danger, width: 1.5),
       ),
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: AppColors.primaryColor,
+      buttonColor: AppColors.primary,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
     ),
     iconButtonTheme: IconButtonThemeData(
       style: ButtonStyle(
-        iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
+        iconColor: WidgetStatePropertyAll(AppColors.primary),
         shape: WidgetStatePropertyAll(CircleBorder()),
         padding: WidgetStatePropertyAll(EdgeInsets.zero),
       ),

@@ -10,7 +10,7 @@ class ConfirmDialog extends StatelessWidget {
     required this.confirmText,
     required this.onConfirm,
     required this.cancelText,
-    this.confirmColor = AppColors.dangerColor,
+    this.confirmColor = AppColors.danger,
   });
 
   final String title;
@@ -26,7 +26,7 @@ class ConfirmDialog extends StatelessWidget {
     required String message,
     required String confirmText,
     required String cancelText,
-    Color confirmColor = AppColors.dangerColor,
+    Color confirmColor = AppColors.danger,
     required VoidCallback onConfirm,
   }) {
     return showDialog<bool>(
@@ -72,7 +72,7 @@ class ConfirmDialog extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                     fontFamily: 'Cairo',
                   ),
                 ),
@@ -85,7 +85,7 @@ class ConfirmDialog extends StatelessWidget {
             style: const TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w500,
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
               fontFamily: 'Cairo',
             ),
           ),
@@ -96,7 +96,7 @@ class ConfirmDialog extends StatelessWidget {
               ActionButton(
                 title: cancelText,
                 onTap: () => Navigator.pop(context, false),
-                color: AppColors.restaurantTextMuted,
+                color: AppColors.textMuted,
               ),
               ActionButton(
                 title: confirmText,

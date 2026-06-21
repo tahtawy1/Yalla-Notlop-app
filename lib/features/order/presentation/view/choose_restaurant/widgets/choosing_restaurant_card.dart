@@ -28,7 +28,7 @@ class ChoosingRestaurantCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
             width: 2,
-            color: isSelected ? AppColors.primaryColor : Colors.transparent,
+            color: isSelected ? AppColors.primary : Colors.transparent,
           ),
         ),
         child: Stack(
@@ -50,10 +50,7 @@ class ChoosingRestaurantCard extends StatelessWidget {
                               File(restaurant.imagePath!),
                               fit: BoxFit.cover,
                             )
-                    : Image.asset(
-                        AppImageAssets.restaurantDefaultImg,
-                        fit: BoxFit.cover,
-                      ),
+                    : Container(color: AppColors.surfaceSecondary),
               ),
             ),
             Positioned(
@@ -78,7 +75,7 @@ class ChoosingRestaurantCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w800,
-                        color: AppColors.primaryColor,
+                        color: AppColors.primary,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -88,7 +85,7 @@ class ChoosingRestaurantCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.restaurantTextMuted,
+                          color: AppColors.textMuted,
                         ),
                       ),
                   ],

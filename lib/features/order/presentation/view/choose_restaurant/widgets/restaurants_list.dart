@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yalla_notlop_app/features/order/presentation/view/choose_restaurant/choose_restaurant_view.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/choose_restaurant/widgets/choosing_restaurant_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 

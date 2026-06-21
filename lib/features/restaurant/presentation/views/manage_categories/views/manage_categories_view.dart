@@ -50,7 +50,7 @@ class ManageCategoriesBody extends StatelessWidget {
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w800,
               fontSize: 18,
-              color: AppColors.splashTitleColor,
+              color: AppColors.textPrimary,
             ),
           ),
         ),
@@ -70,7 +70,7 @@ class ManageCategoriesBody extends StatelessWidget {
                 state is ManageCategoriesActionLoading) {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: AppColors.secondaryColor,
+                  color: AppColors.secondary,
                 ),
               );
             }
@@ -164,7 +164,7 @@ class _EmptyBody extends StatelessWidget {
         style: const TextStyle(
           fontFamily: 'Cairo',
           fontSize: 16,
-          color: Colors.grey,
+          color: AppColors.emptyState,
           fontWeight: FontWeight.w900,
         ),
       ),
@@ -186,7 +186,7 @@ class _ErrorBody extends StatelessWidget {
           const Icon(
             Icons.error_outline_rounded,
             size: 56,
-            color: AppColors.dangerColor,
+            color: AppColors.danger,
           ),
           const SizedBox(height: 12),
           Text(
@@ -195,7 +195,7 @@ class _ErrorBody extends StatelessWidget {
             style: const TextStyle(
               fontFamily: 'Cairo',
               fontSize: 14,
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
           const SizedBox(height: 20),
@@ -203,14 +203,14 @@ class _ErrorBody extends StatelessWidget {
             onPressed: () =>
                 context.read<ManageCategoriesCubit>().getCategories(),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: AppColors.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
             icon: const Icon(
               Icons.refresh_rounded,
-              color: Colors.white,
+              color: AppColors.surface,
               size: 18,
             ),
             label: Text(
@@ -218,7 +218,7 @@ class _ErrorBody extends StatelessWidget {
               style: const TextStyle(
                 fontFamily: 'Cairo',
                 fontWeight: FontWeight.w700,
-                color: Colors.white,
+                color: AppColors.surface,
               ),
             ),
           ),

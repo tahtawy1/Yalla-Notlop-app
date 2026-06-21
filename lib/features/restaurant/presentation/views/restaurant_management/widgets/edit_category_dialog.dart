@@ -46,7 +46,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errMessage),
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.danger,
             ),
           );
         }
@@ -54,7 +54,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(context.l10n.categoryDeletedSuccess),
-              backgroundColor: Colors.green,
+              backgroundColor: AppColors.success,
             ),
           );
         }
@@ -102,13 +102,13 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                         widget.onSaveCategory(selectedCategory);
                         Navigator.pop(context);
                       },
-                      color: AppColors.primaryColor,
+                      color: AppColors.primary,
                     ),
                     SizedBox(width: 20),
                     ActionButton(
                       title: context.l10n.cancel,
                       onTap: () => Navigator.pop(context),
-                      color: AppColors.secondaryColor,
+                      color: AppColors.secondary,
                     ),
                   ],
                 ),

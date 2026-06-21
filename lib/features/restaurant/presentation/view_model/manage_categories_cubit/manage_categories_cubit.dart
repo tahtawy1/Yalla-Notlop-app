@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/category_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/category_repo/category_repo.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/repos/restaurant_repo/restaurant_repo.dart';
@@ -29,11 +28,16 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
           emit(ManageCategoriesEmpty());
           return;
         }
-        final usageCount = countResult.fold((_) => <String, int>{}, (map) => map);
-        emit(ManageCategoriesLoaded(
-          categories: categories,
-          categoryUsageCount: usageCount,
-        ));
+        final usageCount = countResult.fold(
+          (_) => <String, int>{},
+          (map) => map,
+        );
+        emit(
+          ManageCategoriesLoaded(
+            categories: categories,
+            categoryUsageCount: usageCount,
+          ),
+        );
       },
     );
   }
@@ -49,7 +53,9 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
         (c) => c.name.trim().toLowerCase() == trimmed.toLowerCase(),
       );
       if (isDuplicate) {
-        emit(ManageCategoriesActionError(message: S.current.categoryAlreadyExists));
+        emit(
+          ManageCategoriesActionError(message: S.current.categoryAlreadyExists),
+        );
         return;
       }
     }
@@ -59,7 +65,8 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
       category: CategoryModel(name: trimmed),
     );
     result.fold(
-      (failure) => emit(ManageCategoriesActionError(message: failure.errMessage)),
+      (failure) =>
+          emit(ManageCategoriesActionError(message: failure.errMessage)),
       (_) async {
         emit(ManageCategoriesActionSuccess(message: S.current.addCategory));
         await getCategories();
@@ -75,9 +82,14 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     final updated = category.copyWith(name: trimmed);
     final result = await categoryRepo.updateCategory(category: updated);
     result.fold(
-      (failure) => emit(ManageCategoriesActionError(message: failure.errMessage)),
+      (failure) =>
+          emit(ManageCategoriesActionError(message: failure.errMessage)),
       (_) async {
-        emit(ManageCategoriesActionSuccess(message: S.current.categoryUpdateSuccess));
+        emit(
+          ManageCategoriesActionSuccess(
+            message: S.current.categoryUpdateSuccess,
+          ),
+        );
         await getCategories();
       },
     );
@@ -88,9 +100,14 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     emit(ManageCategoriesActionLoading());
     final result = await categoryRepo.deleteCategory(category: category);
     result.fold(
-      (failure) => emit(ManageCategoriesActionError(message: failure.errMessage)),
+      (failure) =>
+          emit(ManageCategoriesActionError(message: failure.errMessage)),
       (_) async {
-        emit(ManageCategoriesActionSuccess(message: S.current.categoryDeletedSuccess));
+        emit(
+          ManageCategoriesActionSuccess(
+            message: S.current.categoryDeletedSuccess,
+          ),
+        );
         await getCategories();
       },
     );
@@ -107,13 +124,21 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
       newCategory: newCategory,
     );
     await moveResult.fold(
-      (failure) async => emit(ManageCategoriesActionError(message: failure.errMessage)),
+      (failure) async =>
+          emit(ManageCategoriesActionError(message: failure.errMessage)),
       (_) async {
-        final deleteResult = await categoryRepo.deleteCategory(category: oldCategory);
+        final deleteResult = await categoryRepo.deleteCategory(
+          category: oldCategory,
+        );
         deleteResult.fold(
-          (failure) => emit(ManageCategoriesActionError(message: failure.errMessage)),
+          (failure) =>
+              emit(ManageCategoriesActionError(message: failure.errMessage)),
           (_) async {
-            emit(ManageCategoriesActionSuccess(message: S.current.categoryDeletedSuccess));
+            emit(
+              ManageCategoriesActionSuccess(
+                message: S.current.categoryDeletedSuccess,
+              ),
+            );
             await getCategories();
           },
         );
@@ -122,15 +147,22 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
   }
 
   /// Atomically deletes the category and all its linked restaurants.
-  Future<void> forceDeleteCategoryWithRestaurants(CategoryModel category) async {
+  Future<void> forceDeleteCategoryWithRestaurants(
+    CategoryModel category,
+  ) async {
     emit(ManageCategoriesActionLoading());
     final result = await restaurantRepo.forceDeleteCategoryWithRestaurants(
       category: category,
     );
     result.fold(
-      (failure) => emit(ManageCategoriesActionError(message: failure.errMessage)),
+      (failure) =>
+          emit(ManageCategoriesActionError(message: failure.errMessage)),
       (_) async {
-        emit(ManageCategoriesActionSuccess(message: S.current.categoryDeletedSuccess));
+        emit(
+          ManageCategoriesActionSuccess(
+            message: S.current.categoryDeletedSuccess,
+          ),
+        );
         await getCategories();
       },
     );

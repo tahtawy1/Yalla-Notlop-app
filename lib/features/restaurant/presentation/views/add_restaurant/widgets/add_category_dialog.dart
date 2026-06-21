@@ -45,14 +45,14 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                     fontFamily: 'Cairo',
                   ),
                   children: [
                     TextSpan(text: context.l10n.categories),
                     const TextSpan(
                       text: ' *',
-                      style: TextStyle(color: AppColors.secondaryColor),
+                      style: TextStyle(color: AppColors.secondary),
                     ),
                   ],
                 ),
@@ -78,11 +78,14 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                     title: context.l10n.save,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
+                        FocusScope.of(context).unfocus();
                         widget.onSaveCategory();
+                        widget.categoryNameController.clear();
+                        formKey.currentState!.reset();
                         Navigator.pop(context);
                       }
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                   SizedBox(width: 20),
                   ActionButton(
@@ -92,7 +95,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                       widget.categoryNameController.clear();
                       Navigator.pop(context);
                     },
-                    color: AppColors.secondaryColor,
+                    color: AppColors.secondary,
                   ),
                 ],
               ),

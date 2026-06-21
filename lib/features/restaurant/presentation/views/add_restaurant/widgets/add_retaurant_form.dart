@@ -5,7 +5,6 @@ import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/core/utils/app_snack_bar.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/cancel_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/categories_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/meals_section.dart';
@@ -109,6 +108,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                       : () async {
                           await context.read<AddRestaurantCubit>().pickImage();
                         },
+                  hasFileImage: restaurantCubit.image != null,
                   onSelect: (image) {
                     context.read<AddRestaurantCubit>().selectImagePath(
                       imagePath: image,
@@ -165,16 +165,30 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                   return PrimaryButton(
                     title: context.l10n.saveRestaurant,
                     postfixIcon: Icons.save_rounded,
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                     isLoading: isLoading,
                     onTap: () {
                       final bool isCategorySelected =
                           restaurantCubit.selectedCategory != null;
+                      final bool isImageSelected =
+                          restaurantCubit.image != null ||
+                          restaurantCubit.selectedImagePath != null;
+                      
                       setState(() {
                         showCategoryError = !isCategorySelected;
                       });
+
+                      if (!isImageSelected) {
+                        AppSnackBar.showSnackBar(
+                          context,
+                          context.l10n.noImageSelected,
+                          SnackBarType.error,
+                        );
+                      }
+
                       if (formKey.currentState!.validate() &&
-                          isCategorySelected) {
+                          isCategorySelected &&
+                          isImageSelected) {
                         BlocProvider.of<AddRestaurantCubit>(
                           context,
                         ).addRestaurant(name: nameController.text);
@@ -184,8 +198,6 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                 },
               ),
             ),
-            SizedBox(height: 12),
-            CancelButton(),
           ],
         ),
       ),

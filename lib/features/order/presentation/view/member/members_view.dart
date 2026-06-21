@@ -23,8 +23,6 @@ class MembersView extends StatefulWidget {
 }
 
 class _MembersViewState extends State<MembersView> {
-  // يُنشأ الـ Cubit هنا حتى تمتد حياته عبر الـ routes
-  // ولا يُغلق إلا عندما يغادر المستخدم صفحة الأعضاء نهائياً
   late final OrderCubit _orderCubit;
 
   @override
@@ -42,117 +40,116 @@ class _MembersViewState extends State<MembersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(title: AppLogo()),
+      bottomNavigationBar: BlocListener<MemberCubit, MemberState>(
+        listener: (context, state) {
+          if (state is ReadyToStart) {
+            _orderCubit.getMembers(state.members);
+            context.push(
+              AppRoutes.passPhoneView,
+              extra: {
+                'members': state.members,
+                'restaurant': widget.restaurant,
+                'orderCubit': _orderCubit,
+              },
+            );
+          }
+          if (state is NotEnoughMembers) {
+            AppSnackBar.showSnackBar(
+              context,
+              state.message,
+              SnackBarType.error,
+            );
+          }
+        },
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(24, 8, 24, 12),
+            child: SizedBox(
+              height: 52,
+              width: double.infinity,
+              child: PrimaryButton(
+                onTap: () {
+                  context.read<MemberCubit>().checkButtonState(context);
+                },
+                title: context.l10n.passButtonTitle,
+                prefixIcon: Icons.cell_tower_outlined,
+                color: AppColors.primary,
+                radius: 32,
+                fontSize: 18,
+                iconSize: 24,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Stack(
+          padding: const EdgeInsets.only(left: 24, right: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.l10n.membersViewSubTitle,
-                    style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.splashTitleColor,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    context.l10n.membersViewDiscription,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.restaurantTextMuted,
-                    ),
-                  ),
-                  SizedBox(height: 36),
-                  AddMemberForm(),
-                  SizedBox(height: 26),
-                  Text(
-                    context.l10n.members,
-                    style: TextStyle(
-                      color: AppColors.splashTitleColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  BlocBuilder<MemberCubit, MemberState>(
-                    buildWhen: (previous, current) =>
-                        current is GetMembersLoading ||
-                        current is GetMembersSuccess ||
-                        current is GetMembersFailure,
-                    builder: (BuildContext context, MemberState state) {
-                      if (state is MemberInitial ||
-                          state is GetMembersLoading) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      if (state is GetMembersFailure) {
-                        return Center(child: Text(state.errMessage));
-                      }
-                      if (state is GetMembersSuccess) {
-                        if (state.members.isEmpty) {
-                          return Expanded(
-                            child: Center(
-                              child: Text(
-                                context.l10n.noMembers,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.splashTitleColor,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        return MembersList(members: state.members);
-                      }
-                      return const SizedBox();
-                    },
-                  ),
-                ],
+              Text(
+                context.l10n.membersViewSubTitle,
+                style: const TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.w900,
+                  color: AppColors.textPrimary,
+                ),
               ),
-              BlocListener<MemberCubit, MemberState>(
-                listener: (context, state) {
-                  if (state is ReadyToStart) {
-                    _orderCubit.getMembers(state.members);
-                    context.push(
-                      AppRoutes.passPhoneView,
-                      extra: {
-                        'members': state.members,
-                        'restaurant': widget.restaurant,
-                        'orderCubit': _orderCubit,
-                      },
-                    );
-                  }
-                  if (state is NotEnoughMembers) {
-                    AppSnackBar.showSnackBar(
-                      context,
-                      state.message,
-                      SnackBarType.error,
-                    );
-                  }
-                },
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 12),
-                    height: 52,
-                    width: double.infinity,
-                    child: PrimaryButton(
-                      onTap: () {
-                        context.read<MemberCubit>().checkButtonState(context);
-                      },
-                      title: context.l10n.passButtonTitle,
-                      prefixIcon: Icons.cell_tower_outlined,
-                      color: AppColors.primaryColor,
-                      radius: 32,
-                      fontSize: 18,
-                      iconSize: 24,
-                    ),
-                  ),
+              const SizedBox(height: 8),
+              Text(
+                context.l10n.membersViewDiscription,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppColors.textMuted,
+                ),
+              ),
+              const SizedBox(height: 36),
+              const AddMemberForm(),
+              const SizedBox(height: 26),
+              Text(
+                context.l10n.members,
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Expanded(
+                child: BlocBuilder<MemberCubit, MemberState>(
+                  buildWhen: (previous, current) =>
+                      current is GetMembersLoading ||
+                      current is GetMembersSuccess ||
+                      current is GetMembersFailure,
+                  builder: (BuildContext context, MemberState state) {
+                    if (state is MemberInitial || state is GetMembersLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (state is GetMembersFailure) {
+                      return Center(child: Text(state.errMessage));
+                    }
+                    if (state is GetMembersSuccess) {
+                      if (state.members.isEmpty) {
+                        return Center(
+                          child: Text(
+                            context.l10n.noMembers,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textPrimary,
+                            ),
+                          ),
+                        );
+                      }
+                      return SingleChildScrollView(
+                        child: MembersList(members: state.members),
+                      );
+                    }
+                    return const SizedBox();
+                  },
                 ),
               ),
             ],

@@ -4,18 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/constants/app_image_assets.dart';
 import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
-import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/add_restaurant_cubit/add_restaurant_cubit.dart';
 
 class ImageUploadSection extends StatelessWidget {
   const ImageUploadSection({
     super.key,
     required this.onTap,
     required this.onSelect,
+    required this.hasFileImage,
     this.isLoading = false,
     this.selectedImage = '',
   });
   final VoidCallback onTap;
   final void Function(String) onSelect;
+  final bool hasFileImage;
   final bool isLoading;
   final String? selectedImage;
   @override
@@ -28,63 +29,55 @@ class ImageUploadSection extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w800,
-            color: AppColors.splashTitleColor,
+            color: AppColors.textPrimary,
           ),
         ),
         const SizedBox(height: 8),
-        BlocBuilder<AddRestaurantCubit, AddRestaurantState>(
-          builder: (context, state) {
-            return GestureDetector(
-              onTap: isLoading ? null : onTap,
-              child: Container(
-                width: double.infinity,
-                height: 110,
-                decoration: BoxDecoration(
-                  color: AppColors.restaurantBackground,
-                  borderRadius: BorderRadius.circular(16),
-                  border: DashedBorder(color: AppColors.restaurantDashedBorder),
-                ),
-                child: isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.primaryColor,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    //Todo for image preview
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            context.read<AddRestaurantCubit>().image != null
-                                ? Icons.check_circle_outline_rounded
-                                : Icons.upload_rounded,
-                            color:
-                                context.read<AddRestaurantCubit>().image != null
-                                ? AppColors.secondaryColor
-                                : AppColors.restaurantFieldHint,
-                            size: 32,
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            context.read<AddRestaurantCubit>().image != null
-                                ? context.l10n.restaurantImageAdded
-                                : context.l10n.restaurantUploadHint,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color:
-                                  context.read<AddRestaurantCubit>().image !=
-                                      null
-                                  ? AppColors.secondaryColor
-                                  : AppColors.restaurantFieldHint,
-                            ),
-                          ),
-                        ],
+        GestureDetector(
+          onTap: isLoading ? null : onTap,
+          child: Container(
+            width: double.infinity,
+            height: 110,
+            decoration: BoxDecoration(
+              color: AppColors.surfaceSecondary,
+              borderRadius: BorderRadius.circular(16),
+              border: DashedBorder(color: AppColors.dashedBorder),
+            ),
+            child: isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primary,
+                      strokeWidth: 2,
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        hasFileImage
+                            ? Icons.check_circle_outline_rounded
+                            : Icons.upload_rounded,
+                        color: hasFileImage
+                            ? AppColors.secondary
+                            : AppColors.hint,
+                        size: 32,
                       ),
-              ),
-            );
-          },
+                      SizedBox(height: 6),
+                      Text(
+                        hasFileImage
+                            ? context.l10n.restaurantImageAdded
+                            : context.l10n.restaurantUploadHint,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: hasFileImage
+                              ? AppColors.secondary
+                              : AppColors.hint,
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
         ),
         SizedBox(height: 12),
         SizedBox(
@@ -140,7 +133,7 @@ class ImageUploadSection extends StatelessWidget {
           context.l10n.uploadImageOrSelectExisting,
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            color: AppColors.restaurantFieldHint,
+            color: AppColors.hint,
           ),
         ),
         SizedBox(height: 6),
@@ -149,7 +142,7 @@ class ImageUploadSection extends StatelessWidget {
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w400,
-            color: AppColors.secondaryColor,
+            color: AppColors.secondary,
           ),
         ),
       ],
@@ -177,8 +170,8 @@ class CategoryImagePreview extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected
-                ? AppColors.secondaryColor
-                : AppColors.restaurantDashedBorder,
+                ? AppColors.secondary
+                : AppColors.dashedBorder,
             width: isSelected ? 2 : 1.5,
           ),
           borderRadius: BorderRadius.circular(12),

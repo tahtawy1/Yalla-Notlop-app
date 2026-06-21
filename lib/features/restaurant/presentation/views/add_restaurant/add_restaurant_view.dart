@@ -18,14 +18,14 @@ class AddRestaurantView extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: AppColors.primaryColor,
+            color: AppColors.primary,
           ),
         ),
         leading: Padding(
           padding: const EdgeInsetsDirectional.only(start: 8),
           child: BackButton(),
         ),
-        shadowColor: AppColors.primaryColor.withAlpha(50),
+        shadowColor: AppColors.primary.withAlpha(50),
         scrolledUnderElevation: 10,
       ),
 

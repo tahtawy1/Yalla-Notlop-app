@@ -12,33 +12,35 @@ class MembersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-        itemCount: members.length,
-        separatorBuilder: (context, index) => SizedBox(height: 10),
-        itemBuilder: (context, index) {
-          return MemberManageCard(
-            member: members[index],
-            onEditTap: () {
-              final cubit = context.read<MemberCubit>();
-              showDialog(
-                context: context,
-                builder: (context) => EditNameDialog(
-                  initialName: members[index].name,
-                  onSaveName: (String name) {
-                    cubit.updateMember(name, members[index]);
-                  },
-                ),
-              );
-            },
-            onDeleteTap: () async {
-              final cubit = context.read<MemberCubit>();
-              await cubit.deleteMember(members[index]);
-            },
-            isLastIndex: index == members.length - 1,
-          );
-        },
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ...members.map(
+          (m) => Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: MemberManageCard(
+              member: m,
+              onEditTap: () {
+                final cubit = context.read<MemberCubit>();
+                showDialog(
+                  context: context,
+                  builder: (context) => EditNameDialog(
+                    initialName: m.name,
+                    onSaveName: (String name) {
+                      cubit.updateMember(name, m);
+                    },
+                  ),
+                );
+              },
+              onDeleteTap: () async {
+                final cubit = context.read<MemberCubit>();
+                await cubit.deleteMember(m);
+              },
+              isLastIndex: m.id == members[members.length - 1].id,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

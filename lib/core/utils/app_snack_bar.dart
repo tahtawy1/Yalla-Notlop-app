@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class AppSnackBar {
   static void showSnackBar(
@@ -10,8 +11,8 @@ class AppSnackBar {
       SnackBar(
         content: Text(message),
         backgroundColor: type == SnackBarType.success
-            ? Colors.green
-            : Colors.red,
+            ? AppColors.success
+            : AppColors.danger,
         duration: const Duration(seconds: 2),
       ),
     );

@@ -7,4 +7,5 @@ class AppRoutes {
   static const String passPhoneView = '/pass-phone-view';
   static const String chooseRestaurantView = '/choose-restaurant-view';
   static const String finishOrderView = '/finish-order-view';
+  static const String aboutUs = '/about-us';
 }

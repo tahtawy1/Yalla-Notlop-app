@@ -14,10 +14,10 @@ class MealCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.surface,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: AppColors.restaurantFieldBorder,
+              color: AppColors.border,
               width: 1.5,
             ),
           ),
@@ -28,21 +28,21 @@ class MealCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.splashTitleColor,
+                  color: AppColors.textPrimary,
                 ),
               ),
               SizedBox(width: 4),
               Text(
-                meal.price as String,
+                meal.price,
                 style: TextStyle(
                   fontSize: 14,
-                  color: AppColors.splashTitleColor,
+                  color: AppColors.textPrimary,
                 ),
               ),
               SizedBox(width: 4),
               InkWell(
                 onTap: onDelete,
-                child: Icon(Icons.close, color: AppColors.primaryColor),
+                child: Icon(Icons.close, color: AppColors.primary),
               ),
             ],
           ),

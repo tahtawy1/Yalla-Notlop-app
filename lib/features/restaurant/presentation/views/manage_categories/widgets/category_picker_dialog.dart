@@ -29,7 +29,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
         .toList();
 
     return AlertDialog(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(
         context.l10n.selectTargetCategory,
@@ -37,7 +37,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
           fontFamily: 'Cairo',
           fontWeight: FontWeight.w800,
           fontSize: 15,
-          color: AppColors.splashTitleColor,
+          color: AppColors.textPrimary,
         ),
       ),
       content: SizedBox(
@@ -50,7 +50,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontFamily: 'Cairo',
-                    color: AppColors.restaurantTextMuted,
+                    color: AppColors.textMuted,
                   ),
                 ),
               )
@@ -71,13 +71,13 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
                       ),
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? AppColors.restaurantChipSelectedBg
-                            : AppColors.backgroundColor,
+                            ? AppColors.chipSelected
+                            : AppColors.background,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isSelected
-                              ? AppColors.secondaryColor
-                              : AppColors.restaurantFieldBorder,
+                              ? AppColors.secondary
+                              : AppColors.border,
                           width: isSelected ? 1.5 : 1,
                         ),
                       ),
@@ -88,8 +88,8 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
                                 ? Icons.check_circle_rounded
                                 : Icons.circle_outlined,
                             color: isSelected
-                                ? AppColors.secondaryColor
-                                : AppColors.restaurantTextMuted,
+                                ? AppColors.secondary
+                                : AppColors.textMuted,
                             size: 20,
                           ),
                           const SizedBox(width: 10),
@@ -101,8 +101,8 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
                                   ? FontWeight.w800
                                   : FontWeight.normal,
                               color: isSelected
-                                  ? AppColors.primaryColor
-                                  : AppColors.splashTitleColor,
+                                  ? AppColors.primary
+                                  : AppColors.textPrimary,
                             ),
                           ),
                         ],
@@ -119,7 +119,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
             context.l10n.cancel,
             style: const TextStyle(
               fontFamily: 'Cairo',
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
         ),
@@ -132,7 +132,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
                     Navigator.pop(context);
                   },
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: AppColors.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -142,7 +142,7 @@ class _CategoryPickerDialogState extends State<CategoryPickerDialog> {
               style: const TextStyle(
                 fontFamily: 'Cairo',
                 fontWeight: FontWeight.w800,
-                color: Colors.white,
+                color: AppColors.surface,
               ),
             ),
           ),

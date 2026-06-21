@@ -50,13 +50,13 @@ class _EditNameDialogState extends State<EditNameDialog> {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                   ),
                   children: [
                     TextSpan(text: context.l10n.editRestaurantName),
                     TextSpan(
                       text: ' *',
-                      style: TextStyle(color: AppColors.secondaryColor),
+                      style: TextStyle(color: AppColors.secondary),
                     ),
                   ],
                 ),
@@ -83,13 +83,13 @@ class _EditNameDialogState extends State<EditNameDialog> {
                         Navigator.pop(context);
                       }
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                   SizedBox(width: 20),
                   ActionButton(
                     title: context.l10n.cancel,
                     onTap: () => Navigator.pop(context),
-                    color: AppColors.secondaryColor,
+                    color: AppColors.secondary,
                   ),
                 ],
               ),

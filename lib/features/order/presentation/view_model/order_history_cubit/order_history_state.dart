@@ -1,7 +1,5 @@
-import 'package:meta/meta.dart';
 import 'package:yalla_notlop_app/features/order/data/models/order_model.dart';
 
-@immutable
 sealed class OrderHistoryState {}
 
 final class OrderHistoryInitial extends OrderHistoryState {}

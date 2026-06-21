@@ -3,16 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yalla_notlop_app/core/constants/app_routes.dart';
 import 'package:yalla_notlop_app/core/extension/context_extension.dart';
-import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/services/service_locator.dart';
-
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/custom_bottom_nav_bar.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/home_view.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view/widgets/floating_action_button.dart';
-import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/manage_categories/views/manage_categories_view.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/history/order_history_view.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_history_cubit/order_history_cubit.dart';
+import 'package:yalla_notlop_app/features/layout/widgets/custom_drawer.dart';
 
 class Layout extends StatefulWidget {
   const Layout({super.key});
@@ -56,29 +54,13 @@ class _LayoutState extends State<Layout> {
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      drawer: const CustomDrawer(),
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: currentIndex,
         onChanged: (int index) {
           currentIndex = index;
           setState(() {});
         },
-      ),
-    );
-  }
-}
-
-
-class TestFriendsPage extends StatelessWidget {
-  const TestFriendsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: IconButton(
-        onPressed: () {
-          context.read<LocalizationCubit>().changeLang();
-        },
-        icon: Icon(Icons.language),
       ),
     );
   }

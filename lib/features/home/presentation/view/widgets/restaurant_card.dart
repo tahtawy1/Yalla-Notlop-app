@@ -22,7 +22,7 @@ class RestaurantCard extends StatelessWidget {
       onTap: onCardTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.surface,
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
@@ -71,7 +71,7 @@ class RestaurantCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
-                      color: AppColors.splashTitleColor,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -80,12 +80,12 @@ class RestaurantCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.restaurantTextMuted,
+                      color: AppColors.textMuted,
                     ),
                   ),
                   const SizedBox(height: 16),
                   const Divider(
-                    color: AppColors.restaurantBackground,
+                    color: AppColors.surfaceSecondary,
                     thickness: 1.5,
                   ),
                   const SizedBox(height: 12),
@@ -99,7 +99,7 @@ class RestaurantCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
-                            color: AppColors.primaryColor,
+                            color: AppColors.primary,
                           ),
                         ),
                       ),
@@ -108,7 +108,7 @@ class RestaurantCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.restaurantFieldHint,
+                          color: AppColors.hint,
                         ),
                       ),
                     ],
@@ -123,6 +123,6 @@ class RestaurantCard extends StatelessWidget {
   }
 
   Widget _buildFallbackImage() {
-    return Image.asset(AppImageAssets.restaurantDefaultImg, fit: BoxFit.cover);
+    return Container(color: AppColors.surfaceSecondary);
   }
 }

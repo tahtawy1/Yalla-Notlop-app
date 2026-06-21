@@ -26,7 +26,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       content: Form(
         key: _formKey,
@@ -41,14 +41,14 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                     fontFamily: 'Cairo',
                   ),
                   children: [
                     TextSpan(text: context.l10n.addCategory),
                     const TextSpan(
                       text: ' *',
-                      style: TextStyle(color: AppColors.secondaryColor),
+                      style: TextStyle(color: AppColors.secondary),
                     ),
                   ],
                 ),
@@ -75,13 +75,13 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                         Navigator.pop(context);
                       }
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                   const SizedBox(width: 12),
                   ActionButton(
                     title: context.l10n.cancel,
                     onTap: () => Navigator.pop(context),
-                    color: AppColors.secondaryColor,
+                    color: AppColors.secondary,
                   ),
                 ],
               ),

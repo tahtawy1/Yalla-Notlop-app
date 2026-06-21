@@ -58,10 +58,14 @@ class _AddMealDialogState extends State<AddMealDialog> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         widget.onSaveMeal();
+                        FocusScope.of(context).unfocus();
+                        widget.mealNameController.clear();
+                        widget.mealPriceController.clear();
+                        formKey.currentState!.reset();
                         Navigator.pop(context);
                       }
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                   SizedBox(width: 20),
                   ActionButton(
@@ -72,7 +76,7 @@ class _AddMealDialogState extends State<AddMealDialog> {
                       widget.mealPriceController.clear();
                       Navigator.pop(context);
                     },
-                    color: AppColors.secondaryColor,
+                    color: AppColors.secondary,
                   ),
                 ],
               ),

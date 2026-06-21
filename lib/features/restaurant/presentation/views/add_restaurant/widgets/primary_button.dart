@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -12,7 +13,7 @@ class PrimaryButton extends StatelessWidget {
     this.radius = 16,
     this.fontSize = 16,
     this.iconSize = 20,
-    this.textColor = Colors.white,
+    this.textColor = AppColors.surface,
   });
 
   final VoidCallback onTap;
@@ -39,7 +40,7 @@ class PrimaryButton extends StatelessWidget {
         elevation: 0,
       ),
       child: isLoading
-          ? const Center(child: CircularProgressIndicator(color: Colors.white))
+          ? const Center(child: CircularProgressIndicator(color: AppColors.surface))
           : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(

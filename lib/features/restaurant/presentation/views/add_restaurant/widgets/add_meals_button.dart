@@ -22,10 +22,10 @@ class AddMealsButton extends StatelessWidget {
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
-          color: AppColors.restaurantBackground,
+          color: AppColors.surfaceSecondary,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: AppColors.restaurantFieldBorder,
+            color: AppColors.border,
             width: 1.5,
           ),
         ),
@@ -37,7 +37,7 @@ class AddMealsButton extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.add,
-                    color: AppColors.secondaryColor,
+                    color: AppColors.secondary,
                     size: 20,
                   ),
                   SizedBox(width: 8),
@@ -46,7 +46,7 @@ class AddMealsButton extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
-                      color: AppColors.secondaryColor,
+                      color: AppColors.secondary,
                     ),
                   ),
                 ],
@@ -54,7 +54,7 @@ class AddMealsButton extends StatelessWidget {
             : const Icon(
                 Icons.add,
                 key: ValueKey('icon'),
-                color: AppColors.secondaryColor,
+                color: AppColors.secondary,
                 size: 20,
               ),
       ),

@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
-import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/pass_phone_view.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/widgets/pay_button.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
@@ -32,58 +29,67 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
   bool payValidation = false;
   TextEditingController amountController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final orderCubit = context.read<OrderCubit>();
+
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.cardColor,
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.card,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
             decoration: BoxDecoration(
-              color: AppColors.secondaryColor.withAlpha(50),
+              color: AppColors.secondary.withAlpha(50),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               context.l10n.totalYourOrder,
-              style: TextStyle(color: AppColors.primaryColor, fontSize: 14),
+              style: const TextStyle(color: AppColors.primary, fontSize: 14),
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
+
           if (widget.orderMeals.isNotEmpty)
             SizedBox(
-              height: 100,
+              height: 80,
               child: ListView(
+                padding: EdgeInsets.zero,
                 children: widget.orderMeals.entries.map((e) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 4,
+                      vertical: 2,
                       horizontal: 4,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "${e.value} × ${e.key.name}",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.splashTitleColor,
+                        Flexible(
+                          child: FittedBox(
+                            child: Text(
+                              "${e.value} × ${e.key.name}",
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
                           ),
                         ),
                         Text(
                           '${double.parse(e.key.price) * e.value} ${context.l10n.mealPriceSuffix}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w800,
-                            color: AppColors.primaryColor,
+                            color: AppColors.primary,
                           ),
                         ),
                       ],
@@ -92,19 +98,21 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                 }).toList(),
               ),
             ),
-          SizedBox(height: 8),
+
+          const SizedBox(height: 8),
+
           Wrap(
             spacing: 12,
-            runSpacing: 12,
+            runSpacing: 8,
             alignment: WrapAlignment.start,
             children: [
               PayButton(
                 title: context.l10n.payFullCostBtnTitle,
                 onTap: () {
+                  FocusScope.of(context).unfocus();
+
                   if (widget.orderMeals.isEmpty) {
-                    setState(() {
-                      mealsValidation = true;
-                    });
+                    setState(() => mealsValidation = true);
                     return;
                   }
                   setState(() {
@@ -113,6 +121,7 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                     openField = false;
                   });
                   orderCubit.selectPayOption(member: widget.member, index: 0);
+                  FocusScope.of(context).unfocus();
                 },
                 isSelected: orderCubit.selectedPayOption == 0,
               ),
@@ -120,10 +129,10 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                   ? PayButton(
                       title: context.l10n.payCustomCostBtnTitle,
                       onTap: () {
+                        FocusScope.of(context).unfocus();
+
                         if (widget.orderMeals.isEmpty) {
-                          setState(() {
-                            mealsValidation = true;
-                          });
+                          setState(() => mealsValidation = true);
                           return;
                         }
                         setState(() {
@@ -138,10 +147,11 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                       children: [
                         GestureDetector(
                           onTap: () {
+                            FocusScope.of(context).unfocus();
+
                             if (widget.orderMeals.isEmpty) {
-                              setState(() {
-                                mealsValidation = true;
-                              });
+                              FocusScope.of(context).unfocus();
+                              setState(() => mealsValidation = true);
                               return;
                             }
                             setState(() {
@@ -149,7 +159,6 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                               payValidation = false;
                             });
                             final formState = formKey.currentState;
-
                             if (formState != null && formState.validate()) {
                               orderCubit.selectPayOption(
                                 member: widget.member,
@@ -157,31 +166,29 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
                                 amount: double.parse(amountController.text),
                               );
                             }
-                            setState(() {
-                              customBtnSelected = true;
-                            });
+                            setState(() => customBtnSelected = true);
                             if (mounted) {
-                              Future.delayed(Duration(milliseconds: 1000), () {
-                                customBtnSelected = false;
-                                setState(() {});
-                              });
+                              Future.delayed(
+                                const Duration(milliseconds: 1000),
+                                () => setState(() => customBtnSelected = false),
+                              );
                             }
                           },
                           child: Container(
-                            padding: EdgeInsets.all(6),
+                            padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: customBtnSelected
-                                  ? AppColors.primaryColor.withAlpha(50)
-                                  : AppColors.primaryColor,
+                                  ? AppColors.primary.withAlpha(50)
+                                  : AppColors.primary,
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.check_rounded,
-                              color: Colors.white,
+                              color: AppColors.surface,
                             ),
                           ),
                         ),
-                        SizedBox(width: 6),
+                        const SizedBox(width: 6),
                         Form(
                           key: formKey,
                           child: SizedBox(
@@ -200,10 +207,10 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
               PayButton(
                 title: context.l10n.payZeroCostBtnTitle,
                 onTap: () {
+                  FocusScope.of(context).unfocus();
+
                   if (widget.orderMeals.isEmpty) {
-                    setState(() {
-                      mealsValidation = true;
-                    });
+                    setState(() => mealsValidation = true);
                     return;
                   }
                   setState(() {
@@ -217,102 +224,63 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
               ),
             ],
           ),
+
           if (mealsValidation)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.only(top: 6),
               child: Text(
                 context.l10n.chooseMealsValidation,
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 14,
+                style: const TextStyle(
+                  color: AppColors.danger,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           if (payValidation)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.only(top: 6),
               child: Text(
                 context.l10n.choosePayOptionValidation,
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 14,
+                style: const TextStyle(
+                  color: AppColors.danger,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-          SizedBox(height: 12),
+
+          const SizedBox(height: 10),
+
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 500),
             child: Row(
-              key: ValueKey(context.read<OrderCubit>().currentIndex > 0),
+              key: ValueKey(orderCubit.currentIndex > 0),
               children: [
                 Expanded(
                   flex: 2,
                   child:
-                      context.read<OrderCubit>().currentIndex ==
-                          context.read<OrderCubit>().members.length - 1
+                      orderCubit.currentIndex == orderCubit.members.length - 1
                       ? PrimaryButton(
-                          onTap: () {
-                            if (widget.orderMeals.isEmpty ||
-                                context.read<OrderCubit>().selectedPayOption ==
-                                    null) {
-                              setState(() {
-                                if (widget.orderMeals.isEmpty) {
-                                  mealsValidation = true;
-                                } else {
-                                  mealsValidation = false;
-                                }
-                                if (widget.member.payOption == null) {
-                                  log(widget.member.payOption.toString());
-                                  payValidation = true;
-                                } else {
-                                  payValidation = false;
-                                }
-                              });
-                              return;
-                            }
-                            context.read<OrderCubit>().nextMember();
-                          },
+                          onTap: () => _onNextTap(context),
                           title: context.l10n.order_confirmed,
-                          color: AppColors.secondaryColor,
+                          color: AppColors.secondary,
                         )
                       : PrimaryButton(
-                          onTap: () {
-                            if (widget.orderMeals.isEmpty ||
-                                context.read<OrderCubit>().selectedPayOption ==
-                                    null) {
-                              setState(() {
-                                if (widget.orderMeals.isEmpty) {
-                                  mealsValidation = true;
-                                } else {
-                                  mealsValidation = false;
-                                }
-                                if (widget.member.payOption == null) {
-                                  payValidation = true;
-                                } else {
-                                  payValidation = false;
-                                }
-                              });
-                              return;
-                            }
-                            context.read<OrderCubit>().nextMember();
-                          },
+                          onTap: () => _onNextTap(context),
                           title: context.l10n.next,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                         ),
                 ),
-                if (context.read<OrderCubit>().currentIndex > 0) ...[
-                  SizedBox(width: 12),
+                if (orderCubit.currentIndex > 0) ...[
+                  const SizedBox(width: 12),
                   Expanded(
                     flex: 1,
                     child: PrimaryButton(
-                      onTap: () {
-                        context.read<OrderCubit>().previousMember();
-                      },
+                      onTap: () => context.read<OrderCubit>().previousMember(),
                       title: context.l10n.back,
-                      color: AppColors.secondaryColor.withAlpha(50),
-                      textColor: AppColors.primaryColor,
+                      color: AppColors.secondary.withAlpha(50),
+                      textColor: AppColors.primary,
                     ),
                   ),
                 ],
@@ -322,5 +290,17 @@ class _MemberOrderCardState extends State<MemberOrderCard> {
         ],
       ),
     );
+  }
+
+  void _onNextTap(BuildContext context) {
+    final cubit = context.read<OrderCubit>();
+    if (widget.orderMeals.isEmpty || cubit.selectedPayOption == null) {
+      setState(() {
+        mealsValidation = widget.orderMeals.isEmpty;
+        payValidation = widget.member.payOption == null;
+      });
+      return;
+    }
+    cubit.nextMember();
   }
 }

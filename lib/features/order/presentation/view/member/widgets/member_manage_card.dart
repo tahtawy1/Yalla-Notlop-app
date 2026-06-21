@@ -22,7 +22,7 @@ class MemberManageCard extends StatelessWidget {
       alignment: Alignment.center,
       height: 68,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(32),
         boxShadow: [
           BoxShadow(
@@ -36,7 +36,7 @@ class MemberManageCard extends StatelessWidget {
         title: Text(
           member.name,
           style: TextStyle(
-            color: AppColors.splashTitleColor,
+            color: AppColors.textPrimary,
             fontSize: 18,
             fontWeight: FontWeight.w800,
           ),
@@ -47,11 +47,11 @@ class MemberManageCard extends StatelessWidget {
           children: [
             IconButton(
               onPressed: onEditTap,
-              icon: Icon(Icons.edit, color: AppColors.splashCartBadge),
+              icon: Icon(Icons.edit, color: AppColors.badge),
             ),
             IconButton(
               onPressed: onDeleteTap,
-              icon: Icon(Icons.delete, color: AppColors.dangerColor),
+              icon: Icon(Icons.delete, color: AppColors.danger),
             ),
           ],
         ),

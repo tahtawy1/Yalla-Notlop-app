@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
       builder: (context, state) {
         if (state is HomeLoading || state is HomeInitial) {
           return const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
+            child: CircularProgressIndicator(color: AppColors.primary),
           );
         }
 
@@ -65,7 +65,7 @@ class _AddRestaurantButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         minimumSize: Size(100, 50),
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         elevation: 0,
@@ -73,12 +73,12 @@ class _AddRestaurantButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.add_circle_outline_rounded, color: Colors.white, size: 20),
+          Icon(Icons.add_circle_outline_rounded, color: AppColors.surface, size: 20),
           SizedBox(width: 8),
           Text(
             context.l10n.addRestaurant,
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.surface,
               fontSize: 14,
               fontWeight: FontWeight.w800,
             ),
@@ -108,7 +108,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     return Container(
       padding: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
         boxShadow: [
           BoxShadow(

@@ -6,6 +6,7 @@ import 'package:yalla_notlop_app/features/home/presentation/view/widgets/restaur
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/features/home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class RestaurantList extends StatelessWidget {
   const RestaurantList({super.key, required this.restaurants});
@@ -23,7 +24,7 @@ class RestaurantList extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              color: Colors.grey,
+              color: AppColors.emptyState,
             ),
           ),
         ),

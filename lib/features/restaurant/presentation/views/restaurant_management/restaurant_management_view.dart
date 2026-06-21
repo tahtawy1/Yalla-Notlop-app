@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yalla_notlop_app/core/extension/context_extension.dart';
-import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -15,6 +14,7 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaura
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/widgets/management_meal_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/widgets/management_meals_section.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/widgets/restaurant_hero_card.dart';
+import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/image_upload_section.dart';
 
 class RestaurantDetailsView extends StatefulWidget {
   const RestaurantDetailsView({super.key, required this.restaurant});
@@ -61,7 +61,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                       ? state.errMessage
                       : context.l10n.genericError,
                 ),
-                backgroundColor: Colors.red,
+                backgroundColor: AppColors.danger,
               ),
             );
           }
@@ -73,21 +73,21 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
           cubit.categories = state.categories;
         }
         if (state is DeleteRestaurantSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.green,
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(state.message),
+          //     backgroundColor: AppColors.success,
+          //   ),
+          // );
           Navigator.pop(context, true);
         }
         if (state is SaveUpdatedRestaurantSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.green,
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(state.message),
+          //     backgroundColor: AppColors.success,
+          //   ),
+          // );
           Navigator.pop(context, true);
         }
       },
@@ -102,9 +102,9 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
             Navigator.pop(context, result);
           },
           child: Scaffold(
-            backgroundColor: AppColors.restaurantBackground,
+            backgroundColor: AppColors.surfaceSecondary,
             appBar: AppBar(
-              backgroundColor: AppColors.restaurantBackground,
+              backgroundColor: AppColors.surfaceSecondary,
               elevation: 0,
               centerTitle: true,
               automaticallyImplyLeading: false,
@@ -113,7 +113,7 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               leading: Padding(
@@ -159,12 +159,86 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
                         ),
                       );
                     },
+                    onEditImage: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: AppColors.surface,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(24),
+                          ),
+                        ),
+                        builder: (ctx) => Padding(
+                          padding: EdgeInsets.only(
+                            top: 24,
+                            left: 24,
+                            right: 24,
+                            bottom: MediaQuery.of(ctx).viewInsets.bottom + 24,
+                          ),
+                          child: BlocProvider.value(
+                            value: cubit,
+                            child:
+                                BlocBuilder<
+                                  ManageRestaurantCubit,
+                                  ManageRestaurantState
+                                >(
+                                  builder: (context, state) {
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        Text(
+                                          context.l10n.restaurantImage,
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w800,
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        ImageUploadSection(
+                                          isLoading:
+                                              state
+                                                  is PickRestaurantImageLoading,
+                                          hasFileImage: cubit.image != null,
+                                          onTap:
+                                              state
+                                                  is PickRestaurantImageLoading
+                                              ? () {}
+                                              : () async {
+                                                  await context
+                                                      .read<
+                                                        ManageRestaurantCubit
+                                                      >()
+                                                      .pickImage();
+                                                  if (context.mounted)
+                                                    Navigator.pop(context);
+                                                },
+                                          onSelect: (imagePath) {
+                                            context
+                                                .read<ManageRestaurantCubit>()
+                                                .selectImagePath(imagePath);
+                                            if (context.mounted)
+                                              Navigator.pop(context);
+                                          },
+                                          selectedImage: cubit.imagePath,
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: 24),
                   PrimaryButton(
                     title: context.l10n.saveChanges,
                     postfixIcon: Icons.save_rounded,
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                     onTap: () => cubit.saveUpdatedRestaurant(),
                   ),
                   const SizedBox(height: 32),

@@ -57,15 +57,15 @@ class CategoryFilterList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.secondaryColor
-              : AppColors.splashGradientEnd,
+              ? AppColors.secondary
+              : AppColors.gradientEnd,
           borderRadius: BorderRadius.circular(20),
         ),
         alignment: Alignment.center,
         child: Text(
           text,
           style: TextStyle(
-            color: isSelected ? Colors.white : AppColors.restaurantTextMuted,
+            color: isSelected ? AppColors.surface : AppColors.textMuted,
             fontWeight: FontWeight.w800,
             fontSize: 13,
           ),

@@ -25,12 +25,15 @@ class DeleteCategoryDialog extends StatelessWidget {
     if (linkedCount == 0) {
       // Simple confirmation: no linked restaurants
       return AlertDialog(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Row(
           children: [
-            const Icon(Icons.warning_amber_rounded,
-                color: AppColors.dangerColor, size: 22),
+            const Icon(
+              Icons.warning_amber_rounded,
+              color: AppColors.danger,
+              size: 22,
+            ),
             const SizedBox(width: 8),
             Text(
               context.l10n.deleteCategoryConfirmationTitle,
@@ -38,7 +41,7 @@ class DeleteCategoryDialog extends StatelessWidget {
                 fontFamily: 'Cairo',
                 fontWeight: FontWeight.w800,
                 fontSize: 15,
-                color: AppColors.splashTitleColor,
+                color: AppColors.textPrimary,
               ),
             ),
           ],
@@ -48,7 +51,7 @@ class DeleteCategoryDialog extends StatelessWidget {
           style: const TextStyle(
             fontFamily: 'Cairo',
             fontSize: 13,
-            color: AppColors.restaurantTextMuted,
+            color: AppColors.textMuted,
           ),
         ),
         actions: [
@@ -58,7 +61,7 @@ class DeleteCategoryDialog extends StatelessWidget {
               context.l10n.cancel,
               style: const TextStyle(
                 fontFamily: 'Cairo',
-                color: AppColors.restaurantTextMuted,
+                color: AppColors.textMuted,
               ),
             ),
           ),
@@ -68,16 +71,17 @@ class DeleteCategoryDialog extends StatelessWidget {
               cubit.deleteCategoryIfEmpty(category);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.dangerColor,
+              backgroundColor: AppColors.danger,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             child: Text(
               context.l10n.delete,
               style: const TextStyle(
                 fontFamily: 'Cairo',
                 fontWeight: FontWeight.w800,
-                color: Colors.white,
+                color: AppColors.surface,
               ),
             ),
           ),
@@ -87,12 +91,15 @@ class DeleteCategoryDialog extends StatelessWidget {
 
     // Has restaurants — show 3 options
     return AlertDialog(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Row(
         children: [
-          const Icon(Icons.link_rounded,
-              color: AppColors.secondaryColor, size: 22),
+          const Icon(
+            Icons.link_rounded,
+            color: AppColors.secondary,
+            size: 22,
+          ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -101,7 +108,7 @@ class DeleteCategoryDialog extends StatelessWidget {
                 fontFamily: 'Cairo',
                 fontWeight: FontWeight.w800,
                 fontSize: 15,
-                color: AppColors.splashTitleColor,
+                color: AppColors.textPrimary,
               ),
             ),
           ),
@@ -116,15 +123,15 @@ class DeleteCategoryDialog extends StatelessWidget {
             style: const TextStyle(
               fontFamily: 'Cairo',
               fontSize: 13,
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
           const SizedBox(height: 16),
           // Option 1: Move restaurants
           _OptionTile(
             icon: Icons.drive_file_move_rounded,
-            color: AppColors.primaryColor,
-            bgColor: AppColors.restaurantIconBg,
+            color: AppColors.primary,
+            bgColor: AppColors.iconBackground,
             label: context.l10n.moveRestaurantsToAnotherCategory,
             onTap: () {
               Navigator.pop(context);
@@ -150,7 +157,7 @@ class DeleteCategoryDialog extends StatelessWidget {
           // Option 2: Delete all
           _OptionTile(
             icon: Icons.delete_forever_rounded,
-            color: AppColors.dangerColor,
+            color: AppColors.danger,
             bgColor: AppColors.dangerBackground,
             label: context.l10n.deleteAllRestaurantsWithCategory,
             onTap: () {
@@ -174,7 +181,7 @@ class DeleteCategoryDialog extends StatelessWidget {
             context.l10n.cancel,
             style: const TextStyle(
               fontFamily: 'Cairo',
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
         ),
@@ -208,7 +215,7 @@ class _OptionTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.3)),
+          border: Border.all(color: color.withValues(alpha: 0.7)),
         ),
         child: Row(
           children: [
@@ -240,12 +247,15 @@ class _ForceDeleteConfirmDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Row(
         children: [
-          const Icon(Icons.dangerous_rounded,
-              color: AppColors.dangerColor, size: 22),
+          const Icon(
+            Icons.dangerous_rounded,
+            color: AppColors.danger,
+            size: 22,
+          ),
           const SizedBox(width: 8),
           Text(
             context.l10n.deleteAllRestaurantsWithCategory,
@@ -253,7 +263,7 @@ class _ForceDeleteConfirmDialog extends StatelessWidget {
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w800,
               fontSize: 14,
-              color: AppColors.dangerColor,
+              color: AppColors.danger,
             ),
           ),
         ],
@@ -263,7 +273,7 @@ class _ForceDeleteConfirmDialog extends StatelessWidget {
         style: const TextStyle(
           fontFamily: 'Cairo',
           fontSize: 13,
-          color: AppColors.restaurantTextMuted,
+          color: AppColors.textMuted,
         ),
       ),
       actions: [
@@ -273,7 +283,7 @@ class _ForceDeleteConfirmDialog extends StatelessWidget {
             context.l10n.cancel,
             style: const TextStyle(
               fontFamily: 'Cairo',
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
         ),
@@ -285,16 +295,17 @@ class _ForceDeleteConfirmDialog extends StatelessWidget {
                 .forceDeleteCategoryWithRestaurants(category);
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.dangerColor,
+            backgroundColor: AppColors.danger,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           child: Text(
             context.l10n.delete,
             style: const TextStyle(
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w800,
-              color: Colors.white,
+              color: AppColors.surface,
             ),
           ),
         ),

@@ -25,7 +25,7 @@ class FinishOrderView extends StatelessWidget {
     return BlocBuilder<OrderCubit, OrderState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.background,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -45,13 +45,13 @@ class FinishOrderView extends StatelessWidget {
                         height: 85,
                         width: 85,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF59DF5D).withAlpha(150),
+                          color: AppColors.successLight.withAlpha(150),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
                           Icons.check_circle_rounded,
                           size: 46,
-                          color: Colors.green.shade900,
+                          color: AppColors.successDark,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -61,7 +61,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w900,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -71,7 +71,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.splashSubtitleColor,
+                          color: AppColors.textSecondary,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -83,7 +83,7 @@ class FinishOrderView extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.splashTitleColor,
+                              color: AppColors.textPrimary,
                             ),
                           ),
                           Container(
@@ -92,13 +92,13 @@ class FinishOrderView extends StatelessWidget {
                               vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.primaryColor,
+                              color: AppColors.primary,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Text(
                               context.l10n.grouped,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.surface,
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -109,7 +109,7 @@ class FinishOrderView extends StatelessWidget {
                       const SizedBox(height: 16),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.surface,
                           borderRadius: BorderRadius.circular(24),
                         ),
                         padding: const EdgeInsets.all(16),
@@ -123,10 +123,10 @@ class FinishOrderView extends StatelessWidget {
                                 children: [
                                   CircleAvatar(
                                     radius: 24,
-                                    backgroundColor: AppColors.restaurantIconBg,
+                                    backgroundColor: AppColors.iconBackground,
                                     child: const Icon(
                                       Icons.fastfood,
-                                      color: AppColors.primaryColor,
+                                      color: AppColors.primary,
                                     ),
                                   ),
                                   const SizedBox(width: 16),
@@ -140,7 +140,7 @@ class FinishOrderView extends StatelessWidget {
                                           style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
-                                            color: AppColors.splashTitleColor,
+                                            color: AppColors.textPrimary,
                                           ),
                                         ),
                                       ],
@@ -151,7 +151,7 @@ class FinishOrderView extends StatelessWidget {
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w900,
-                                      color: AppColors.primaryColor,
+                                      color: AppColors.primary,
                                     ),
                                   ),
                                 ],
@@ -166,7 +166,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -198,18 +198,18 @@ class FinishOrderView extends StatelessWidget {
 
     if (diff == 0 && memberCost >= 0) {
       statusText = context.l10n.settled;
-      statusColor = Colors.green.shade700;
-      badge = const Icon(Icons.check_circle, color: Colors.green, size: 16);
+      statusColor = AppColors.success;
+      badge = const Icon(Icons.check_circle, color: AppColors.success, size: 16);
     } else if (diff < 0) {
       owes = true;
       statusText =
           '${context.l10n.owes} ${diff.abs().toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
-      statusColor = AppColors.dangerColor;
-      badge = const Icon(Icons.error, color: AppColors.dangerColor, size: 16);
+      statusColor = AppColors.danger;
+      badge = const Icon(Icons.error, color: AppColors.danger, size: 16);
     } else {
       statusText =
           '${context.l10n.overpaid} ${diff.toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
-      statusColor = Colors.green.shade700;
+      statusColor = AppColors.success;
       isPayer = true;
     }
 
@@ -218,32 +218,32 @@ class FinishOrderView extends StatelessWidget {
       child: ExpansionTileTheme(
         data: ExpansionTileThemeData(
           collapsedBackgroundColor: isPayer
-              ? Colors.green.shade50
+              ? AppColors.successBackground
               : owes
               ? AppColors.dangerBackground
-              : Colors.white,
+              : AppColors.surface,
           backgroundColor: isPayer
-              ? Colors.green.shade50
+              ? AppColors.successBackground
               : owes
               ? AppColors.dangerBackground
-              : Colors.white,
+              : AppColors.surface,
           collapsedShape: RoundedRectangleBorder(
             side: BorderSide(
               color: isPayer
-                  ? Colors.green.shade200
+                  ? AppColors.successBorder
                   : owes
                   ? Colors.red.shade200
-                  : Colors.white,
+                  : AppColors.surface,
             ),
             borderRadius: BorderRadius.circular(24),
           ),
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: isPayer
-                  ? Colors.green.shade200
+                  ? AppColors.successBorder
                   : owes
-                  ? AppColors.backgroundColor
-                  : Colors.white,
+                  ? AppColors.background
+                  : AppColors.surface,
             ),
             borderRadius: BorderRadius.circular(24),
           ),
@@ -262,11 +262,11 @@ class FinishOrderView extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: AppColors.restaurantIconBg,
+                    backgroundColor: AppColors.iconBackground,
                     child: Text(
                       member.name.isNotEmpty ? member.name[0] : '?',
                       style: const TextStyle(
-                        color: AppColors.primaryColor,
+                        color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -277,7 +277,7 @@ class FinishOrderView extends StatelessWidget {
                       right: -2,
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.surface,
                           shape: BoxShape.circle,
                         ),
                         child: badge,
@@ -295,7 +295,7 @@ class FinishOrderView extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: AppColors.splashTitleColor,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                     Text(
@@ -327,7 +327,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       Text(
@@ -335,7 +335,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                         ),
                       ),
                     ],
@@ -348,7 +348,7 @@ class FinishOrderView extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.splashTitleColor,
+                  color: AppColors.textPrimary,
                 ),
               ),
             ],
@@ -363,7 +363,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                           fontFamily: 'Cairo',
                         ),
                       ),
@@ -373,7 +373,7 @@ class FinishOrderView extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                           fontFamily: 'Cairo',
                         ),
                       ),

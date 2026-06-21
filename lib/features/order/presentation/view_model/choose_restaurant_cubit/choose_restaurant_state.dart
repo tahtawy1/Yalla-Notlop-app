@@ -1,6 +1,5 @@
 part of 'choose_restaurant_cubit.dart';
 
-@immutable
 class ChooseRestaurantState {
   final bool? isLoading;
   final bool? isError;

@@ -22,7 +22,7 @@ class ChooseRestaurantView extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: AppColors.primaryColor,
+            color: AppColors.primary,
           ),
         ),
       ),
@@ -64,7 +64,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
           style: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w900,
-            color: AppColors.splashTitleColor,
+            color: AppColors.textPrimary,
           ),
         ),
         SizedBox(height: 8),
@@ -73,7 +73,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: AppColors.restaurantTextMuted,
+            color: AppColors.textMuted,
           ),
         ),
         SizedBox(height: 16),
@@ -95,7 +95,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Colors.grey,
+                        color: AppColors.emptyState,
                       ),
                     ),
                   ),
@@ -121,7 +121,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
           Text(
             context.l10n.selectRestaurantValidation,
             style: TextStyle(
-              color: Colors.red,
+              color: AppColors.danger,
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
@@ -142,7 +142,7 @@ class _ChooseRestaurantViewBodyState extends State<ChooseRestaurantViewBody> {
               );
             },
             title: context.l10n.next,
-            color: AppColors.primaryColor,
+            color: AppColors.primary,
             fontSize: 18,
             postfixIcon: context.read<LocalizationCubit>().isRtl()
                 ? Icons.arrow_back

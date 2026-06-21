@@ -24,11 +24,11 @@ class FAButton extends StatelessWidget {
         height: 40,
         padding: EdgeInsetsDirectional.only(start: padding),
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: AppColors.primary,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: AppColors.shadow,
               blurRadius: 5,
               offset: Offset(0, 4),
             ),
@@ -39,11 +39,11 @@ class FAButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 4),
-            Icon(icon, color: Colors.white, size: 28),
+            Icon(icon, color: AppColors.surface, size: 28),
             Text(
               title,
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.surface,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
+      "يلا نطلب يسهل طلب الطعام الجماعي. اجمع أصدقائك، اختر وجباتك، ودعنا نتولى الحسابات!",
+    ),
     "addCategory": MessageLookupByLibrary.simpleMessage("إضافة قسم"),
     "addCategoryError": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ أثناء إضافة القسم",
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addRestaurantTitle": MessageLookupByLibrary.simpleMessage("توسيع القائمة"),
     "allCuisines": MessageLookupByLibrary.simpleMessage("جميع المطابخ"),
     "appName": MessageLookupByLibrary.simpleMessage("يلا نطلب"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("الإصدار 1.0.0"),
     "back": MessageLookupByLibrary.simpleMessage("رجوع"),
     "back_home": MessageLookupByLibrary.simpleMessage("العودة إلى الرئيسية"),
     "bakeryCategory": MessageLookupByLibrary.simpleMessage("مخبوزات ومعجنات"),
@@ -59,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "تم تحديث القسم بنجاح",
     ),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "chooseMealsValidation": MessageLookupByLibrary.simpleMessage(
       "يرجى اختيار الوجبات",
     ),
@@ -77,7 +83,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseYourFavMeals": MessageLookupByLibrary.simpleMessage(
       "اختر وجباتك المفضلة من القائمة",
     ),
+    "clearHistory": MessageLookupByLibrary.simpleMessage("مسح السجل"),
     "collected": MessageLookupByLibrary.simpleMessage("المجموع"),
+    "confirmExit": MessageLookupByLibrary.simpleMessage("خروج"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAllRestaurantsWithCategory": MessageLookupByLibrary.simpleMessage(
       "حذف القسم وجميع مطاعمه",
@@ -113,12 +121,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteRestaurantWarning": MessageLookupByLibrary.simpleMessage(
       "سيؤدي هذا الإجراء إلى حذف جميع بيانات المطعم بشكل نهائي.",
     ),
+    "developerName": MessageLookupByLibrary.simpleMessage("طه صبرى"),
+
+    "developerRole": MessageLookupByLibrary.simpleMessage("مهندس برمجيات"),
+    "developerSection": MessageLookupByLibrary.simpleMessage("المطور"),
     "editCategory": MessageLookupByLibrary.simpleMessage("تعديل القسم"),
     "editRestaurantName": MessageLookupByLibrary.simpleMessage(
       "تعديل اسم المطعم",
     ),
     "enterNameValidation": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال الاسم",
+    ),
+    "exitApp": MessageLookupByLibrary.simpleMessage("الخروج من التطبيق"),
+    "exitAppMessage": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد الخروج من التطبيق؟",
     ),
     "fastFoodCategory": MessageLookupByLibrary.simpleMessage("وجبات سريعة"),
     "fetchCategoriesError": MessageLookupByLibrary.simpleMessage(
@@ -134,6 +150,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "genericError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "grouped": MessageLookupByLibrary.simpleMessage("مجمع"),
     "history": MessageLookupByLibrary.simpleMessage("السجل"),
+    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
+      "لم تقم بإكمال أي طلبات حتى الآن. ابدأ طلباً لتراه هنا.",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "homeSubtitle": MessageLookupByLibrary.simpleMessage(
       "اختر مطعمًا لبدء طلبك الجماعي",
@@ -201,10 +220,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "لم يتم اختيار صورة",
     ),
     "noMembers": MessageLookupByLibrary.simpleMessage("لا يوجد أعضاء"),
+    "noOrdersYet": MessageLookupByLibrary.simpleMessage("لا توجد طلبات بعد"),
     "noRestaurantsAvailable": MessageLookupByLibrary.simpleMessage(
       "لا توجد مطاعم متاحة",
     ),
     "no_orders": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
+    "orderDeleted": MessageLookupByLibrary.simpleMessage("تم حذف الطلب بنجاح"),
+    "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
     "orderNow": MessageLookupByLibrary.simpleMessage("اطلب الآن"),
     "order_confirmed": MessageLookupByLibrary.simpleMessage("تم تأكيد الطلب!"),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
@@ -292,12 +314,5 @@ class MessageLookup extends MessageLookupByLibrary {
       "سيتم إعطاء الأولوية للصورة المرفوعة",
     ),
     "yourTurn": MessageLookupByLibrary.simpleMessage("دورك"),
-    "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
-    "noOrdersYet": MessageLookupByLibrary.simpleMessage("لا توجد طلبات بعد"),
-    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
-      "لم تقم بإكمال أي طلبات حتى الآن. ابدأ طلباً لتراه هنا.",
-    ),
-    "clearHistory": MessageLookupByLibrary.simpleMessage("مسح السجل"),
-    "orderDeleted": MessageLookupByLibrary.simpleMessage("تم حذف الطلب بنجاح"),
   };
 }

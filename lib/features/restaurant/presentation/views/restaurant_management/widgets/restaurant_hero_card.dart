@@ -13,6 +13,7 @@ class RestaurantHeroCard extends StatelessWidget {
     required this.categoryName,
     required this.onEditName,
     required this.onEditCategory,
+    required this.onEditImage,
     this.imagePath,
   });
 
@@ -21,6 +22,7 @@ class RestaurantHeroCard extends StatelessWidget {
   final String? imagePath;
   final VoidCallback onEditName;
   final VoidCallback onEditCategory;
+  final VoidCallback onEditImage;
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +31,40 @@ class RestaurantHeroCard extends StatelessWidget {
       height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        color: AppColors.primaryColor.withAlpha(25),
-        image: DecorationImage(
-          opacity: 0.8,
-          image: imagePath != null && imagePath!.isNotEmpty
-              ? imagePath!.startsWith('assets')
+        color: AppColors.primary.withAlpha(25),
+        image: imagePath != null && imagePath!.isNotEmpty
+            ? DecorationImage(
+                opacity: 0.8,
+                image: imagePath!.startsWith('assets')
                     ? AssetImage(imagePath!) as ImageProvider
-                    : FileImage(File(imagePath!)) as ImageProvider
-              : const AssetImage(AppImageAssets.restaurantDefaultImg),
-          fit: BoxFit.cover,
-        ),
+                    : FileImage(File(imagePath!)) as ImageProvider,
+                fit: BoxFit.cover,
+              )
+            : null,
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
+          Positioned(
+            top: 20,
+            right: context.read<LocalizationCubit>().isRtl() ? null : 20,
+            left: context.read<LocalizationCubit>().isRtl() ? 20 : null,
+            child: InkWell(
+              onTap: onEditImage,
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: AppColors.glassOverlay,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.edit,
+                  color: AppColors.primary,
+                  size: 20,
+                ),
+              ),
+            ),
+          ),
           Positioned(
             right: context.read<LocalizationCubit>().isRtl() ? 20 : null,
             left: context.read<LocalizationCubit>().isRtl() ? null : 20,
@@ -65,7 +87,7 @@ class RestaurantHeroCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -74,7 +96,7 @@ class RestaurantHeroCard extends StatelessWidget {
                         child: const Icon(
                           Icons.edit,
                           size: 16,
-                          color: AppColors.restaurantTextMuted,
+                          color: AppColors.textMuted,
                         ),
                       ),
                     ],
@@ -88,7 +110,7 @@ class RestaurantHeroCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.restaurantTextMuted,
+                          color: AppColors.textMuted,
                         ),
                       ),
                       const SizedBox(width: 6),
@@ -97,7 +119,7 @@ class RestaurantHeroCard extends StatelessWidget {
                         child: const Icon(
                           Icons.edit,
                           size: 14,
-                          color: AppColors.restaurantTextMuted,
+                          color: AppColors.textMuted,
                         ),
                       ),
                     ],

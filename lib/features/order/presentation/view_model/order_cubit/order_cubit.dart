@@ -1,12 +1,10 @@
 import 'dart:developer';
 import 'dart:typed_data';
 
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 import 'package:yalla_notlop_app/features/order/data/models/order_model.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/meal_model.dart';
-import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
 import 'package:yalla_notlop_app/features/order/data/repos/share_repo/share_repo.dart';
 import 'package:yalla_notlop_app/features/order/data/repos/order_repo/order_repo.dart';
 
@@ -25,8 +23,6 @@ class OrderCubit extends Cubit<OrderState> {
 
   void getMembers(List<MemberModel> members) {
     this.members = members;
-    log('get members');
-    log(this.members.length.toString());
   }
 
   Future<void> nextMember() async {
@@ -133,7 +129,6 @@ class OrderCubit extends Cubit<OrderState> {
       members[memberIndex] = updatedMember;
     }
 
-    log(updatedMember.payedAmount.toString());
     emit(ChoosePayOption());
   }
 

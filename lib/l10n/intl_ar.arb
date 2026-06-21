@@ -135,5 +135,16 @@
     "noOrdersYet": "لا توجد طلبات بعد",
     "historyEmptyMessage": "لم تقم بإكمال أي طلبات حتى الآن. ابدأ طلباً لتراه هنا.",
     "clearHistory": "مسح السجل",
-    "orderDeleted": "تم حذف الطلب بنجاح"
+    "orderDeleted": "تم حذف الطلب بنجاح",
+    "changeLanguage": "تغيير اللغة",
+    "aboutUs": "معلومات عنا",
+    "exitApp": "الخروج من التطبيق",
+    "exitAppMessage": "هل أنت متأكد أنك تريد الخروج من التطبيق؟",
+    "confirmExit": "خروج",
+    "aboutUsDescription": "يلا نطلب يسهل طلب الطعام الجماعي. اجمع أصدقائك، اختر وجباتك، ودعنا نتولى الحسابات!",
+    "appVersion": "الإصدار 1.0.0",
+    "developerSection": "المطور",
+    "developerName": "طه صبرى",
+    "developerNickName": "طهطاوي",
+    "developerRole": "مهندس برمجيات"
 }

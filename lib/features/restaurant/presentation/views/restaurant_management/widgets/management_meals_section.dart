@@ -19,7 +19,7 @@ class ManagementMealsSection extends StatelessWidget {
               width: 4,
               height: 24,
               decoration: BoxDecoration(
-                color: AppColors.secondaryColor,
+                color: AppColors.secondary,
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -29,7 +29,7 @@ class ManagementMealsSection extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
-                color: AppColors.splashTitleColor,
+                color: AppColors.textPrimary,
               ),
             ),
           ],
@@ -41,18 +41,18 @@ class ManagementMealsSection extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: AppColors.successColor,
+              color: AppColors.success,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.add, color: Colors.white, size: 18),
+                Icon(Icons.add, color: AppColors.surface, size: 18),
                 SizedBox(width: 6),
                 Text(
                   context.l10n.addMeal,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.surface,
                     fontSize: 12,
                     fontWeight: FontWeight.w800,
                   ),

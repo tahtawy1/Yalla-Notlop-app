@@ -10,20 +10,29 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24),
-      color: Colors.white,
+      color: AppColors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 48),
-          Center(child: AppLogo()),
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.menu, color: AppColors.primary, size: 28),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+              const Expanded(child: Center(child: AppLogo())),
+              const SizedBox(width: 48),
+            ],
+          ),
           SizedBox(height: 16),
           Text(
             context.l10n.homeTitle,
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.w900,
-              color: AppColors.splashTitleColor,
+              color: AppColors.textPrimary,
             ),
           ),
           SizedBox(height: 8),
@@ -33,7 +42,7 @@ class HomeHeader extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: AppColors.restaurantTextMuted,
+              color: AppColors.textMuted,
             ),
           ),
         ],

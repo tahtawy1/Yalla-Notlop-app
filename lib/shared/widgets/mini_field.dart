@@ -36,16 +36,16 @@ class MiniField extends StatelessWidget {
             }
             return null;
           },
-      style: const TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
+      style: const TextStyle(fontSize: 14, color: AppColors.textPrimary),
       decoration: InputDecoration(
         errorStyle: wantValidation ? null : TextStyle(fontSize: 0),
         hintText: hintText,
         hintStyle: const TextStyle(
           fontSize: 13,
-          color: AppColors.restaurantFieldHint,
+          color: AppColors.hint,
         ),
         filled: true,
-        fillColor: AppColors.restaurantBackground,
+        fillColor: AppColors.surfaceSecondary,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 14,
@@ -53,14 +53,14 @@ class MiniField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.restaurantFieldBorder,
+            color: AppColors.border,
             width: 1.5,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.secondaryColor,
+            color: AppColors.secondary,
             width: 1.5,
           ),
         ),

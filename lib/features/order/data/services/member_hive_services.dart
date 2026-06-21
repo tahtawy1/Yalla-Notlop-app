@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
 
@@ -9,10 +7,8 @@ class MemberHiveServices {
   Future<void> addMember(MemberModel member) async {
     try {
       await membersBox.put(member.id, member);
-      log('member added ${getMembers().length}');
-    } catch (e) {
-      log('errror in adding member ${e.toString()}');
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   Future<void> deleteMember(MemberModel member) async {

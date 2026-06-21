@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,7 +6,7 @@ import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 import 'package:yalla_notlop_app/features/order/data/models/member_model.dart';
-import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/widgets/meals_list.dart';
+import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/widgets/meal_choosing_card.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view/pass_phone/widgets/member_order_card.dart';
 import 'package:yalla_notlop_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:yalla_notlop_app/features/restaurant/data/models/restaurant_model.dart';
@@ -52,22 +51,27 @@ class _PassPhoneViewState extends State<PassPhoneView> {
   Widget build(BuildContext context) {
     final members = widget.members;
     final restaurant = widget.restaurant;
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop) _resetAndPop();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: Text(
             context.l10n.appName,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              color: AppColors.primaryColor,
+              color: AppColors.primary,
             ),
           ),
-          leading: IconButton(icon: Icon(Icons.close), onPressed: _resetAndPop),
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: _resetAndPop,
+          ),
         ),
         body: SafeArea(
           child: Padding(
@@ -75,7 +79,7 @@ class _PassPhoneViewState extends State<PassPhoneView> {
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: PageView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 controller: pageController,
                 itemCount: members.length,
                 itemBuilder: (context, index) {
@@ -87,12 +91,12 @@ class _PassPhoneViewState extends State<PassPhoneView> {
                       listener: (context, state) {
                         if (state is PassToNextMember) {
                           pageController.nextPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.easeIn,
                           );
                         } else if (state is PassToPreviousMember) {
                           pageController.previousPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.easeIn,
                           );
                         }
@@ -111,53 +115,89 @@ class _PassPhoneViewState extends State<PassPhoneView> {
                         final member = cubit.members[index];
                         final orderMeals =
                             cubit.membersMealsOrder[member.id] ?? {};
-                        log(orderMeals.length.toString());
+
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            RichText(
-                              text: TextSpan(
-                                text: member.name,
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w800,
-                                  color: AppColors.primaryColor,
-                                  fontFamily: 'Cairo',
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: ', ${context.l10n.yourTurn}',
-                                    style: TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.w800,
-                                      color: AppColors.splashTitleColor,
-                                      fontFamily: 'Cairo',
+                            Expanded(
+                              child: CustomScrollView(
+                                slivers: [
+                                  SliverToBoxAdapter(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+                                            text: member.name,
+                                            style: const TextStyle(
+                                              fontSize: 32,
+                                              fontWeight: FontWeight.w800,
+                                              color: AppColors.primary,
+                                              fontFamily: 'Cairo',
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    ', ${context.l10n.yourTurn}',
+                                                style: const TextStyle(
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.w800,
+                                                  color: AppColors.textPrimary,
+                                                  fontFamily: 'Cairo',
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          context.l10n.chooseYourFavMeals,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.textMuted,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 12),
+                                      ],
                                     ),
+                                  ),
+
+                                  SliverList.builder(
+                                    itemCount: restaurant.meals?.length ?? 0,
+                                    itemBuilder: (context, mealIndex) {
+                                      final meal = restaurant.meals![mealIndex];
+                                      final mealCounter =
+                                          member.meals
+                                              ?.where((m) => m.id == meal.id)
+                                              .length ??
+                                          0;
+                                      return MealChoosingCard(
+                                        meal: meal,
+                                        onMealAdded: () {
+                                          cubit.addMealForMember(member, meal);
+                                        },
+                                        onMealRemoved: () {
+                                          if (mealCounter > 0) {
+                                            cubit.removeMealForMember(
+                                              member,
+                                              meal,
+                                            );
+                                          }
+                                        },
+                                        mealCounter: mealCounter,
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(height: 8),
-                            Text(
-                              context.l10n.chooseYourFavMeals,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.restaurantTextMuted,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Expanded(
-                              child: MealsList(
-                                restaurant: restaurant,
-                                member: member,
-                              ),
-                            ),
+
                             MemberOrderCard(
                               member: member,
                               orderMeals: orderMeals,
                             ),
-                            SizedBox(height: 12),
                           ],
                         );
                       },

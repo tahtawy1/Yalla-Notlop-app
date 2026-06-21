@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
+    "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
+      "Yalla Notlob simplifies group food ordering. Gather your friends, pick your meals, and let us handle the math!",
+    ),
     "addCategory": MessageLookupByLibrary.simpleMessage("Add Category"),
     "addCategoryError": MessageLookupByLibrary.simpleMessage(
       "An error occurred while adding the category",
@@ -43,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allCuisines": MessageLookupByLibrary.simpleMessage("All Cuisines"),
     "appName": MessageLookupByLibrary.simpleMessage("Yalla Notlob"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("Version 1.0.0"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
     "back_home": MessageLookupByLibrary.simpleMessage("Back to Home"),
     "bakeryCategory": MessageLookupByLibrary.simpleMessage("Bakery & Pastries"),
@@ -61,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Category updated successfully",
     ),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "chooseMealsValidation": MessageLookupByLibrary.simpleMessage(
       "Please select meals",
     ),
@@ -79,7 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseYourFavMeals": MessageLookupByLibrary.simpleMessage(
       "Choose your favorite meals from the list",
     ),
+    "clearHistory": MessageLookupByLibrary.simpleMessage("Clear History"),
     "collected": MessageLookupByLibrary.simpleMessage("Collected"),
+    "confirmExit": MessageLookupByLibrary.simpleMessage("Exit"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAllRestaurantsWithCategory": MessageLookupByLibrary.simpleMessage(
       "Delete category and all its restaurants",
@@ -117,12 +125,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteRestaurantWarning": MessageLookupByLibrary.simpleMessage(
       "This action will permanently remove all restaurant data.",
     ),
+    "developerName": MessageLookupByLibrary.simpleMessage("Taha Sabry"),
+    "developerRole": MessageLookupByLibrary.simpleMessage("Software Engineer"),
+    "developerSection": MessageLookupByLibrary.simpleMessage("Developer"),
     "editCategory": MessageLookupByLibrary.simpleMessage("Edit Category"),
     "editRestaurantName": MessageLookupByLibrary.simpleMessage(
       "Edit Restaurant Name",
     ),
     "enterNameValidation": MessageLookupByLibrary.simpleMessage(
       "Please enter a name",
+    ),
+    "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
+    "exitAppMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to exit the application?",
     ),
     "fastFoodCategory": MessageLookupByLibrary.simpleMessage("Fast Food"),
     "fetchCategoriesError": MessageLookupByLibrary.simpleMessage(
@@ -140,6 +155,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "grouped": MessageLookupByLibrary.simpleMessage("Grouped"),
     "history": MessageLookupByLibrary.simpleMessage("History"),
+    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
+      "You haven\'t completed any orders yet. Start an order to see it here.",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "homeSubtitle": MessageLookupByLibrary.simpleMessage(
       "Choose a restaurant to start your group order",
@@ -209,10 +227,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "No image selected",
     ),
     "noMembers": MessageLookupByLibrary.simpleMessage("No members"),
+    "noOrdersYet": MessageLookupByLibrary.simpleMessage("No orders yet"),
     "noRestaurantsAvailable": MessageLookupByLibrary.simpleMessage(
       "No restaurants available",
     ),
     "no_orders": MessageLookupByLibrary.simpleMessage("No orders"),
+    "orderDeleted": MessageLookupByLibrary.simpleMessage(
+      "Order deleted successfully",
+    ),
+    "orderHistory": MessageLookupByLibrary.simpleMessage("Order History"),
     "orderNow": MessageLookupByLibrary.simpleMessage("Order Now"),
     "order_confirmed": MessageLookupByLibrary.simpleMessage("Order confirmed!"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
@@ -306,12 +329,5 @@ class MessageLookup extends MessageLookupByLibrary {
       "Uploaded image will take priority",
     ),
     "yourTurn": MessageLookupByLibrary.simpleMessage("Your turn"),
-    "orderHistory": MessageLookupByLibrary.simpleMessage("Order History"),
-    "noOrdersYet": MessageLookupByLibrary.simpleMessage("No orders yet"),
-    "historyEmptyMessage": MessageLookupByLibrary.simpleMessage(
-      "You haven't completed any orders yet. Start an order to see it here.",
-    ),
-    "clearHistory": MessageLookupByLibrary.simpleMessage("Clear History"),
-    "orderDeleted": MessageLookupByLibrary.simpleMessage("Order deleted successfully"),
   };
 }

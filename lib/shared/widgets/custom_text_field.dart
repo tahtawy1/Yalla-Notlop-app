@@ -10,11 +10,11 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     required this.hintText,
     this.radius = 12,
-    this.fillColor = AppColors.restaurantBackground,
-    this.enabledBorderColor = AppColors.restaurantFieldBorder,
-    this.focusedBorderColor = AppColors.secondaryColor,
-    this.hintColor = AppColors.restaurantFieldHint,
-    this.iconColor = AppColors.restaurantFieldHint,
+    this.fillColor = AppColors.surfaceSecondary,
+    this.enabledBorderColor = AppColors.border,
+    this.focusedBorderColor = AppColors.secondary,
+    this.hintColor = AppColors.hint,
+    this.iconColor = AppColors.hint,
   });
 
   final TextEditingController controller;
@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       autovalidateMode: autovalidateMode,
       validator: validator,
-      style: TextStyle(fontSize: 14, color: AppColors.splashTitleColor),
+      style: TextStyle(fontSize: 14, color: AppColors.textPrimary),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(fontSize: 13, color: hintColor),
@@ -57,11 +57,11 @@ class CustomTextField extends StatelessWidget {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius),
-          borderSide: BorderSide(color: Colors.red, width: 1.5),
+          borderSide: BorderSide(color: AppColors.danger, width: 1.5),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius),
-          borderSide: BorderSide(color: Colors.red, width: 1.5),
+          borderSide: BorderSide(color: AppColors.danger, width: 1.5),
         ),
       ),
     );

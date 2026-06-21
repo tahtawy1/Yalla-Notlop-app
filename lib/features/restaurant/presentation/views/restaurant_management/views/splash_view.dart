@@ -52,8 +52,8 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  AppColors.splashGradientStart,
-                  AppColors.splashGradientEnd,
+                  AppColors.gradientStart,
+                  AppColors.gradientEnd,
                 ],
               ),
             ),
@@ -113,7 +113,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                           height: 1.2,
                         ),
                       ),
@@ -135,7 +135,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
-                          color: AppColors.splashSubtitleColor,
+                          color: AppColors.textSecondary,
                         ),
                       ),
                     ),
@@ -196,8 +196,8 @@ class _LoadingIndicator extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36.0),
       child: LinearProgressIndicator(
-        backgroundColor: AppColors.secondaryColor.withAlpha(52),
-        color: AppColors.primaryColor,
+        backgroundColor: AppColors.secondary.withAlpha(52),
+        color: AppColors.primary,
         minHeight: 8,
         borderRadius: BorderRadius.circular(12),
       ),
@@ -224,16 +224,16 @@ class _LogoCircle extends StatelessWidget {
             width: size,
             height: size,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.surface,
               shape: BoxShape.circle,
             ),
             padding: EdgeInsets.all(size * 0.08),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.surface,
                 shape: BoxShape.circle,
                 border: DashedBorder(
-                  color: AppColors.splashDashedBorder,
+                  color: AppColors.dashedBorder,
                   width: 2.5,
                 ),
               ),
@@ -263,12 +263,12 @@ class _CartBadge extends StatelessWidget {
       width: badgeSize,
       height: badgeSize,
       decoration: const BoxDecoration(
-        color: AppColors.splashCartBadge,
+        color: AppColors.badge,
         shape: BoxShape.circle,
       ),
       child: Icon(
         Icons.shopping_cart_checkout,
-        color: Colors.white,
+        color: AppColors.surface,
         size: badgeSize * 0.55,
       ),
     );
@@ -300,7 +300,7 @@ class _FloatingIconBubble extends StatelessWidget {
         width: size,
         height: size,
         decoration: const BoxDecoration(
-          color: AppColors.splashIconCircle,
+          color: AppColors.iconCircle,
           shape: BoxShape.circle,
         ),
         padding: EdgeInsets.all(size * 0.22),

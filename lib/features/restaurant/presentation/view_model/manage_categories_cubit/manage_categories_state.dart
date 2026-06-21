@@ -1,6 +1,5 @@
 part of 'manage_categories_cubit.dart';
 
-@immutable
 sealed class ManageCategoriesState {}
 
 final class ManageCategoriesInitial extends ManageCategoriesState {}

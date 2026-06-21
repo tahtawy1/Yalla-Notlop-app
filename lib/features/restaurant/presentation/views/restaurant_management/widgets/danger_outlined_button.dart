@@ -17,7 +17,7 @@ class DangerOutlinedButton extends StatelessWidget {
             onPressed: onTap,
             style: OutlinedButton.styleFrom(
               backgroundColor: AppColors.dangerBackground,
-              side: const BorderSide(color: AppColors.dangerColor, width: 1.5),
+              side: const BorderSide(color: AppColors.danger, width: 1.5),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
               ),
@@ -28,7 +28,7 @@ class DangerOutlinedButton extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.delete_outline,
-                  color: AppColors.dangerColor,
+                  color: AppColors.danger,
                   size: 20,
                 ),
                 SizedBox(width: 8),
@@ -37,7 +37,7 @@ class DangerOutlinedButton extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.dangerColor,
+                    color: AppColors.danger,
                   ),
                 ),
               ],
@@ -48,7 +48,7 @@ class DangerOutlinedButton extends StatelessWidget {
         Text(
           context.l10n.deleteRestaurantWarning,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 11, color: AppColors.restaurantFieldHint),
+          style: TextStyle(fontSize: 11, color: AppColors.hint),
         ),
       ],
     );

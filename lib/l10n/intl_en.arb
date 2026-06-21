@@ -135,5 +135,16 @@
     "noOrdersYet": "No orders yet",
     "historyEmptyMessage": "You haven't completed any orders yet. Start an order to see it here.",
     "clearHistory": "Clear History",
-    "orderDeleted": "Order deleted successfully"
+    "orderDeleted": "Order deleted successfully",
+    "changeLanguage": "Change Language",
+    "aboutUs": "About Us",
+    "exitApp": "Exit App",
+    "exitAppMessage": "Are you sure you want to exit the application?",
+    "confirmExit": "Exit",
+    "aboutUsDescription": "Yalla Notlob simplifies group food ordering. Gather your friends, pick your meals, and let us handle the math!",
+    "appVersion": "Version 1.0.0",
+    "developerSection": "Developer",
+    "developerName": "Taha Sabry",
+    "developerNickName": "Tahtawy",
+    "developerRole": "Software Engineer"
 }

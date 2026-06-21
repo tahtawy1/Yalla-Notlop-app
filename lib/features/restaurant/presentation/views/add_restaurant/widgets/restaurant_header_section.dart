@@ -13,12 +13,12 @@ class RestaurantHeaderSection extends StatelessWidget {
           width: 80,
           height: 80,
           decoration: const BoxDecoration(
-            color: AppColors.restaurantIconBg,
+            color: AppColors.iconBackground,
             shape: BoxShape.circle,
           ),
           child: const Icon(
             Icons.storefront_rounded,
-            color: AppColors.primaryColor,
+            color: AppColors.primary,
             size: 38,
           ),
         ),
@@ -29,7 +29,7 @@ class RestaurantHeaderSection extends StatelessWidget {
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w800,
-            color: AppColors.splashTitleColor,
+            color: AppColors.textPrimary,
           ),
         ),
         SizedBox(height: 8),
@@ -39,7 +39,7 @@ class RestaurantHeaderSection extends StatelessWidget {
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w400,
-            color: AppColors.restaurantTextMuted,
+            color: AppColors.textMuted,
             height: 1.7,
           ),
         ),

@@ -24,12 +24,12 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.restaurantChipSelectedBg : Colors.white,
+          color: isSelected ? AppColors.chipSelected : AppColors.surface,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected
-                ? AppColors.primaryColor
-                : AppColors.primaryColor.withAlpha(100),
+                ? AppColors.primary
+                : AppColors.primary.withAlpha(100),
             width: 1.5,
           ),
         ),
@@ -39,8 +39,8 @@ class CategoryCard extends StatelessWidget {
             fontSize: 14,
             fontWeight: FontWeight.w800,
             color: isSelected
-                ? AppColors.primaryColor
-                : AppColors.primaryColor.withAlpha(200),
+                ? AppColors.primary
+                : AppColors.primary.withAlpha(200),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:yalla_notlop_app/core/extension/context_extension.dart';
 import 'package:yalla_notlop_app/core/theme/app_colors.dart';
@@ -61,18 +62,18 @@ class HistoryOrderCard extends StatelessWidget {
 
     if (diff == 0 && memberCost >= 0) {
       statusText = context.l10n.settled;
-      statusColor = Colors.green.shade700;
-      badge = const Icon(Icons.check_circle, color: Colors.green, size: 16);
+      statusColor = AppColors.success;
+      badge = const Icon(Icons.check_circle, color: AppColors.success, size: 16);
     } else if (diff < 0) {
       owes = true;
       statusText =
           '${context.l10n.owes} ${diff.abs().toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
-      statusColor = AppColors.dangerColor;
-      badge = const Icon(Icons.error, color: AppColors.dangerColor, size: 16);
+      statusColor = AppColors.danger;
+      badge = const Icon(Icons.error, color: AppColors.danger, size: 16);
     } else {
       statusText =
           '${context.l10n.overpaid} ${diff.toStringAsFixed(0)} ${context.l10n.mealPriceSuffix}';
-      statusColor = Colors.green.shade700;
+      statusColor = AppColors.success;
       isPayer = true;
     }
 
@@ -81,19 +82,19 @@ class HistoryOrderCard extends StatelessWidget {
       child: ExpansionTileTheme(
         data: ExpansionTileThemeData(
           collapsedBackgroundColor: isPayer
-              ? Colors.green.shade50
+              ? AppColors.successBackground
               : owes
               ? AppColors.dangerBackground
-              : Colors.white,
+              : AppColors.surface,
           backgroundColor: isPayer
-              ? Colors.green.shade50
+              ? AppColors.successBackground
               : owes
               ? AppColors.dangerBackground
-              : Colors.white,
+              : AppColors.surface,
           collapsedShape: RoundedRectangleBorder(
             side: BorderSide(
               color: isPayer
-                  ? Colors.green.shade200
+                  ? AppColors.successBorder
                   : owes
                   ? Colors.red.shade200
                   : Colors.grey.shade300,
@@ -103,9 +104,9 @@ class HistoryOrderCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: isPayer
-                  ? Colors.green.shade200
+                  ? AppColors.successBorder
                   : owes
-                  ? AppColors.backgroundColor
+                  ? AppColors.background
                   : Colors.grey.shade300,
             ),
             borderRadius: BorderRadius.circular(16),
@@ -124,11 +125,11 @@ class HistoryOrderCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: AppColors.restaurantIconBg,
+                    backgroundColor: AppColors.iconBackground,
                     child: Text(
                       member.name.isNotEmpty ? member.name[0] : '?',
                       style: const TextStyle(
-                        color: AppColors.primaryColor,
+                        color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -139,7 +140,7 @@ class HistoryOrderCard extends StatelessWidget {
                       right: -2,
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.surface,
                           shape: BoxShape.circle,
                         ),
                         child: badge,
@@ -157,7 +158,7 @@ class HistoryOrderCard extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: AppColors.splashTitleColor,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                     Text(
@@ -189,7 +190,7 @@ class HistoryOrderCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       Text(
@@ -197,7 +198,7 @@ class HistoryOrderCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                         ),
                       ),
                     ],
@@ -210,7 +211,7 @@ class HistoryOrderCard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.splashTitleColor,
+                  color: AppColors.textPrimary,
                 ),
               ),
             ],
@@ -226,7 +227,7 @@ class HistoryOrderCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.splashTitleColor,
+                          color: AppColors.textPrimary,
                           fontFamily: 'Cairo',
                         ),
                       ),
@@ -236,7 +237,7 @@ class HistoryOrderCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primary,
                           fontFamily: 'Cairo',
                         ),
                       ),
@@ -257,7 +258,7 @@ class HistoryOrderCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -273,7 +274,7 @@ class HistoryOrderCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.restaurantIconBg,
+              color: AppColors.iconBackground,
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(20),
               ),
@@ -285,7 +286,7 @@ class HistoryOrderCard extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.history_rounded,
-                      color: AppColors.primaryColor,
+                      color: AppColors.primary,
                       size: 20,
                     ),
                     const SizedBox(width: 8),
@@ -293,7 +294,7 @@ class HistoryOrderCard extends StatelessWidget {
                       dateFormat.format(order.orderTime),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: AppColors.primary,
                         fontSize: 14,
                       ),
                     ),
@@ -304,7 +305,7 @@ class HistoryOrderCard extends StatelessWidget {
                   constraints: const BoxConstraints(),
                   icon: const Icon(
                     Icons.delete_outline_rounded,
-                    color: AppColors.dangerColor,
+                    color: AppColors.danger,
                     size: 20,
                   ),
                   onPressed: onDelete,
@@ -339,13 +340,13 @@ class HistoryOrderCard extends StatelessWidget {
                             const Icon(
                               Icons.people_outline_rounded,
                               size: 16,
-                              color: Colors.grey,
+                              color: AppColors.emptyState,
                             ),
                             const SizedBox(width: 6),
                             Text(
                               '${order.members.length} ${context.l10n.members}',
                               style: const TextStyle(
-                                color: Colors.grey,
+                                color: AppColors.emptyState,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -361,7 +362,7 @@ class HistoryOrderCard extends StatelessWidget {
                               style: const TextStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 22,
-                                color: AppColors.splashTitleColor,
+                                color: AppColors.textPrimary,
                               ),
                             ),
                             const SizedBox(width: 4),
@@ -370,7 +371,7 @@ class HistoryOrderCard extends StatelessWidget {
                               child: Text(
                                 context.l10n.mealPriceSuffix,
                                 style: const TextStyle(
-                                  color: Colors.grey,
+                                  color: AppColors.emptyState,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -387,7 +388,7 @@ class HistoryOrderCard extends StatelessWidget {
                       vertical: 8,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.green.shade50,
+                      color: AppColors.successBackground,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -395,7 +396,7 @@ class HistoryOrderCard extends StatelessWidget {
                         Text(
                           context.l10n.collected,
                           style: TextStyle(
-                            color: Colors.green.shade700,
+                            color: AppColors.success,
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                           ),
@@ -403,7 +404,7 @@ class HistoryOrderCard extends StatelessWidget {
                         Text(
                           order.totalPayed.toStringAsFixed(0),
                           style: TextStyle(
-                            color: Colors.green.shade700,
+                            color: AppColors.success,
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
                           ),

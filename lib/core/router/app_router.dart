@@ -19,6 +19,7 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/view_model/man
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/add_restaurant_view.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/restaurant_management_view.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/restaurant_management/views/splash_view.dart';
+import 'package:yalla_notlop_app/features/about/presentation/views/about_us_view.dart';
 
 final appRouter = GoRouter(
   initialLocation: AppRoutes.splash,
@@ -90,6 +91,10 @@ final appRouter = GoRouter(
           child: FinishOrderView(order: data['orderModel'] as OrderModel),
         );
       },
+    ),
+    GoRoute(
+      path: AppRoutes.aboutUs,
+      builder: (context, state) => const AboutUsView(),
     ),
   ],
 );

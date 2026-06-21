@@ -12,7 +12,7 @@ class AppLogo extends StatelessWidget {
       style: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w800,
-        color: AppColors.primaryColor,
+        color: AppColors.primary,
       ),
     );
   }

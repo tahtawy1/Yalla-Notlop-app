@@ -5,6 +5,7 @@ import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_rest
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/add_category_button.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/category_card.dart';
 import 'package:yalla_notlop_app/features/restaurant/presentation/views/add_restaurant/widgets/header_text.dart';
+import 'package:yalla_notlop_app/core/theme/app_colors.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({
@@ -72,7 +73,7 @@ class CategoriesSection extends StatelessWidget {
               padding: EdgeInsets.only(top: 8.0, right: 20),
               child: Text(
                 context.l10n.selectCategoryValidation,
-                style: TextStyle(color: Colors.red, fontSize: 12),
+                style: TextStyle(color: AppColors.danger, fontSize: 12),
               ),
             ),
         ],

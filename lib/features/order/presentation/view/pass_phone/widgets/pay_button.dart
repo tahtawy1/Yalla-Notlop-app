@@ -19,14 +19,14 @@ class PayButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.primaryColor.withAlpha(50)
-              : AppColors.primaryColor,
+              ? AppColors.primary.withAlpha(50)
+              : AppColors.primary,
           borderRadius: BorderRadius.circular(32),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: Colors.white,
+            color: AppColors.surface,
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),

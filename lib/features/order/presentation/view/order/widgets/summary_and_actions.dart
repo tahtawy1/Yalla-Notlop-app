@@ -30,7 +30,7 @@ class SummaryAndActions extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
         boxShadow: [
           BoxShadow(
@@ -52,7 +52,7 @@ class SummaryAndActions extends StatelessWidget {
                   Text(
                     context.l10n.collected,
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: AppColors.emptyState,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -62,7 +62,7 @@ class SummaryAndActions extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: Colors.green.shade700,
+                      color: AppColors.success,
                     ),
                   ),
                 ],
@@ -73,7 +73,7 @@ class SummaryAndActions extends StatelessWidget {
                   Text(
                     context.l10n.total,
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: AppColors.emptyState,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -83,7 +83,7 @@ class SummaryAndActions extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 20,
-                      color: AppColors.splashTitleColor,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                 ],
@@ -95,8 +95,8 @@ class SummaryAndActions extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
               value: progress,
-              backgroundColor: AppColors.restaurantIconBg,
-              color: Colors.green.shade700,
+              backgroundColor: AppColors.iconBackground,
+              color: AppColors.success,
               minHeight: 8,
             ),
           ),
@@ -105,19 +105,17 @@ class SummaryAndActions extends StatelessWidget {
             children: [
               Expanded(
                 child: SizedBox(
-                  // height: 40,
                   child: PrimaryButton(
                     onTap: () async {
                       final cubit = context.read<OrderCubit>();
-                      final mealCounts = cubit.getKitchenOrder(order);
 
                       final imageBytes = await screenshotController
                           .captureFromWidget(
                             Material(
                               type: MaterialType.canvas,
-                              child: UnconstrainedBox(
-                                alignment: Alignment.topCenter,
-                                child: Container(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(maxHeight: 2000),
+                                child: SizedBox(
                                   width: MediaQuery.widthOf(context),
                                   child: OrderBillCard(
                                     cubit: cubit,
@@ -132,9 +130,16 @@ class SummaryAndActions extends StatelessWidget {
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Cairo',
-                                        color: AppColors.splashTitleColor,
+                                        color: AppColors.textPrimary,
                                       ),
                                     ),
+                                    collectedLabel: context.l10n.collected,
+                                    totalLabel: context.l10n.total,
+                                    settledLabel: context.l10n.settled,
+                                    owesLabel: context.l10n.owes,
+                                    overpaidLabel: context.l10n.overpaid,
+                                    paidLabel: context.l10n.paid,
+                                    noOrdersLabel: context.l10n.no_orders,
                                   ),
                                 ),
                               ),
@@ -146,7 +151,7 @@ class SummaryAndActions extends StatelessWidget {
                     title: state is ShareOrderLoading
                         ? context.l10n.sharing_loading
                         : context.l10n.share_order,
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                 ),
               ),
@@ -159,8 +164,8 @@ class SummaryAndActions extends StatelessWidget {
                       context.go(AppRoutes.home);
                     },
                     title: context.l10n.back_home,
-                    textColor: AppColors.primaryColor,
-                    color: AppColors.secondaryColor.withAlpha(50),
+                    textColor: AppColors.primary,
+                    color: AppColors.secondary.withAlpha(50),
                   ),
                 ),
               ),

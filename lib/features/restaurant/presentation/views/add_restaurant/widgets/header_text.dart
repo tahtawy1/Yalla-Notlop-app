@@ -12,14 +12,14 @@ class HeaderText extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w800,
-          color: AppColors.splashTitleColor,
+          color: AppColors.textPrimary,
           fontFamily: 'Cairo',
         ),
         children: [
           TextSpan(text: title),
           TextSpan(
             text: ' *',
-            style: TextStyle(color: AppColors.secondaryColor),
+            style: TextStyle(color: AppColors.secondary),
           ),
         ],
       ),

@@ -1263,6 +1263,99 @@ class S {
       args: [],
     );
   }
+
+  /// `Change Language`
+  String get changeLanguage {
+    return Intl.message(
+      'Change Language',
+      name: 'changeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Us`
+  String get aboutUs {
+    return Intl.message('About Us', name: 'aboutUs', desc: '', args: []);
+  }
+
+  /// `Exit App`
+  String get exitApp {
+    return Intl.message('Exit App', name: 'exitApp', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to exit the application?`
+  String get exitAppMessage {
+    return Intl.message(
+      'Are you sure you want to exit the application?',
+      name: 'exitAppMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit`
+  String get confirmExit {
+    return Intl.message('Exit', name: 'confirmExit', desc: '', args: []);
+  }
+
+  /// `Yalla Notlob simplifies group food ordering. Gather your friends, pick your meals, and let us handle the math!`
+  String get aboutUsDescription {
+    return Intl.message(
+      'Yalla Notlob simplifies group food ordering. Gather your friends, pick your meals, and let us handle the math!',
+      name: 'aboutUsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Version 1.0.0`
+  String get appVersion {
+    return Intl.message(
+      'Version 1.0.0',
+      name: 'appVersion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Developer`
+  String get developerSection {
+    return Intl.message(
+      'Developer',
+      name: 'developerSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get developerName {
+    return Intl.message(
+      'Taha Sabry',
+      name: 'developerName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get developerNickName {
+    return Intl.message(
+      'Tahtawy',
+      name: 'developerNickName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Software Engineer`
+  String get developerRole {
+    return Intl.message(
+      'Software Engineer',
+      name: 'developerRole',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,5 @@
 part of 'manage_restaurant_cubit.dart';
 
-@immutable
 sealed class ManageRestaurantState {}
 
 final class ManageRestaurantInitial extends ManageRestaurantState {}

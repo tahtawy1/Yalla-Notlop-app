@@ -14,7 +14,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
@@ -71,12 +71,12 @@ class CustomBottomNavBar extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.secondaryColor : Colors.transparent,
+              color: isSelected ? AppColors.secondary : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(
               icon,
-              color: isSelected ? Colors.white : AppColors.restaurantFieldHint,
+              color: isSelected ? AppColors.surface : AppColors.hint,
               size: 24,
             ),
           ),
@@ -87,8 +87,8 @@ class CustomBottomNavBar extends StatelessWidget {
               fontSize: 10,
               fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
               color: isSelected
-                  ? AppColors.secondaryColor
-                  : AppColors.restaurantFieldHint,
+                  ? AppColors.secondary
+                  : AppColors.hint,
             ),
           ),
         ],

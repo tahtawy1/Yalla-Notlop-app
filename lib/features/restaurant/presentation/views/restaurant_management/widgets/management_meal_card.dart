@@ -22,7 +22,7 @@ class ManagementMealCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Row(
@@ -32,7 +32,7 @@ class ManagementMealCard extends StatelessWidget {
             height: 55,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.primaryColor.withAlpha(25),
+              color: AppColors.primary.withAlpha(25),
             ),
             child: Padding(
               padding: const EdgeInsets.all(3),
@@ -49,7 +49,7 @@ class ManagementMealCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.splashTitleColor,
+                    color: AppColors.textPrimary,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -58,7 +58,7 @@ class ManagementMealCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
-                    color: AppColors.primaryColor,
+                    color: AppColors.primary,
                   ),
                 ),
               ],
@@ -70,7 +70,7 @@ class ManagementMealCard extends StatelessWidget {
                 onTap: onEdit,
                 child: const Icon(
                   Icons.edit,
-                  color: AppColors.restaurantTextMuted,
+                  color: AppColors.textMuted,
                   size: 20,
                 ),
               ),
@@ -79,7 +79,7 @@ class ManagementMealCard extends StatelessWidget {
                 onTap: onDelete,
                 child: const Icon(
                   Icons.delete_outline,
-                  color: AppColors.dangerColor,
+                  color: AppColors.danger,
                   size: 20,
                 ),
               ),
