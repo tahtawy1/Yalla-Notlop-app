@@ -20,10 +20,6 @@ class GetCategoriesSuccess extends ManageRestaurantState {
   GetCategoriesSuccess({required this.categories});
 }
 
-// class GetCategoriesFailure extends ManageRestaurantState {
-//   final String errMessage;
-//   GetCategoriesFailure({required this.errMessage});
-// }
 class DeleteCategoryLoading extends ManageRestaurantState {}
 
 class DeleteCategorySuccess extends ManageRestaurantState {}

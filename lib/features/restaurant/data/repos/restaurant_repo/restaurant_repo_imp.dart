@@ -13,7 +13,6 @@ class RestaurantRepoImp implements RestaurantRepo {
   final RestaurantHiveService hiveService;
 
   RestaurantRepoImp({required this.hiveService});
-  //* Restraunts ========================
   @override
   Future<Either<AppFailure, void>> addRestaurant({
     required RestaurantModel restaurant,
@@ -72,7 +71,6 @@ class RestaurantRepoImp implements RestaurantRepo {
     }
   }
 
-  //* Category-related operations ========
   @override
   Future<Either<AppFailure, Map<String, int>>>
   getRestaurantCountPerCategory() async {

@@ -46,7 +46,6 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     final trimmed = name.trim();
     if (trimmed.isEmpty) return;
 
-    // Duplicate check against current loaded state
     if (state is ManageCategoriesLoaded) {
       final loaded = state as ManageCategoriesLoaded;
       final isDuplicate = loaded.categories.any(
@@ -95,7 +94,6 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     );
   }
 
-  /// Safe delete: only deletes if the category has no linked restaurants.
   Future<void> deleteCategoryIfEmpty(CategoryModel category) async {
     emit(ManageCategoriesActionLoading());
     final result = await categoryRepo.deleteCategory(category: category);
@@ -113,7 +111,6 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     );
   }
 
-  /// Moves all restaurants from [oldCategory] to [newCategory], then deletes [oldCategory].
   Future<void> changeRelatedRestaurantsCategory({
     required CategoryModel oldCategory,
     required CategoryModel newCategory,
@@ -146,7 +143,6 @@ class ManageCategoriesCubit extends Cubit<ManageCategoriesState> {
     );
   }
 
-  /// Atomically deletes the category and all its linked restaurants.
   Future<void> forceDeleteCategoryWithRestaurants(
     CategoryModel category,
   ) async {

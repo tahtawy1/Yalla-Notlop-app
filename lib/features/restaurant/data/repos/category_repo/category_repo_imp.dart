@@ -9,7 +9,6 @@ class CategoryRepoImp implements CategoryRepo {
   final RestaurantHiveService hiveService;
 
   CategoryRepoImp({required this.hiveService});
-  //* Category ========================
   @override
   Future<Either<AppFailure, void>> addCategory({
     required CategoryModel category,
@@ -29,7 +28,6 @@ class CategoryRepoImp implements CategoryRepo {
     try {
       await hiveService.updateCategory(category);
 
-      // Cascade update to all restaurants using this category
       final restaurants = hiveService.getRestaurants();
       for (var restaurant in restaurants) {
         if (restaurant.category?.id == category.id) {

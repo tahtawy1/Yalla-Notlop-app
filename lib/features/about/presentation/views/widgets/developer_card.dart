@@ -55,7 +55,6 @@ class DeveloperCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              // Avatar + Info Row
               Row(
                 children: [
                   _DevAvatar(),

@@ -13,11 +13,7 @@ class AboutUsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           context.l10n.aboutUs,
-          style: TextStyle(
-            // fontSize: 16,
-            color: AppColors.primary,
-            fontWeight: .w800,
-          ),
+          style: TextStyle(color: AppColors.primary, fontWeight: .w800),
         ),
       ),
       body: SingleChildScrollView(
@@ -25,7 +21,6 @@ class AboutUsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // App Info
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -86,7 +81,6 @@ class AboutUsView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            // Developer Info
             const DeveloperCard(),
           ],
         ),

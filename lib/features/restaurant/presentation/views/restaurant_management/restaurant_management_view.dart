@@ -73,21 +73,9 @@ class _RestaurantDetailsViewState extends State<RestaurantDetailsView> {
           cubit.categories = state.categories;
         }
         if (state is DeleteRestaurantSuccess) {
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text(state.message),
-          //     backgroundColor: AppColors.success,
-          //   ),
-          // );
           Navigator.pop(context, true);
         }
         if (state is SaveUpdatedRestaurantSuccess) {
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text(state.message),
-          //     backgroundColor: AppColors.success,
-          //   ),
-          // );
           Navigator.pop(context, true);
         }
       },

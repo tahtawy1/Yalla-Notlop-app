@@ -20,14 +20,11 @@ class CustomDrawer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Application Section
             Container(
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // const Center(child: AppLogo()),
-                  // const SizedBox(height: 16),
                   Text(
                     context.l10n.appName,
                     style: const TextStyle(

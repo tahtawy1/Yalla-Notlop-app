@@ -39,7 +39,6 @@ class OrderBillCard extends StatelessWidget {
       children: [
         header,
 
-        // ================= SUMMARY =================
         Container(
           margin: const EdgeInsets.only(top: 8),
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -68,7 +67,6 @@ class OrderBillCard extends StatelessWidget {
           ),
         ),
 
-        // ================= MEMBERS =================
         ...members.map((member) {
           final diff = cubit.calculateMemberDiff(member);
           final meals = cubit.membersMealsOrder[member.id];
@@ -99,7 +97,6 @@ class OrderBillCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ── اسم العضو + الحالة ──
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -121,13 +118,11 @@ class OrderBillCard extends StatelessWidget {
                   ],
                 ),
 
-                // ── المبلغ المدفوع ──
                 Text(
                   '$paidLabel: ${member.payedAmount}',
                   style: TextStyle(fontSize: 10, color: Colors.grey.shade600),
                 ),
 
-                // ── الوجبات ──
                 if (meals != null && meals.isNotEmpty) ...[
                   const SizedBox(height: 4),
                   Wrap(

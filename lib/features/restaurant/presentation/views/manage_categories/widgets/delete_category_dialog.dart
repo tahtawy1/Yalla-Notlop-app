@@ -23,7 +23,6 @@ class DeleteCategoryDialog extends StatelessWidget {
     final cubit = context.read<ManageCategoriesCubit>();
 
     if (linkedCount == 0) {
-      // Simple confirmation: no linked restaurants
       return AlertDialog(
         backgroundColor: AppColors.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -89,17 +88,12 @@ class DeleteCategoryDialog extends StatelessWidget {
       );
     }
 
-    // Has restaurants — show 3 options
     return AlertDialog(
       backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Row(
         children: [
-          const Icon(
-            Icons.link_rounded,
-            color: AppColors.secondary,
-            size: 22,
-          ),
+          const Icon(Icons.link_rounded, color: AppColors.secondary, size: 22),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -127,7 +121,6 @@ class DeleteCategoryDialog extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          // Option 1: Move restaurants
           _OptionTile(
             icon: Icons.drive_file_move_rounded,
             color: AppColors.primary,
@@ -154,7 +147,6 @@ class DeleteCategoryDialog extends StatelessWidget {
             },
           ),
           const SizedBox(height: 8),
-          // Option 2: Delete all
           _OptionTile(
             icon: Icons.delete_forever_rounded,
             color: AppColors.danger,
@@ -162,7 +154,6 @@ class DeleteCategoryDialog extends StatelessWidget {
             label: context.l10n.deleteAllRestaurantsWithCategory,
             onTap: () {
               Navigator.pop(context);
-              // Strong confirmation before destructive action
               showDialog(
                 context: context,
                 builder: (_) => BlocProvider.value(

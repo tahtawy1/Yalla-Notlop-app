@@ -22,7 +22,6 @@ class AddRetaurantForm extends StatefulWidget {
 class _AddRetaurantFormState extends State<AddRetaurantForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final AutovalidateMode autovalidateMode = AutovalidateMode.onUnfocus;
-  //Controllers
   final TextEditingController nameController = TextEditingController();
   final TextEditingController categoryNameController = TextEditingController();
   final TextEditingController mealNameController = TextEditingController();
@@ -180,7 +179,7 @@ class _AddRetaurantFormState extends State<AddRetaurantForm> {
                       final bool isImageSelected =
                           restaurantCubit.image != null ||
                           restaurantCubit.selectedImagePath != null;
-                      
+
                       setState(() {
                         showCategoryError = !isCategorySelected;
                         showMealError = !isMealsAdded;
